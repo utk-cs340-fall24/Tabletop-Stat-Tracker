@@ -1,4 +1,4 @@
-#include "player.h"
+#include "player_old.h"
 
 
 player::player(std::string n, int a){
