@@ -1,8 +1,8 @@
 #include <string>
 #include <iostream>
 #include <string.h>
-class player{
-
+class player
+{
     private:
     int health;
     int health_cap;
@@ -15,6 +15,4 @@ class player{
     int health_print();
     std::string name_print();
     void player_print();
-
-
 };
