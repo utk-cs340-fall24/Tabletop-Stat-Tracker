@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table-top Stat Tracker</title>
+    <link rel="stylesheet" href="hplus_stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <img src="dndLogo.png" alt="DnD Logo" class="logo-icon"> 
+        <div class="fade-in-text">
+            <p>Dice & Data</p>
+        </div>
+                    
+        <!-- <h1>Table-Top Stat Tracker</h1> -->
+         <h2>Virtual Table-Top Stat Tracker</h2>
+        <button id="add-player">Add Player</button>
+        <div id="players-container"></div>
+    </div>
+
+    <script>
+        const playerContainer = document.getElementById('players-container');
+        const addPlayerBtn = document.getElementById('add-player');
+
+        addPlayerBtn.addEventListener('click', function() {
+            const playerDiv = document.createElement('div');
+            playerDiv.className = 'player';
+
+            playerDiv.innerHTML = `
+                <img src="player_icon.png" alt="Player Icon" class="player-icon" style="filter: hue-rotate(${Math.floor(Math.random() * 570)}deg)"">
+                <input type="text" placeholder="Player Name" class="player-name">
+                <label class="attribute">Strength: <input type="number" class="stat-input" value="0"></label>
+                <label class="attribute">Dexterity: <input type="number" class="stat-input" value="0"></label>
+                <label class="attribute">Constitution: <input type="number" class="stat-input" value="0"></label>
+                <label class="attribute">Intelligence: <input type="number" class="stat-input" value="0"></label>
+                <label class="attribute">Wisdom: <input type="number" class="stat-input" value="0"></label>
+                <label class="attribute">Charisma: <input type="number" class="stat-input" value="0"></label>
+                <button class="remove-attribute">Remove Attribute</button>
+                <button class="remove-player">Remove Player</button>
+            `;
+
+            const removeAttributeBtn = playerDiv.querySelector('.remove-attribute');
+            removeAttributeBtn.addEventListener('click', function() {
+                const attributes = playerDiv.querySelectorAll('.attribute');
+                if (attributes.length > 0) {
+                attributes[attributes.length - 1].remove(); // Remove the last attribute
+        }
+
+            });
+
+                // Add the remove functionality
+            const removePlayerBtn = playerDiv.querySelector('.remove-player');
+            removePlayerBtn.addEventListener('click', function() {
+                playerDiv.remove();
+            });
+            
+            playerContainer.appendChild(playerDiv);
+        });
+    
+    </script>
+</body>
+</html>
