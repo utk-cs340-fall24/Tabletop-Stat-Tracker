@@ -1,0 +1,5 @@
+This is a slightly edited example program from the libhttpserver library, which allows the user to host a simple HTTP webserver with C++ code. For it to work, you simply run a.out, then connect to http://localhost:8080/hello. Depending on your firewall settings, others can access the webserver by using your device's local IPv4 address in place of localhost. 
+
+(Due to the fact that I am using WSL2 to program and run a.out, I also need to run a powershell script to link my laptop's wifi adapter to WSL2's virtual adapter. Hypothetically this wouldn't be an issue if we shifted the program to be run from windows or on a pure linux machine.)
+
+I hope to use this libhttpserver library (or another such technology that may be more convenient) to host a webserver that clients can join onto to stats and attributes that are calculated and stored on the host's machine (which also runs said webserver). I want to connect this server to the backend C++ code that does these calculations and stores these values. I also want this server to display the HTML/CSS/JS frontend that the clients can use to view and edit these values.
