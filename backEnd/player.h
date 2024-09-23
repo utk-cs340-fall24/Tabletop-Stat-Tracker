@@ -4,7 +4,7 @@
 
 struct item{
     std::string name;
-    int count;
+    int count = 0;
     std::string description;
 };
 
@@ -33,6 +33,8 @@ class player
         
         //inventory
         void inventory_print();
+        void inventory_insert(std::string);
+        void inventory_remove(std::string);
     
         //health
         void health_decrement(int);
