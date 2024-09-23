@@ -37,7 +37,7 @@ class player
         //health
         void health_decrement(int);
         void health_increment(int);
-        int health_print();
+        int  health_print();
         void death_fail();
         void death_success();
 };
