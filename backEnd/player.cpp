@@ -115,5 +115,12 @@ void player::inventory_remove(std::string a)
     }
 
     std::cout << "You aint even got that\n";
+}
 
+void player::inventory_print()
+{
+    for(int i = 0; i < inventory.size(); i++){
+        std::cout << i+1 << ". " << inventory[i].name << " x" << inventory[i].count
+                  << '\n';  
+    }
 }
