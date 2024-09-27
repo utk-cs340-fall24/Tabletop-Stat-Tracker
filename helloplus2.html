@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table-top Stat Tracker</title>
+    <link rel="stylesheet" href="hplus_stylesheet2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <img src="dndLogo.png" alt="DnD Logo" class="logo-icon"> 
+        <div class="fade-in-text">
+            <p>Retro Roller</p>
+        </div>
+        
+        <h2 class = "fade-in-text">Virtual Table-Top Stat Tracker</h2>
+        <button id="add-player">Add Player</button>
+        <div id="players-container"></div>
+    </div>
+
+    <script>
+        const playerContainer = document.getElementById('players-container');
+        const addPlayerBtn = document.getElementById('add-player');
+
+        addPlayerBtn.addEventListener('click', function() {
+            const playerDiv = document.createElement('div');
+            playerDiv.className = 'player';
+
+            playerDiv.innerHTML = `
+                <img src="player_icon.png" alt="Player Icon" class="player-icon" style="filter: hue-rotate(${Math.floor(Math.random() * 570)}deg)"">
+                <input type="text" placeholder="Player Name" class="player-name">
+
+                <div class="stat-container">
+                    <label class="attribute">
+                        <input type="text" value="New Attribute" class="attribute-name">: 
+                        <button class="stat-button decrement">-</button>
+                        <input type="number" class="stat-input" value="0">
+                        <button class="stat-button increment">+</button>
+                    </label>
+                </div>
+
+                <button class="add-attribute">Add Attribute</button>
+                <button class="remove-attribute">Remove Attribute</button>
+                <button class="remove-player">Remove Player</button>
+
+                <!-- Dynamic List Section -->
+                <h3>Inventory</h3>
+                <ul class="inventory"></ul>
+                <input type="text" class="item-input" placeholder="Add an item">
+                <button class="add-item">Add Item</button>
+            `;
+
+            const statInput = playerDiv.querySelector('.stat-input');
+            const incrementBtn = playerDiv.querySelector('.increment');
+            const decrementBtn = playerDiv.querySelector('.decrement');
+
+            incrementBtn.addEventListener('click', function() {
+                statInput.value = parseInt(statInput.value) + 1;
+            });
+
+            decrementBtn.addEventListener('click', function() {
+                statInput.value = parseInt(statInput.value) - 1; // Allow negative values
+            });
+
+            const addAttributeBtn = playerDiv.querySelector('.add-attribute');
+            addAttributeBtn.addEventListener('click', function() {
+                const newAttribute = document.createElement('div');
+                newAttribute.className = 'stat-container';
+                newAttribute.innerHTML = `
+                    <label class="attribute">
+                        <input type="text" value="New Attribute" class="attribute-name">: 
+                        <button class="stat-button decrement">-</button>
+                        <input type="number" class="stat-input" value="0">
+                        <button class="stat-button increment">+</button>
+                    </label>
+                `;
+
+                const incrementNew = newAttribute.querySelector('.increment');
+                const decrementNew = newAttribute.querySelector('.decrement');
+                const statInputNew = newAttribute.querySelector('.stat-input');
+
+                incrementNew.addEventListener('click', function() {
+                    statInputNew.value = parseInt(statInputNew.value) + 1;
+                });
+
+                decrementNew.addEventListener('click', function() {
+                    statInputNew.value = parseInt(statInputNew.value) - 1;
+                });
+
+                playerDiv.insertBefore(newAttribute, addAttributeBtn);
+            });
+
+            const removeAttributeBtn = playerDiv.querySelector('.remove-attribute');
+            removeAttributeBtn.addEventListener('click', function() {
+                const attributes = playerDiv.querySelectorAll('.stat-container');
+                //if (attributes.length > 1) {
+                    attributes[attributes.length - 1].remove(); // Remove the last attribute
+                //}
+            });
+
+            const removePlayerBtn = playerDiv.querySelector('.remove-player');
+            removePlayerBtn.addEventListener('click', function() {
+                playerDiv.remove();
+            });
+
+            // Add functionality for adding items to the dynamic list
+            const addItemBtn = playerDiv.querySelector('.add-item');
+            addItemBtn.addEventListener('click', function() {
+                const input = playerDiv.querySelector('.item-input');
+                const itemText = input.value.trim();
+
+                if (itemText) {
+                    const li = document.createElement('li');
+                    li.textContent = itemText;
+
+                    const removeBtn = document.createElement('button');
+                    removeBtn.textContent = 'Remove';
+                    removeBtn.className = 'remove-item';
+                    removeBtn.addEventListener('click', function() {
+                        li.remove();
+                    });
+
+                    li.appendChild(removeBtn);
+                    playerDiv.querySelector('.inventory').appendChild(li);
+                    input.value = ''; // Clear input
+                }
+            });
+            
+            playerContainer.appendChild(playerDiv);
+        });
+    </script>
+</body>
+</html>
