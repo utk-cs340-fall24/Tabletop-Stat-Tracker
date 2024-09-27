@@ -40,6 +40,8 @@ class player
         void health_decrement(int);
         void health_increment(int);
         int  health_print();
+        //! might need to delete later
         void death_fail();
         void death_success();
+        //! --------------------------
 };
