@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "VT323", monospace;
+}
+
+.vt323-regular {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #323131;
+    background-size: cover;
+}
+
+.container {
+    position: absolute;
+    top: 100px;
+}
+
+h1 {
+   font-family: 'Press Start 2P';
+   color: white; 
+   text-shadow: 2px 0px 0px #f72585;
+   font-size: 45px;
+}
+
+.glass-container {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid #fff;
+}
+
+.glass-container::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: -1;
+}
+
+.register-box {
+    max-width: 250px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #f72585;
+    font-size: 24px;
+    font-style: bold;
+    margin-top: 30px;
+    margin-bottom: -20px;
+    text-shadow: .75px 0px 0px #ffffff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 15px;
+}
+
+input::placeholder {
+    color: #fff;
+}
+input:focus {
+    outline: none;
+}
+
+/* .options {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: white;
+}
+
+.options input {
+    margin-right: 5px;
+    margin-top: 0px;
+}
+
+.options a {
+    text-decoration: none;
+    color: white;
+    margin-left: auto;
+}
+ */
+button {
+    background: #f72585;
+    color: white;
+    text-shadow: 1px 0px 0px #323131;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+button:hover {
+    background: transparent;
+    color: white;
+    outline: 1px solid #fff;
+}
+
+
