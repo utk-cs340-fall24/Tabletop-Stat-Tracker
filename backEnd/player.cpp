@@ -98,6 +98,7 @@ void player::inventory_insert(std::string a)
     std::cout << "Enter a description: ";
     std::cin >> des;
     items.description = des;
+    inventory.push_back(items);
 }
 
 void player::inventory_remove(std::string a)
