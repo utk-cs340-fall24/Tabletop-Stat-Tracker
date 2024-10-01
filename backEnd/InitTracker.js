@@ -27,15 +27,11 @@ while(true){
 }
 
 track.sort(initSort);
-
-console.log("Welcome to the start of your combat! Type 'NEXT' for next turn, or 'END' to quit: ");
 let i = 0;
 let inp;
 
 while(true){
-    console.log(`Current Round: ${rounds}`);
-    console.log(`Current Turn: ${track[i].name}`);
-    inp = prompt("> ");
+    inp = prompt(`Type 'NEXT' for next turn, or 'END' to quit \nCurrent Round: ${rounds} \nCurrent Turn: ${track[i].name}` );
 
     if (inp === "NEXT") {
         if (i === track.length - 1) {
