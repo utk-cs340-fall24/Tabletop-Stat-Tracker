@@ -26,6 +26,7 @@ Olivia Cheng, oliviaccheng, Tabletop-Stat-Tracker
 * frontend/register.html
 * frontend/welcome.css
 * frontend/welcome.html
+* frontend/carpet1.png
 
 ### What you accomplished
 Overall, I created the welcome page for the website, the login page, the registration page, and the player view page (an altered version of mlisenko's hostview page). Most graphics choices were made by mlisenko, so I just followed them and added a couple extra design elements (like added shadows to the text to give them more dimension and contrast with the webpage background). I'm really happy with my small features I implemented, like requiring inputs for login or only showing ***** for the password inputs for security. My login boxes featured text inputs and radio buttons that are all checked before the login button continues data validation and redirection to another website. 
