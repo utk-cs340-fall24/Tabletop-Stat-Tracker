@@ -1,0 +1,131 @@
+resources.cpp:
+#include <httpserver.hpp>
+
+// Welcome Screen CSS and HTML
+class css_welcome : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../frontend/welcome.css", 200, "text/css");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
+class html_welcome : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../frontend/welcome.html", 200, "text/html");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
+// Login Screen CSS and HTML
+class css_login : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../frontend/login.css", 200, "text/css");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
+class html_login : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../frontend/login.html", 200, "text/html");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
+// Host View HTML and CSS
+class css_host : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../hostView/hostView_stylesheet.css", 200, "text/css");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
+class html_host : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../hostView/hostView.html", 200, "text/html");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
+// Misc Images and Resources
+class html_logopng : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../hostView/dndLogo.png", 200, "text/png");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
+class html_playerpng : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../hostView/player_icon.png", 200, "text/png");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
+class html_opencarpet : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../frontend/carpet1.png", 200, "text/png");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+server.cpp:
+#include "resources.cpp"
+#include <fstream>
+#include <iostream>
+
+int main()
+{
+    // Starts webserver on port 8080.
+    httpserver::webserver ws = httpserver::create_webserver(8080);
+
+    // Creates pages
+    html_welcome welcome_h;
+    ws.register_resource("/welcome.html", &welcome_h);
+    css_welcome welcome_c;
+    ws.register_resource("/welcome.css", &welcome_c);
+    html_login login_h;
+    ws.register_resource("/login.html", &login_h);
+    css_login login_c;
+    ws.register_resource("/login.css", &login_c);
+    html_host host_h;
+    // Temporarily named helloplus2 until frontend organization changes are made.
+    ws.register_resource("/helloplus2.html", &host_h);
+    css_host host_c;
+    ws.register_resource("/hostView_stylesheet.css", &host_c);
+    html_opencarpet carpet;
+    ws.register_resource("/carpet1.png", &carpet);
+    html_playerpng player;
+    ws.register_resource("/player_icon.png", &player);
+    html_logopng logo;
+    ws.register_resource("/dndLogo.png", &logo);
+    // Starts server
+    ws.start(true);
+
+    return 0;
+}
