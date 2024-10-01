@@ -1,3 +1,7 @@
+- Name: Michael Lisenko
+- Github ID: mikelisenko
+- Group: Tabletop-Stat-Tracker
+
 ## Issues I planned to fix:
 - Create inventory input field and add/removability feature [#14](https://github.com/utk-cs340-fall24/Tabletop-Stat-Tracker/issues/14)
 - Create increment/decrement buttons for attribute value [#13](https://github.com/utk-cs340-fall24/Tabletop-Stat-Tracker/issues/13)
