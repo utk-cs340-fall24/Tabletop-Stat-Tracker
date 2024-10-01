@@ -42,6 +42,27 @@ public:
     }
 };
 
+// Register Screen CSS and HTML
+class css_register : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../frontend/register.css", 200, "text/css");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
+class html_register : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../frontend/register.html", 200, "text/html");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
 // Host View HTML and CSS
 class css_host : public httpserver::http_resource
 {

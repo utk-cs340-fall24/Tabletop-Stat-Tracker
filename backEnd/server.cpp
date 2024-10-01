@@ -16,6 +16,10 @@ int main()
     ws.register_resource("/login.html", &login_h);
     css_login login_c;
     ws.register_resource("/login.css", &login_c);
+    html_register register_h;
+    ws.register_resource("/register.html", &register_h);
+    css_register register_c;
+    ws.register_resource("/register.css", &register_c);
     html_host host_h;
     ws.register_resource("/hostView.html", &host_h);
     css_host host_c;
