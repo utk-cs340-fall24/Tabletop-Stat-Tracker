@@ -17,10 +17,13 @@ int main()
     css_login login_c;
     ws.register_resource("/login.css", &login_c);
     html_host host_h;
-    // Temporarily named helloplus2 until frontend organization changes are made.
-    ws.register_resource("/helloplus2.html", &host_h);
+    ws.register_resource("/hostView.html", &host_h);
     css_host host_c;
     ws.register_resource("/hostView_stylesheet.css", &host_c);
+    html_player player_h;
+    ws.register_resource("/playerview.html", &player_h);
+    css_host player_c;
+    ws.register_resource("/playerview.css", &player_c);
     html_opencarpet carpet;
     ws.register_resource("/carpet1.png", &carpet);
     html_playerpng player;

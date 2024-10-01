@@ -63,6 +63,27 @@ public:
     }
 };
 
+// Player View HTML and CSS
+class css_player : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../frontend/playerview.css", 200, "text/css");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
+class html_player : public httpserver::http_resource
+{
+public:
+    std::shared_ptr<httpserver::http_response> render(const httpserver::http_request &)
+    {
+        auto res = new httpserver::file_response("../frontend/playerview.html", 200, "text/html");
+        return std::shared_ptr<httpserver::http_response>(res);
+    }
+};
+
 // Misc Images and Resources
 class html_logopng : public httpserver::http_resource
 {
