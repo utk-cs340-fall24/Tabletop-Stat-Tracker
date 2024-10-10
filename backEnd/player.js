@@ -145,15 +145,8 @@ class Player {
     }
     
 
-
     inventoryClear() {
         this.inventory.clear();
         console.log("Inventory cleared.");
     }
 }
-
-// Example usage:
-const player1 = new Player("Hero", 100);
-player1.playerPrint();
-player1.inventoryInsert("Sword");
-player1.inventoryPrint();
