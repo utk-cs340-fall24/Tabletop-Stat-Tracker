@@ -57,7 +57,7 @@ h1 {
     z-index: -1;
 }
 
-.register-box {
+.login-box {
     max-width: 250px;
     margin: 0 auto;
     text-align: center;
@@ -81,7 +81,7 @@ form {
 
 input {
     padding: 10px;
-    margin-top: 70px;
+    margin-top: 50px;
     border: none;
     border-radius: 10px;
     background: transparent;
@@ -129,4 +129,9 @@ button:hover {
     outline: 1px solid #fff;
 }
 
-
+#register {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}

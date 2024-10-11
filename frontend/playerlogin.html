@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="./register.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="./playerlogin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
@@ -16,11 +16,12 @@
         </div>
     </div>
     <div class="glass-container">
-        <div class="register-box">
-            <h2>Register</h2>
-            <form action="./hostview.html">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form action="./playerview.html">
+                <input type="number" id="sessioncode" name="sessioncode" min="5" max="5" required placeholder="Session Code">
                 <input type="text" id="username" name="username" required placeholder="Username">
-            <button type="submit">Start Session</button>
+            <button type="submit">Join Session</button>
             </form>
         </div>
     </div>
