@@ -39,3 +39,11 @@ var server = http.createServer(function (req, res) {
 
 console.log("Server Started on Port 8000. Have fun!")
 
+process.on('SIGINT', () => {
+    console.log('SIGINT signal received.');
+    server.close(() => {
+        console.log('Server closed gracefully.');
+        process.exit(0);
+    });
+});
+
