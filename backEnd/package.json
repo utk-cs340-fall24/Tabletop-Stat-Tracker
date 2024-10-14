@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@dice-roller/vue": "^1.2.1"
+  }
+}
