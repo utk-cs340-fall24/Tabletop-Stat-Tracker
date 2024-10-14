@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* 
+* Color Palette:
+* #323131 - Jet black
+* #FFFFFF - White
+* #FFFF70 - Light Yellow
+* #F72585 - Rose (neon pink)
+* #0000E0 - Blue (neon blue)
+*/
 
 * {
     margin: 0;
@@ -39,6 +47,7 @@ h2 {
     color: #ffffff;
     margin-bottom: 20px;
     font-size: 20px;
+    text-shadow: 0.75px 0px 0px #FFFF70;
 }
 
 button {
