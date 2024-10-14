@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table-top Stat Tracker</title>
+    <link rel="stylesheet" href="hostView_stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <img src="dndLogo.png" alt="DnD Logo" class="logo-icon"> 
+        <div class="dice-section">
+            <span>Dice: </span>
+            <button class="dice-button">Roll</button>
+        </div>
+    </header>
+    <div class="container">
+        <div class="fade-in-text">
+            <p>Retro Roller</p>
+        </div>
+        
+        <h2 class="fade-in-text">Virtual Table-Top Stat Tracker</h2>
+        <button id="add-player">Add Player</button>
+        <div id="players-container"></div>
+    </div>
+
+    <script>
+        const playerContainer = document.getElementById('players-container');
+        const addPlayerBtn = document.getElementById('add-player');
+
+        addPlayerBtn.addEventListener('click', function() {
+            const playerDiv = document.createElement('div');
+            playerDiv.className = 'player';
+
+            // Create player object to store data
+            const playerData = {
+                name: '',
+                attributes: {},
+                inventory: []
+            };
+
+            // Create a form for the player data
+            playerDiv.innerHTML = `
+                <form class="player-form">
+                    <img src="player_icon.png" alt="Player Icon" class="player-icon" style="filter: hue-rotate(${Math.floor(Math.random() * 570)}deg)">
+                    <input type="text" placeholder="Player Name" class="player-name" required>
+
+                    <div class="attributes-container">
+                        <div class="stat-container">
+                            <label class="attribute">
+                                <input type="text" value="" class="attribute-name" placeholder="Attribute" required>: 
+                                <button class="stat-button decrement" type="button">-</button>
+                                <input type="number" class="stat-input" value="0" required>
+                                <button class="stat-button increment" type="button">+</button>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="add-attribute" type="button">Add Attribute</button>
+                    <button class="remove-attribute" type="button">Remove Attribute</button>
+
+                    <!-- Dynamic List Section -->
+                    <h3>Inventory</h3>
+                    <ul class="inventory"></ul>
+                    <input type="text" class="item-input" placeholder="Add an item">
+
+                    <button class="add-item" type="button">Add Item</button>
+
+                    <button class="remove-player" type="button">Remove Player</button>
+
+                    <button class="submit-player" type="submit">Update Player Data</button>
+                </form>
+            `;
+
+            // Handling form submission to log the player data
+            const playerForm = playerDiv.querySelector('.player-form');
+            playerForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Clear previous data before submitting
+                playerData.attributes = {};
+                playerData.inventory = [];
+
+                // Update playerData with the form's current state
+                playerData.name = playerDiv.querySelector('.player-name').value;
+
+                // Collect attributes from the DOM
+                const attributes = playerDiv.querySelectorAll('.stat-container');
+                attributes.forEach(attr => {
+                    const attributeName = attr.querySelector('.attribute-name').value;
+                    const statValue = attr.querySelector('.stat-input').value;
+                    if (attributeName) {
+                        playerData.attributes[attributeName] = parseInt(statValue);
+                    }
+                });
+
+                // Collect inventory items from the DOM
+                const inventoryItems = playerDiv.querySelectorAll('.inventory li');
+                inventoryItems.forEach(item => {
+                    playerData.inventory.push(item.textContent.replace('X', '').trim()); // remove "X" button
+                });
+
+                // Log the player data to the console
+                console.log("Player Data Submitted:", playerData);
+            });
+
+            // Initial attribute stat increment and decrement buttons
+            const statInput = playerDiv.querySelector('.stat-input');
+            const incrementBtn = playerDiv.querySelector('.increment');
+            const decrementBtn = playerDiv.querySelector('.decrement');
+
+            // Increment and decrement stats for the first attribute
+            incrementBtn.addEventListener('click', function() {
+                statInput.value = parseInt(statInput.value) + 1;
+            });
+
+            decrementBtn.addEventListener('click', function() {
+                statInput.value = parseInt(statInput.value) - 1;
+            });
+
+            // Adding additional attributes
+            const addAttributeBtn = playerDiv.querySelector('.add-attribute');
+            addAttributeBtn.addEventListener('click', function() {
+                const newAttribute = document.createElement('div');
+                newAttribute.className = 'stat-container';
+                newAttribute.innerHTML = `
+                    <label class="attribute">
+                        <input type="text" value="" class="attribute-name" placeholder="Attribute">: 
+                        <button class="stat-button decrement" type="button">-</button>
+                        <input type="number" class="stat-input" value="0">
+                        <button class="stat-button increment" type="button">+</button>
+                    </label>
+                `;
+
+                const incrementNew = newAttribute.querySelector('.increment');
+                const decrementNew = newAttribute.querySelector('.decrement');
+                const statInputNew = newAttribute.querySelector('.stat-input');
+
+                incrementNew.addEventListener('click', function() {
+                    statInputNew.value = parseInt(statInputNew.value) + 1;
+                });
+
+                decrementNew.addEventListener('click', function() {
+                    statInputNew.value = parseInt(statInputNew.value) - 1;
+                });
+
+                // Append the new attribute to the attributes container
+                playerDiv.querySelector('.attributes-container').appendChild(newAttribute);
+            });
+
+            // Remove last attribute
+            const removeAttributeBtn = playerDiv.querySelector('.remove-attribute');
+            removeAttributeBtn.addEventListener('click', function() {
+                const attributes = playerDiv.querySelectorAll('.stat-container');
+                if (attributes.length > 1) {
+                    attributes[attributes.length - 1].remove();
+                }
+            });
+
+            // Remove player
+            const removePlayerBtn = playerDiv.querySelector('.remove-player');
+            removePlayerBtn.addEventListener('click', function() {
+                playerDiv.remove();
+            });
+
+            // Add items to inventory
+            const addItemBtn = playerDiv.querySelector('.add-item');
+            addItemBtn.addEventListener('click', function() {
+                const input = playerDiv.querySelector('.item-input');
+                const itemText = input.value.trim();
+
+                if (itemText) {
+                    const li = document.createElement('li');
+                    li.textContent = itemText;
+
+                    const removeBtn = document.createElement('button');
+                    removeBtn.textContent = 'X';
+                    removeBtn.className = 'remove-item';
+                    removeBtn.addEventListener('click', function() {
+                        li.remove();
+                    });
+
+                    li.appendChild(removeBtn);
+                    playerDiv.querySelector('.inventory').appendChild(li);
+
+                    input.value = ''; // clear input
+                }
+            });
+
+            // Listen for "Enter" key on the item input to add items
+            const itemInput = playerDiv.querySelector('.item-input');
+            itemInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    const itemText = itemInput.value.trim();
+                    if (itemText) {
+                        const li = document.createElement('li');
+                        li.textContent = itemText;
+
+                        const removeBtn = document.createElement('button');
+                        removeBtn.textContent = 'X';
+                        removeBtn.className = 'remove-item';
+                        removeBtn.addEventListener('click', function() {
+                            li.remove();
+                        });
+
+                        li.appendChild(removeBtn);
+                        playerDiv.querySelector('.inventory').appendChild(li);
+
+                        itemInput.value = ''; // clear input
+                    }
+                }
+            });
+
+            playerContainer.appendChild(playerDiv);
+        });
+    </script>
+</body>
+</html>
