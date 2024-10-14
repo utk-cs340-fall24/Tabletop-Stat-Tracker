@@ -1,6 +1,11 @@
 var http = require('http');
-var url = require('url');
+const util = require('util');
 var fs = require('fs');
+const dns = require('node:dns');
+const os = require('node:os');
+const options = { family: 4 };
+
+
 console.log("Starting Server...")
 function makeid(length) {
     let result = '';
@@ -19,7 +24,7 @@ console.log("Host Token: " + host_token);
 let player_token = makeid(5);
 console.log("Player Token: " + player_token);
 var server = http.createServer(function (req, res) {
-    var q = url.parse(req.url, true);
+    var q = require('url').parse(req.url, true);
     var filename = "./web" + q.pathname;
     fs.readFile(filename, function (err, data) {
         if (err) {
@@ -37,13 +42,15 @@ var server = http.createServer(function (req, res) {
     });
 }).listen(8000, '0.0.0.0');
 
-console.log("Server Started on Port 8000. Have fun!")
-
-process.on('SIGINT', () => {
-    console.log('SIGINT signal received.');
-    server.close(() => {
-        console.log('Server closed gracefully.');
-        process.exit(0);
-    });
+dns.lookup(os.hostname(), options, (err, addr) => {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log(`Server Started at http://${addr}:8000/startup/welcome.html . Address has been copied to clipboard. Have fun!`)
+        require('child_process').spawn('clip').stdin.end(util.inspect(`http://${addr}:8000/startup/welcome.html`));
+    }
 });
+
+
+
 
