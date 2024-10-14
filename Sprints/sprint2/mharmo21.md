@@ -16,3 +16,11 @@
 
 ## Issues I worked on:
 - I worked on the issues I talked about above, as well as in meetings where we as a group made efforts to organize the repository mode, create new directories, and talk about the new work flow for the overall project. 
+
+## Files I worked on:
+Tabletop-Stat-Tracker/backEnd/player.js
+*ADD MORE BEFORE SUBMITTING*
+
+## What I accomplished:
+- I was able to get my code into a working javascript format that will help us more in the long run than the C++ could have with out new project model
+- I added new functionality to my javascript code than what I had previously, which should heopefully make the experience of adding and removing items from the inventory easier
