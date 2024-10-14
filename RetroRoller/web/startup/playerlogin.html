@@ -18,12 +18,32 @@
     <div class="glass-container">
         <div class="login-box">
             <h2>Login</h2>
-            <form action="../playerview/playerview.html">
+            <form id="login-form">
                 <input type="number" id="sessioncode" name="sessioncode" minlength="5" maxlength="5" required placeholder="Session Code">
                 <input type="text" id="username" name="username" required placeholder="Username">
             <button type="submit">Join Session</button>
             </form>
         </div>
     </div>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // define the correct session code
+            const correctSessionCode = '12345';
+
+            // get value of the session code user input
+            const sessionCodeInput = document.getElementById('sessioncode').value;
+
+            // check user session code to the correct code
+            if (sessionCodeInput === correctSessionCode) {
+                //if matches, redirect the user to the player dashboard page
+                window.location.href = "../playerview/playerview.html";
+            } else {
+                //if incorrect, display an alert
+                alert('Invalid session code. Please try again.');
+            }
+        });
+    </script>
 </body>
 </html>
