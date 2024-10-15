@@ -19,7 +19,9 @@
 
 ## Files I worked on:
 Tabletop-Stat-Tracker/backEnd/player.js
-*ADD MORE BEFORE SUBMITTING*
+Tabletop-Stat-Tracker/frontEnd/hostview.html
+Tabletop-Stat-Tracker/frontEnd/node_modules (open source stuff I added)
+
 
 ## What I accomplished:
 - I was able to get my code into a working javascript format that will help us more in the long run than the C++ could have with out new project model
