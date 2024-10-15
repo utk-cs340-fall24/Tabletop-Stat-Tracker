@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table-top Stat Tracker</title>
+    <link rel="stylesheet" href="hostView_stylesheet2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="dice-dropdown.js" defer></script> <!-- Here's the linked .js file you can use! only has dice stuff -->
+
+</head>
+<body>
+    <header class="header">
+        <img src="dndLogo.png" alt="DnD Logo" class="logo-icon"> 
+        <div class="dice-section"> 
+            <span>Dice: </span>
+            <div class="dropdown" data-dropdown> <!-- dice roller dropdown -->
+                <button class="dice-button" data-dropdown-button>Roll</button>
+                <div class="dropdown-menu">
+                    <h1>Enter dice #</h1>
+                    <div class="dropdown-input"> <!-- dice roller user input -->
+                        <input type="text" id="dice-input" name="dice-input" placeholder="ex. 4d20">
+                    </div>
+                    <h4>Roll: <span id="roll-result"></span></h4> <!-- Display roll results here -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="Enter player names, separated by commas">
+        <button id="backward-btn">Backward</button>
+        <button id="forward-btn">Forward</button>
+    </div>
+
+    <div class="container">
+        <div class="fade-in-text">
+            <p>Retro Roller</p>
+        </div>
+
+        <h2 class="fade-in-text">Virtual Table-Top Stat Tracker</h2>
+        <button id="add-player">Add Player</button>
+        <div id="players-container"></div>
+    </div>
+
+    <!-- Popup for icon selection -->
+    <div id="icon-popup" class="icon-popup">
+        <h3>Select Player Icon</h3>
+        <div class="icon-selection">
+            <img src="player_icon.png" alt="Player Icon 1" class="icon-option">
+            <img src="player_wizard.png" alt="Player Icon 2" class="icon-option">
+            <img src="knight.png" alt="Player Icon 3" class="icon-option">
+            <img src="wizard.png" alt="Player Icon 4" class="icon-option">
+            <!-- Add more icons as needed -->
+        </div>
+        <button id="close-popup">Close</button>
+    </div>
+
+    <script>
+        const playerContainer = document.getElementById('players-container');
+        const addPlayerBtn = document.getElementById('add-player');
+        const forwardBtn = document.getElementById('forward-btn');
+        const backwardBtn = document.getElementById('backward-btn');
+        const searchBox = document.querySelector('.search-box');
+        const iconPopup = document.getElementById('icon-popup');
+        const rollResult = document.getElementById('roll-result'); // Element to display roll result
+        let currentPlayerIcon = null; // Track the player icon currently being updated
+
+        let players = [];
+        let currentPlayerIndex = -1;
+
+        // Function to handle dice rolling
+        function rollDice() {
+            const input = document.getElementById('dice-input').value;
+            const regex = /^(\d+)d(\d+)$/; // Regular expression to match dice format (e.g., 4d20)
+            const match = input.match(regex);
+            if (match) {
+                const numDice = parseInt(match[1]);
+                const diceType = parseInt(match[2]);
+                let total = 0;
+                const results = [];
+                for (let i = 0; i < numDice; i++) {
+                    const roll = Math.floor(Math.random() * diceType) + 1;
+                    results.push(roll);
+                    total += roll;
+                }
+                rollResult.textContent = `Total: ${total} ( Rolls: ${results.join(', ')})`; // Display results
+            } else {
+                rollResult.textContent = 'Invalid input! Please use format like 4d20.';
+            }
+        }
+
+        // Forward and backward navigation logic for highlighting players
+        function highlightPlayer(playerName) {
+            const allPlayerDivs = document.querySelectorAll('.player');
+            allPlayerDivs.forEach(playerDiv => {
+                const nameField = playerDiv.querySelector('.player-name');
+                if (nameField.value.toLowerCase() === playerName.toLowerCase()) {
+                    playerDiv.classList.add('glow');
+                } else {
+                    playerDiv.classList.remove('glow');
+                }
+            });
+        }
+
+        forwardBtn.addEventListener('click', function() {
+            const playerNames = searchBox.value.split(',').map(name => name.trim());
+            if (playerNames.length > 0) {
+                currentPlayerIndex = (currentPlayerIndex + 1) % playerNames.length;
+                highlightPlayer(playerNames[currentPlayerIndex]);
+            }
+        });
+
+        backwardBtn.addEventListener('click', function() {
+            const playerNames = searchBox.value.split(',').map(name => name.trim());
+            if (playerNames.length > 0) {
+                currentPlayerIndex = (currentPlayerIndex - 1 + playerNames.length) % playerNames.length;
+                highlightPlayer(playerNames[currentPlayerIndex]);
+            }
+        });
+
+        // Function to open the icon popup
+        function openIconPopup(playerIcon) {
+            currentPlayerIcon = playerIcon; // Store the current player's icon to update
+            iconPopup.style.display = 'block';
+        }
+
+        // Event listener for icon selection
+        const iconOptions = document.querySelectorAll('.icon-option');
+        iconOptions.forEach(icon => {
+            icon.addEventListener('click', function() {
+                if (currentPlayerIcon) {
+                    currentPlayerIcon.src = this.src; // Update the player's icon
+                }
+                iconPopup.style.display = 'none'; // Close the popup
+            });
+        });
+
+        // Add event listener for the dice button
+        const diceButton = document.querySelector('.dice-button');
+        diceButton.addEventListener('click', rollDice); // Call rollDice on button click
+
+        // Function to add a new player
+        addPlayerBtn.addEventListener('click', function() {
+            const playerDiv = document.createElement('div');
+            playerDiv.className = 'player';
+
+            playerDiv.innerHTML = `
+                <img src="player_icon.png" alt="Player Icon" class="player-icon" style="filter: hue-rotate(${Math.floor(Math.random() * 570)}deg)">
+                <input type="text" placeholder="Player Name" class="player-name">
+                <h3 class="attributes-h3">Attributes</h3>
+                <div class="stat-container attributes-container"></div>
+                <button class="add-attribute">Add Attribute</button>
+
+                <!-- Inventory section -->
+                <h3>Inventory</h3>
+                <div class="stat-container inventory-container"></div>
+                <button class="add-item">Add Inventory</button>
+
+                <button class="remove-player">Remove Player</button>
+            `;
+
+            playerContainer.appendChild(playerDiv);
+
+            // Make the player icon clickable
+            const playerIcon = playerDiv.querySelector('.player-icon');
+            playerIcon.addEventListener('click', function() {
+                openIconPopup(playerIcon); // Open the popup for this specific player's icon
+            });
+
+            // Handle attribute addition
+            const addAttributeBtn = playerDiv.querySelector('.add-attribute');
+            const attributesContainer = playerDiv.querySelector('.attributes-container');
+            addAttributeBtn.addEventListener('click', function() {
+                const newAttribute = document.createElement('div');
+                newAttribute.className = 'stat-container';
+                newAttribute.innerHTML = `
+                    <label class="attribute">
+                        <button class="remove-attribute-x">X</button>
+                        <input type="text" class="attribute-name" placeholder="Attribute Name">
+                        <button class="stat-button decrement">-</button>
+                        <input type="number" class="stat-input" value="0">
+                        <button class="stat-button increment">+</button>
+                    </label>
+                `;
+                const statInput = newAttribute.querySelector('.stat-input');
+                newAttribute.querySelector('.increment').addEventListener('click', function() {
+                    statInput.value = parseInt(statInput.value) + 1;
+                });
+                newAttribute.querySelector('.decrement').addEventListener('click', function() {
+                    statInput.value = parseInt(statInput.value) - 1;
+                });
+                newAttribute.querySelector('.remove-attribute-x').addEventListener('click', function() {
+                    newAttribute.remove();
+                });
+
+                attributesContainer.appendChild(newAttribute);
+            });
+
+            // Handle inventory addition (similar to attributes)
+            const addItemBtn = playerDiv.querySelector('.add-item');
+            const inventoryContainer = playerDiv.querySelector('.inventory-container');
+            addItemBtn.addEventListener('click', function() {
+                const newItem = document.createElement('div');
+                newItem.className = 'stat-container';
+                newItem.innerHTML = `
+                    <label class="item">
+                        <button class="remove-item-x">X</button>
+                        <input type="text" class="item-name" placeholder="Item Name">
+                        <button class="stat-button decrement">-</button>
+                        <input type="number" class="stat-input" value="0">
+                        <button class="stat-button increment">+</button>
+                    </label>
+                `;
+                const itemInput = newItem.querySelector('.stat-input');
+                newItem.querySelector('.increment').addEventListener('click', function() {
+                    itemInput.value = parseInt(itemInput.value) + 1;
+                });
+                newItem.querySelector('.decrement').addEventListener('click', function() {
+                    itemInput.value = parseInt(itemInput.value) - 1;
+                });
+                newItem.querySelector('.remove-item-x').addEventListener('click', function() {
+                    newItem.remove();
+                });
+
+                inventoryContainer.appendChild(newItem);
+            });
+
+            // Handle player removal
+            const removePlayerBtn = playerDiv.querySelector('.remove-player');
+            removePlayerBtn.addEventListener('click', function() {
+                playerDiv.remove();
+            });
+        });
+
+        // Close the icon popup
+        document.getElementById('close-popup').addEventListener('click', function() {
+            iconPopup.style.display = 'none';
+        });
+
+        // Global click listener to close the dropdown when clicking outside
+        window.addEventListener('click', function(event) {
+            const dropdown = document.querySelector('[data-dropdown]');
+            if (event.target !== dropdown && event.target !== dropdown.querySelector('[data-dropdown-button]')) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
+
