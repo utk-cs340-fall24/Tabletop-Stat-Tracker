@@ -9,24 +9,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <script src="dice-dropdown.js" defer></script> <!-- Here's the linked .js file you can use! only has dice stuff -->
-
-    <!--Delete this is it doean't work, no idea what im doing-->
-    <script> import { DiceRollerRenderless } from '@dice-roller/vue'; </script>
-
-    <!---->
+    <script src="node_modules/dice-roller-parser/dist/index.js"></script>
 </head>
 <body>
     <header class="header">
         <img src="dndLogo.png" alt="DnD Logo" class="logo-icon"> 
         <div class="dice-section"> 
             <span>Dice: </span>
+            
             <div class="dropdown" data-dropdown> <!-- dice roller dropdown -->
                 <button class="dice-button" data-dropdown-button>Roll</button>
                 <div class="dropdown-menu">
                     <h1>Enter dice #</h1>
                     <div class="dropdown-input"> <!-- dice roller user input -->
                        <input type="text" id="dice-input" name="dice-input" placeholder="ex. 4d20">
-                      
+                        <script>
+                            //	Creates a new instance of the DiceRoller class
+                            const roller = new DiceRoller();
+                              // Add an event listener to capture the user input when it's entered
+                            const diceInput = document.getElementById('dice-input');
+                            let userInput;
+
+                            diceInput.addEventListener('input', function(event) {
+                            userInput = event.target.value; //            
+                            //	Rolls 2 d20 dice and keeps the value of the highest
+                             const parsedInput = roller.parse(userInput);
+ 
+                             //	Print out a re-constructed input string
+                             printParsedInput(parsedInput);
+                            });
+                        </script>
                     </div>
                     <h4>Roll: </h4> <!--  display roll results here somehow? -->                    
                 </div>
