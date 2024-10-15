@@ -239,14 +239,6 @@
         document.getElementById('close-popup').addEventListener('click', function() {
             iconPopup.style.display = 'none';
         });
-
-        // Global click listener to close the dropdown when clicking outside
-        window.addEventListener('click', function(event) {
-            const dropdown = document.querySelector('[data-dropdown]');
-            if (event.target !== dropdown && event.target !== dropdown.querySelector('[data-dropdown-button]')) {
-                dropdown.classList.remove('active');
-            }
-        });
     </script>
 </body>
 </html>
