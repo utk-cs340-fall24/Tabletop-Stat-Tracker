@@ -1,0 +1,367 @@
+FILENAME: hostView2.html
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  32)     <div class="search-container">
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  33)         <input type="text" class="search-box" placeholder="Enter player names, separated by commas">
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  34)         <button id="backward-btn">Backward</button>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  35)         <button id="forward-btn">Forward</button>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  36)     </div>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  48)     <!-- Popup for icon selection -->
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  49)     <div id="icon-popup" class="icon-popup">
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  50)         <h3>Select Player Icon</h3>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  51)         <div class="icon-selection">
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  52)             <img src="player_icon.png" alt="Player Icon 1" class="icon-option">
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  53)             <img src="player_wizard.png" alt="Player Icon 2" class="icon-option">
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  54)             <img src="knight.png" alt="Player Icon 3" class="icon-option">
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  55)             <img src="wizard.png" alt="Player Icon 4" class="icon-option">
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  56)             <!-- Add more icons as needed -->
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  57)         </div>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  58)         <button id="close-popup">Close</button>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  59)     </div>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  61)     <script>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  64)         const forwardBtn = document.getElementById('forward-btn');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  65)         const backwardBtn = document.getElementById('backward-btn');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  66)         const searchBox = document.querySelector('.search-box');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  67)         const iconPopup = document.getElementById('icon-popup');
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  68)         const rollResult = document.getElementById('roll-result'); // Element to display roll result
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  69)         let currentPlayerIcon = null; // Track the player icon currently being updated
+
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  71)         let players = [];
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  72)         let currentPlayerIndex = -1;
+
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  74)         // Function to handle dice rolling
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  75)         function rollDice() {
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  76)             const input = document.getElementById('dice-input').value;
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  77)             const regex = /^(\d+)d(\d+)$/; // Regular expression to match dice format (e.g., 4d20)
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  78)             const match = input.match(regex);
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  79)             if (match) {
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  80)                 const numDice = parseInt(match[1]);
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  81)                 const diceType = parseInt(match[2]);
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  82)                 let total = 0;
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  83)                 const results = [];
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  84)                 for (let i = 0; i < numDice; i++) {
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  85)                     const roll = Math.floor(Math.random() * diceType) + 1;
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  86)                     results.push(roll);
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  87)                     total += roll;
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  88)                 }
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  89)                 rollResult.textContent = `Total: ${total} ( Rolls: ${results.join(', ')})`; // Display results
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  90)             } else {
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  91)                 rollResult.textContent = 'Invalid input! Please use format like 4d20.';
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  92)             }
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400  93)         }
+
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  95)         // Forward and backward navigation logic for highlighting players
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  96)         function highlightPlayer(playerName) {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  97)             const allPlayerDivs = document.querySelectorAll('.player');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  98)             allPlayerDivs.forEach(playerDiv => {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400  99)                 const nameField = playerDiv.querySelector('.player-name');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 100)                 if (nameField.value.toLowerCase() === playerName.toLowerCase()) {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 101)                     playerDiv.classList.add('glow');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 102)                 } else {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 103)                     playerDiv.classList.remove('glow');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 104)                 }
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 105)             });
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 106)         }
+
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 108)         forwardBtn.addEventListener('click', function() {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 109)             const playerNames = searchBox.value.split(',').map(name => name.trim());
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 110)             if (playerNames.length > 0) {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 111)                 currentPlayerIndex = (currentPlayerIndex + 1) % playerNames.length;
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 112)                 highlightPlayer(playerNames[currentPlayerIndex]);
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 113)             }
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 114)         });
+
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 116)         backwardBtn.addEventListener('click', function() {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 117)             const playerNames = searchBox.value.split(',').map(name => name.trim());
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 118)             if (playerNames.length > 0) {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 119)                 currentPlayerIndex = (currentPlayerIndex - 1 + playerNames.length) % playerNames.length;
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 120)                 highlightPlayer(playerNames[currentPlayerIndex]);
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 121)             }
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 122)         });
+
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 124)         // Function to open the icon popup
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 125)         function openIconPopup(playerIcon) {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 126)             currentPlayerIcon = playerIcon; // Store the current player's icon to update
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 127)             iconPopup.style.display = 'block';
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 128)         }
+
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 130)         // Event listener for icon selection
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 131)         const iconOptions = document.querySelectorAll('.icon-option');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 132)         iconOptions.forEach(icon => {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 133)             icon.addEventListener('click', function() {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 134)                 if (currentPlayerIcon) {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 135)                     currentPlayerIcon.src = this.src; // Update the player's icon
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 136)                 }
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 137)                 iconPopup.style.display = 'none'; // Close the popup
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 138)             });
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 139)         });
+
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400 141)         // Add event listener for the dice button
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400 142)         const diceButton = document.querySelector('.dice-button');
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400 143)         diceButton.addEventListener('click', rollDice); // Call rollDice on button click
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 153)                 <h3 class="attributes-h3">Attributes</h3>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 154)                 <div class="stat-container attributes-container"></div>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 159)                 <div class="stat-container inventory-container"></div>
+
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 167)             // Make the player icon clickable
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 168)             const playerIcon = playerDiv.querySelector('.player-icon');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 169)             playerIcon.addEventListener('click', function() {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 170)                 openIconPopup(playerIcon); // Open the popup for this specific player's icon
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 171)             });
+
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 181)                 <button class="remove-attribute-x">X</button>
+
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 188)                 const statInput = newAttribute.querySelector('.stat-input');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 189)                 newAttribute.querySelector('.increment').addEventListener('click', function() {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 190)                     statInput.value = parseInt(statInput.value) + 1;
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 191)                 });
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 192)                 newAttribute.querySelector('.decrement').addEventListener('click', function() {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 193)                     statInput.value = parseInt(statInput.value) - 1;
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 194)                 });
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 195)                 newAttribute.querySelector('.remove-attribute-x').addEventListener('click', function() {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 196)                     newAttribute.remove();
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 197)                 });
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 198) 
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 199)                 attributesContainer.appendChild(newAttribute);
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 200)             });
+
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 204)             const inventoryContainer = playerDiv.querySelector('.inventory-container');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 206)                 const newItem = document.createElement('div');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 207)                 newItem.className = 'stat-container';
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 208)                 newItem.innerHTML = `
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400 209)                     <label class="item">
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 210)                         <button class="remove-item-x">X</button>
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400 211)                         <input type="text" class="item-name" placeholder="Item Name">
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 212)                         <button class="stat-button decrement">-</button>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 213)                         <input type="number" class="stat-input" value="0">
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 214)                         <button class="stat-button increment">+</button>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 215)                     </label>
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 216)                 `;
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400 217)                 const itemInput = newItem.querySelector('.stat-input');
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 218)                 newItem.querySelector('.increment').addEventListener('click', function() {
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400 219)                     itemInput.value = parseInt(itemInput.value) + 1;
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 220)                 });
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 221)                 newItem.querySelector('.decrement').addEventListener('click', function() {
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400 222)                     itemInput.value = parseInt(itemInput.value) - 1;
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 223)                 });
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 224)                 newItem.querySelector('.remove-item-x').addEventListener('click', function() {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 225)                     newItem.remove();
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 226)                 });
+
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400 228)                 inventoryContainer.appendChild(newItem);
+
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400 238)         // Close the icon popup
+c3870c43 (Mike Lisenko 2024-10-14 21:26:13 -0400 239)         document.getElementById('close-popup').addEventListener('click', function() {
+cb96ffe0 (Mike Lisenko 2024-10-14 01:08:19 -0400 240)             iconPopup.style.display = 'none';
+
+FILENAME: hostView_stylesheet2.css
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 231) .search-container {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 232)   position: absolute;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 233)   top: 20px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 234)   right: 50px; /* Adjust to position the search box */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 235)   display: flex;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 236)   align-items: center; /* This will align both input and button vertically */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 237) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 239) .search-box {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 240)   padding: 5px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 241)   font-size: 0.8rem;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 242)   border: none;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 243)   background-color: #222;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 244)   color: white;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 245)   margin-right: 10px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 246)   vertical-align: middle;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 247) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 249) #search-btn {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 250)   background-color: #f72585;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 251)   color: white;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 252)   border: none;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 253)   padding: 5px 10px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 254)   cursor: pointer;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 255)   font-size: 0.8rem;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 256)   transition: background-color 0.3s;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 257)   vertical-align: middle;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 258) }
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 259) 
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 260) #search-btn:hover {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 261)   background-color: #7209b7;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 262) }
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 263) 
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 264) #forward-btn, #backward-btn {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 265)   padding: 5px 10px;   /* Adjust the padding to make the buttons smaller */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 266)   font-size: 0.8rem;   /* Smaller font size */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 267)   margin: 0 5px;       /* Reduce margin for spacing */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 268)   background-color: #f72585;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 269)   color: white;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 270)   border: none;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 271)   cursor: pointer;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 272)   transition: background-color 0.3s;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 273) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 275) #forward-btn:hover, #backward-btn:hover {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 276)   background-color: #7209b7; /* Change background on hover */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 277) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 279) .glow {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 280)   box-shadow: 0px 10px 30px 10px rgba(230, 247, 37, 0.7); /* Neon yellow glowing effect */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 281)   border-color: #f8d210;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 282) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 284) .remove-attribute-x {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 285)   width: 20px;  /* Set width to match the input field */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 286)   height: 20px; /* Set height to match the input field */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 287)   margin: 0;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 288)   padding: 0;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 289)   margin-right: 2px; /* Space between the X button and the input */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 290)   background-color: transparent; /* Keep it transparent */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 291)   border: none; /* Remove default button border */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 292)   cursor: pointer; /* Change cursor on hover */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 293)   font-size: 10px; /* Size of the 'X' */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 294)   line-height: 2; /* Ensure text aligns properly */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 295)   display: inline-flex;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 296) } 
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 298) .remove-item-x {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 299)   width: 20px;  /* Set width to match the input field */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 300)   height: 20px; /* Set height to match the input field */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 301)   margin: 0;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 302)   padding: 0;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 303)   margin-left: -15px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 304)   margin-right: 2px; /* Space between the X button and the input */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 305)   background-color: transparent; /* Keep it transparent */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 306)   border: none; /* Remove default button border */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 307)   cursor: pointer; /* Change cursor on hover */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 308)   font-size: 10px; /* Size of the 'X' */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 309)   line-height: 2; /* Ensure text aligns properly */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 310)   display: inline-flex;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 311) } 
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 313) /* Remove hover effects */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 314) .remove-attribute-x:hover {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 315)   background-color: transparent; /* No background color change */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 316)   color: inherit; /* Maintain original color */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 317)   outline: none; /* No outline on hover */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 318) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 320) /* Remove hover effects */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 321) .remove-item-x:hover {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 322)   background-color: transparent; /* No background color change */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 323)   color: inherit; /* Maintain original color */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 324)   outline: none; /* No outline on hover */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 325) }
+ 
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 328) /* For WebKit browsers (Chrome, Safari) */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 329) .stat-input::-webkit-outer-spin-button,
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 330) .stat-input::-webkit-inner-spin-button {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 331)   -webkit-appearance: none; /* Hides the spinners */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 332)   margin: 0; /* Remove default margin */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 333) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 335) .attribute-name {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 336)   width: 150px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 337)   padding: 3px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 338)   font-size: 0.8rem;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 339)   background-color: #222;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 340)   color: white;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 341)   border: none;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 342)   margin-left: 3px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 343) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 345) .attributes-h3 {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 346)   padding: 15px 0px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 347) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 349) /* Hide the scrollbar for WebKit browsers (Chrome, Safari) */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 350) .player::-webkit-scrollbar {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 351)   display: none; /* Hide the scrollbar */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 352) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 354) /* Hide the scrollbar for Firefox */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 355) .player {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 356)   scrollbar-width: none; /* Hide the scrollbar */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 357) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 359) .icon-popup {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 360)   display: none; /* Hidden by default */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 361)   position: fixed;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 362)   top: 50%;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 363)   left: 50%;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 364)   transform: translate(-50%, -50%);
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 365)   background-color: #333;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 366)   padding: 20px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 367)   border: 3px solid
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 368) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 372) /* Inventory items styled similar to attributes */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 373) .inventory-container {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 374)   display: flex;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 375)   flex-direction: column; /* Align items vertically */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 376)   margin-bottom: 10px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 377) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 379) .inventory {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 380)   display: flex;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 381)   justify-content: flex-start;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 382)   margin-bottom: 10px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 383)   color: #f8d210;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 384)   font-size: 0.8rem;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 385)   align-items: center;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 386) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 388) .inventory-name {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 389)    width: 150px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 390)   padding: 3px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 391)   font-size: 0.8rem;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 392)   background-color: #222;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 393)   color: white;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 394)   border: none;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 395)   margin-left: 3px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 396) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 398) .stat-button {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 399)   font-size: 0.8em;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 400)   width: 50px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 401)   height: 25px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 402)   margin: 0 2px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 403)   padding: 3px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 404)   cursor: pointer;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 405) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 407) #enemyIcon {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 408)   display: none; /* Initially hidden */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 409)   width: 100px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 410)   height: 100px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 411)   border: 2px solid #000; /* Add a border to make the image visible */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 412)   margin-top: 10px; /* Space between image and the upload button */
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 413) }
+
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 415) #enemy-section {
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 416)   padding: 10px;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 417)   text-align: center;
+85c78341 (Mike Lisenko 2024-10-14 01:10:17 -0400 418) }
+
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 422) /* dice section next to the logo */
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 423) .dice-section {
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 424)     position: absolute;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 425)     top: 20px;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 426)     right: 1250px; /* adjust this value to control the spacing between the logo and dice section */
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 427)     color: white;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 428)     font-size: 20px;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 429)     font-family: 'Press Start 2P', cursive;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 430)     display: flex;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 431)     align-items: center;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 432)   }
+
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 434)   .dice-button {
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 435)     background-color: #f72585;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 436)     color: white;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 437)     border: none;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 438)     padding: 5px 10px;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 439)     cursor: pointer;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 440)     font-size: 0.8rem;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 441)     margin-left: 10px;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 442)     transition: background-color 0.3s;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 443)   }
+
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 445)   .dice-button:hover {
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 446)     background-color: #7209b7;
+a7c659bf (Mike Lisenko 2024-10-14 21:28:32 -0400 447)   }
