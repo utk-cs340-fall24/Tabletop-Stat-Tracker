@@ -26,11 +26,29 @@
         </div>
     </div>
     <script>
+        let correctSessionCode; // Variable to hold the correct session code
+
+        // Fetch the JSON file to get the session code
+        async function fetchSessionCode() {
+            try {
+                const response = await fetch('./tokens.json'); 
+          
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                let temp = data.player;
+                correctSessionCode = temp; // Assign the token to the variable
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        }
+        fetchSessionCode();
         document.getElementById('login-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
             // define the correct session code
-            const correctSessionCode = '12345';
+            //const correctSessionCode = host_token;
 
             // get value of the session code user input
             const sessionCodeInput = document.getElementById('sessioncode').value;

@@ -9,7 +9,7 @@ const options = { family: 4 };
 console.log("Starting Server...")
 function makeid(length) {
     let result = '';
-    const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    const characters = '0123456789';
     const charactersLength = characters.length;
     let counter = 0;
     while (counter < length) {
@@ -19,10 +19,16 @@ function makeid(length) {
     return result;
 }
 
-let host_token = makeid(5);
-console.log("Host Token: " + host_token);
-let player_token = makeid(5);
-console.log("Player Token: " + player_token);
+const tokens = {
+    host: makeid(5),
+    player: makeid(5),
+};
+const jsonData = JSON.stringify(tokens);
+fs.writeFile("./web/startup/tokens.json", jsonData, function (err, result) {
+    if (err) console.log('error', err);
+});
+console.log("Host Token: " + tokens.host);
+console.log("Player Token: " + tokens.player);
 var server = http.createServer(function (req, res) {
     var q = require('url').parse(req.url, true);
     var filename = "./web" + q.pathname;
