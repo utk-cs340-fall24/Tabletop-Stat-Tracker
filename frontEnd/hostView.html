@@ -8,19 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-   
-   
-    <script src="https://unpkg.com/vue@next"></script>
-
     <script src="dice-dropdown.js" defer></script> <!-- Here's the linked .js file you can use! only has dice stuff -->
 
     <!--Delete this is it doean't work, no idea what im doing-->
     <script> import { DiceRollerRenderless } from '@dice-roller/vue'; </script>
 
     <!---->
-
-
-
 </head>
 <body>
     <header class="header">
@@ -32,40 +25,14 @@
                 <div class="dropdown-menu">
                     <h1>Enter dice #</h1>
                     <div class="dropdown-input"> <!-- dice roller user input -->
-                       <!-- <input type="text" id="dice-input" name="dice-input" placeholder="ex. 4d20"> -->
+                       <input type="text" id="dice-input" name="dice-input" placeholder="ex. 4d20">
                       
                     </div>
-                    <h4>Roll: </h4> <!--  display roll results here somehow? -->
-                    <div id="vue-app">
-                        <DiceRollerRenderless v-slot="{ currentNotation, error, output, roll, on, bind }">
-                            <div>
-                                <div v-if="error">{{ error }}</div>
-
-                                <input type="text" v-on="on" v-bind="bind" placeholder="Enter roll (e.g., 2d6)" />
-                                <button type="button" @click="roll">Roll</button>
-
-                                <div><strong>Notation:</strong> <em>{{ currentNotation }}</em></div>
-                                <output v-if="output">{{ output }}</output>
-                            </div>
-                        </DiceRollerRenderless>
+                    <h4>Roll: </h4> <!--  display roll results here somehow? -->                    
                 </div>
             </div>
         </div>
     </header>
-
-    <script>
-    const app = Vue.createApp({
-        components: {
-            DiceRollerRenderless: window.DiceRollerRenderless
-        }
-    });
-
-    app.mount('#vue-app');
-</script>
-
-
-
-
 
     <div class="container">
         <div class="fade-in-text">
