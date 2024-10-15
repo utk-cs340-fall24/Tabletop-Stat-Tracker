@@ -1,0 +1,231 @@
+hostlogin.css (oliviaccheng on 10/09/2024 at 23:27):     height: 300px;
+hostlogin.css (oliviaccheng on 10/09/2024 at 23:27):     top: 20px;
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41):     margin-top: 50px;
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41): .options {
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41):     align-items: center;
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41):     margin-top: -15px;
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41):     margin-bottom: 5px;
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41):     font-size: 15px;
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41):     color: white;
+hostlogin.css (oliviaccheng on 10/09/2024 at 23:27): }
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41): p {
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41):     font-size: 15px;
+hostlogin.css (oliviaccheng on 10/09/2024 at 23:27):     color: #fff;
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41):     margin-top: 15px;
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41): } 
+hostlogin.css (oliviaccheng on 10/11/2024 at 11:41): }
+register.css (oliviaccheng on 10/11/2024 at 11:41):     height: 300px;
+register.css (oliviaccheng on 10/11/2024 at 11:41):     top: 20px;
+register.css (oliviaccheng on 10/11/2024 at 11:41):     margin-top: 70px;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): .dropdown {
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   position: relative;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): }
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): .dropdown-menu {
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   position: absolute;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   left: 0;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   top: calc(100% + .25rem);
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   background-color: white;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   padding: .75rem;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   opacity: 0;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   pointer-events: none;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   transform: translateY(-10px);
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): }
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): .dropdown.active > .dice-button + .dropdown-menu {
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   pointer-events: auto;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   opacity: 1;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   transform: translateY(0);
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): }
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): .dropdown-menu {
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   display: block;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   background-color: #f72585;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   height: 150px;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): }
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): .dropdown-input {
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   position: relative;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   top: -2px;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   display: flex;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): }
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): h1 {
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   font-size: 10px;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   color: #222;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): }
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): h4 {
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   position: relative;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   top: 45px;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   font-size: 10px;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38):   color: #222;
+hostView_stylesheet.css (oliviaccheng on 10/12/2024 at 23:38): }
+register.html (oliviaccheng on 10/11/2024 at 11:41):             <form action="./hostview.html">
+register.html (oliviaccheng on 10/11/2024 at 11:41):             <button type="submit">Start Session</button>
+type.html    (oliviaccheng on 10/11/2024 at 11:41):     <link rel="stylesheet" href="./type.css">
+type.html    (oliviaccheng on 10/09/2024 at 23:27):                 <div class="wrapper">
+type.html    (oliviaccheng on 10/09/2024 at 23:27):                     <div class="custom-radio">
+type.html    (oliviaccheng on 10/09/2024 at 23:27):                         <input type="radio" id="host" name="userType" value="host" required>
+type.html    (oliviaccheng on 10/09/2024 at 23:27):                         <label for="host">Host</label>
+type.html    (oliviaccheng on 10/09/2024 at 23:27):                     </div>  
+type.html    (oliviaccheng on 10/09/2024 at 23:27):                     <div class="custom-radio">
+type.html    (oliviaccheng on 10/09/2024 at 23:27):                         <input type="radio" id="player" name="userType" value="player" required>
+type.html    (oliviaccheng on 10/09/2024 at 23:27):                         <label for="player">Player</label>
+type.html    (oliviaccheng on 10/09/2024 at 23:27):                     </div>
+type.html    (oliviaccheng on 10/09/2024 at 23:27):                 </div>       
+type.html    (oliviaccheng on 10/09/2024 at 23:27):                 <button type="submit">Continue</button>
+type.html    (oliviaccheng on 10/11/2024 at 11:41):                 window.location.href="hostlogin.html"; // Redirect to host page
+type.html    (oliviaccheng on 10/11/2024 at 11:41):                 window.location.href="playerlogin.html"; // Redirect to player page
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38): /* dice roller js code
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38): this stuff here rn makes the box show up when user clicks the button 
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38): */
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38): document.addEventListener('click', e =>  {
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38):     const isDropdownButton = e.target.matches("[data-dropdown-button]")
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38):     if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38):     let currentDropdown
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38):     if (isDropdownButton) {
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38):         currentDropdown = e.target.closest('[data-dropdown]')
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38):         currentDropdown.classList.toggle('active')
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38):     }
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38):     document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38):         if (dropdown == currentDropdown) return
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38):         dropdown.classList.remove('active')
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38):     })
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38): })
+dice-dropdown.js (oliviaccheng on 10/12/2024 at 23:38): let dice = document.getElementById('dice-input').value //assigns user input to 'dice'
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     height: 300px;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     top: 20px;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     align-items: center;
+type.css     (oliviaccheng on 10/09/2024 at 23:27): .wrapper {
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     display: flex;  
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     position: relative; 
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     left: 25px; 
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     justify-content: center; 
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     padding: 3px;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     background-color: #f72585;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     border-radius: 5px;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     width: 200px;
+type.css     (oliviaccheng on 10/09/2024 at 23:27): }
+type.css     (oliviaccheng on 10/09/2024 at 23:27): .custom-radio {
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     display: flex;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     align-items: center;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     justify-content: center;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     flex-grow: 1;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     margin: 3px;
+type.css     (oliviaccheng on 10/09/2024 at 23:27): }
+type.css     (oliviaccheng on 10/09/2024 at 23:27): .custom-radio input[type=radio] {
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     display: none;
+type.css     (oliviaccheng on 10/09/2024 at 23:27): }
+type.css     (oliviaccheng on 10/09/2024 at 23:27): .custom-radio label {
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     display: inline-block;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     height: 30px;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     padding: 6px 8px;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     color: #fff;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     font-weight: bold;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     text-align: center;
+type.css     (oliviaccheng on 10/11/2024 at 11:41):     transition: all .45s ease-in-out;
+type.css     (oliviaccheng on 10/09/2024 at 23:27): }
+type.css     (oliviaccheng on 10/09/2024 at 23:27): .custom-radio input[type=radio]:checked + label {
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     background-color: #f5f5f5;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     width: 100%;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     color: #000;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     border-radius: 5px;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     border: 1px solid #323131; 
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     margin-top: 40px;
+type.css     (oliviaccheng on 10/09/2024 at 23:27):     margin-bottom: 10px;
+type.css     (oliviaccheng on 10/11/2024 at 11:41): } 
+welcome.css  (oliviaccheng on 10/14/2024 at 16:42): /* 
+welcome.css  (oliviaccheng on 10/14/2024 at 16:42): * Color Palette:
+welcome.css  (oliviaccheng on 10/14/2024 at 16:42): * #323131 - Jet black
+welcome.css  (oliviaccheng on 10/14/2024 at 16:42): * #FFFFFF - White
+welcome.css  (oliviaccheng on 10/14/2024 at 16:42): * #FFFF70 - Light Yellow
+welcome.css  (oliviaccheng on 10/14/2024 at 16:42): * #F72585 - Rose (neon pink)
+welcome.css  (oliviaccheng on 10/14/2024 at 16:42): * #0000E0 - Blue (neon blue)
+welcome.css  (oliviaccheng on 10/14/2024 at 16:42): */
+welcome.css  (oliviaccheng on 10/14/2024 at 16:42):     text-shadow: 0.75px 0px 0px #FFFF70;
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41): <!DOCTYPE html> 
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41): <html lang="en">
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41): <head>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <meta charset="UTF-8">
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <title>Login</title>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <link rel="stylesheet" href="./playerlogin.css">
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <link rel="preconnect" href="https://fonts.googleapis.com">
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41): </head>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41): <body>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <div class="container">
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):         <div class="title">
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):             <h1>Retro Roller</h1>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):         </div>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):     </div>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <div class="glass-container">
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):         <div class="login-box">
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):             <form id="login-form">
+playerlogin.html (oliviaccheng on 10/11/2024 at 13:42):                 <input type="number" id="sessioncode" name="sessioncode" minlength="5" maxlength="5" required placeholder="Session Code">
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):                 <input type="text" id="username" name="username" required placeholder="Username">
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):             <button type="submit">Join Session</button>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):             </form>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):         </div>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41):     </div>
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):     <script>
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):         document.getElementById('login-form').addEventListener('submit', function(event) {
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):             event.preventDefault();
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):             // define the correct session code
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):             // get value of the session code user input
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):             const sessionCodeInput = document.getElementById('sessioncode').value;
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):             // check user session code to the correct code
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):             if (sessionCodeInput === correctSessionCode) {
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):                 //if matches, redirect the user to the player dashboard page
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):                 window.location.href = "../playerview/playerview.html";
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):             } else {
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):                 //if incorrect, display an alert
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):                 alert('Invalid session code. Please try again.');
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):             }
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):         });
+playerlogin.html (oliviaccheng on 10/14/2024 at 16:42):     </script>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41): </body>
+playerlogin.html (oliviaccheng on 10/11/2024 at 11:41): </html>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41): <!DOCTYPE html> 
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41): <html lang="en">
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41): <head>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <meta charset="UTF-8">
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <title>Login</title>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <link rel="stylesheet" href="./hostlogin.css">
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <link rel="preconnect" href="https://fonts.googleapis.com">
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41): </head>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41): <body>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <div class="container">
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):         <div class="title">
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):             <h1>Retro Roller</h1>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):         </div>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):     </div>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):     <div class="glass-container">
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):         <div class="login-box">
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):             <button type="submit">Start Session</button>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):             </form>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):         </div>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41):     </div>
+hostlogin.html (oliviaccheng on 10/11/2024 at 11:41): </body>
+welcome.html (oliviaccheng on 10/14/2024 at 16:42):         <hr width="100%" size="1" color=#0000E0>
+welcome.html (oliviaccheng on 10/11/2024 at 11:41):     <a href="type.html"><button type="button">Get Started</button></a>
+playerlogin.css (oliviaccheng on 10/09/2024 at 23:27):     height: 300px;
+playerlogin.css (oliviaccheng on 10/09/2024 at 23:27):     top: 20px;
+playerlogin.css (oliviaccheng on 10/11/2024 at 11:41):     margin-bottom: 20px;
+playerlogin.css (oliviaccheng on 10/11/2024 at 11:41): p {
+playerlogin.css (oliviaccheng on 10/11/2024 at 11:41):     font-size: 15px;
+playerlogin.css (oliviaccheng on 10/09/2024 at 23:27):     color: #fff;
+playerlogin.css (oliviaccheng on 10/11/2024 at 11:41):     margin-top: 15px;
+playerlogin.css (oliviaccheng on 10/11/2024 at 11:41): } 
+playerlogin.css (oliviaccheng on 10/11/2024 at 11:41): }
+hostView.html (oliviaccheng on 10/12/2024 at 23:38):             <div class="dropdown" data-dropdown> <!-- dice roller dropdown -->
+hostView.html (oliviaccheng on 10/12/2024 at 23:38):                 <button class="dice-button" data-dropdown-button>Roll</button>
+hostView.html (oliviaccheng on 10/12/2024 at 23:38):                 <div class="dropdown-menu">
+hostView.html (oliviaccheng on 10/12/2024 at 23:38):                     <h1>Enter dice #</h1>
+hostView.html (oliviaccheng on 10/12/2024 at 23:38):                     <div class="dropdown-input"> <!-- dice roller user input -->
+hostView.html (oliviaccheng on 10/12/2024 at 23:38):                         <input type="text" id="dice-input" name="dice-input" placeholder="ex. 4d20">
+hostView.html (oliviaccheng on 10/12/2024 at 23:38):                     </div>
+hostView.html (oliviaccheng on 10/12/2024 at 23:38):                     <h4>Roll: <span id="roll-result"></span></h4> <!-- Display roll results here -->
+hostView.html (oliviaccheng on 10/12/2024 at 23:38):                  </div>
+hostView.html (oliviaccheng on 10/12/2024 at 23:38):              </div>       
