@@ -1,0 +1,43 @@
+[InitTracker.js]
+
+function setList(newTrack){
+    
+    for(let i = 0; i < newTrack.length; i++){
+        const init = parseInt(prompt("Enter Initiative: "));
+        track.push(new Pers(newTrack[i], init));
+    }
+    track.sort(initSort);
+}
+
+function next(){
+
+    alert("Current Round: " + rounds + "\nCurrent Turn: " + track[turn].name);
+        if (turn === track.length - 1) {
+            turn = 0;
+            rounds++;
+        } else {
+            turn++;
+            return;
+        }
+}
+
+[hostViewInit.html]
+
+<script type = "text/javascript" src = "InitTracker.js"></script>
+
+...
+
+<button id="backward-btn">Next Turn</button>
+<button id="forward-btn">Make List</button>
+
+...
+
+forwardBtn.addEventListener('click', function() {
+    const playerNames = searchBox.value.split(',').map(name => name.trim());
+    setList(playerNames);
+});
+
+backwardBtn.addEventListener('click', function() {
+    next();
+});
+
