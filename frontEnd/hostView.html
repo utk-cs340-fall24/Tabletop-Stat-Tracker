@@ -33,7 +33,10 @@
                             diceInput.addEventListener('input', function(event) {
                             userInput = event.target.value; //            
                             });
-                            const roll = roller.parse(userInput);
+                           //	Rolls 2 d20 dice and keeps the value of the highest
+                            const parsedInput = roller.parse("2d20kh1");
+
+                            //	Print out a re-constructed input string
                             printParsedInput(parsedInput);
                         </script>
                     </div>
