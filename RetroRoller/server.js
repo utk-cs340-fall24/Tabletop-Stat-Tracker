@@ -1,12 +1,11 @@
 var http = require('http');
 const util = require('util');
+const readline = require('node:readline');
+const { stdin: input, stdout: output } = require('node:process');
 var fs = require('fs');
 const dns = require('node:dns');
 const os = require('node:os');
 const options = { family: 4 };
-
-
-console.log("Starting Server...")
 function makeid(length) {
     let result = '';
     const characters = '0123456789';
@@ -19,6 +18,25 @@ function makeid(length) {
     return result;
 }
 
+//var player_token_bool = 0;
+//const rl = readline.createInterface({
+//    input: process.stdin,
+//    output: process.stdout,
+//});
+//rl.question(`Player Tokens? (Y/N) `, answer => {
+//    if (answer == 'Y') {
+//        player_token_bool = 1;
+//        rl.close();
+//    }
+//    else if (answer == 'N') {
+//        rl.close();
+//    }
+//    else {
+//        console.log('Improper Input');
+//    }
+//});
+
+console.log("Starting Server...")
 const tokens = {
     host: makeid(5),
     player: makeid(5),
@@ -52,8 +70,10 @@ dns.lookup(os.hostname(), options, (err, addr) => {
     if (err) {
         console.error(err);
     } else {
-        console.log(`Server Started at http://${addr}:8000/startup/welcome.html . Address has been copied to clipboard. Have fun!`)
-        require('child_process').spawn('clip').stdin.end(util.inspect(`http://${addr}:8000/startup/welcome.html`));
+        let temp = addr;
+        let log_dump = 'Server Started at http://' + temp + ':8000/startup/welcome.html . Address has been copied to clipboard. Have fun!'
+        console.log(log_dump);
+        require('child_process').spawn('clip').stdin.end(util.inspect("http://" + temp + ":8000/startup/welcome.html"));
     }
 });
 
