@@ -105,8 +105,24 @@ server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):     if (err) co
 server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54): });
 server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54): console.log("Host Token: " + tokens.host);
 server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54): console.log("Player Token: " + tokens.player);
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 50) var server = http.createServer(function (req, res) {
 server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41):     var q = require('url').parse(req.url, true);
 server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02):     var filename = "./web" + q.pathname;
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 53)     fs.readFile(filename, function (err, data) {
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 54)         if (err) {
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 55)             res.writeHead(404, { 'Content-Type': 'text/html' });
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 56)             return res.end("404 Not Found");
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 57)         }
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 58)         if (filename.endsWith('.html')) {
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 59)             res.writeHead(200, { 'Content-Type': 'text/html' });
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 60)         }
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 61)         else if (filename.endsWith('.css')) {
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 62)             res.writeHead(200, { 'Content-Type': 'text/css' });
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 63)         }
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 64)         res.write(data);
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 65)         return res.end();
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 66)     });
+053411ed (Aaron Sparks              2024-10-11 13:14:32 -0400 67) }).listen(8000, '0.0.0.0');
 server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41): dns.lookup(os.hostname(), options, (err, addr) => {
 server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41):     if (err) {
 server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41):         console.error(err);
