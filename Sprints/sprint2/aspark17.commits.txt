@@ -1,0 +1,120 @@
+type.html    (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             <h2>Join</h2>
+type.html    (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):                 <p>I'm joining as a: </p>
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             <h2>Host</h2>
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             <!--<form action="../hostview/hostView.html">
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             <input type="text" id="username" name="username" required placeholder="Username">
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             <input type="password" id="password" name="password" required placeholder="Password">
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             <p>Don't have an account? <a href="register.html" id="register">Register</a></p> -->
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             <form id="login-form">
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             <input type="number" id="sessioncode" name="sessioncode" minlength="5" maxlength="5" required placeholder="Session Code" />
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             <button type="submit">Start Session</button>
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):     <script>
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):     let correctSessionCode; // Variable to hold the correct session code
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):     // Fetch the JSON file to get the session code
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):     async function fetchSessionCode() {
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         try {
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             const response = await fetch('./tokens.json');
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             if (!response.ok) {
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):                 throw new Error('Network response was not ok');
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             }
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             const data = await response.json();
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             let temp = data.host;
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             correctSessionCode = temp; // Assign the token to the variable
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         } catch (error) {
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             console.error('There has been a problem with your fetch operation:', error);
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         }
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):     }
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):     fetchSessionCode();
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):     document.getElementById('login-form').addEventListener('submit', function(event) {
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         event.preventDefault();
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         // define the correct session code
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         //const correctSessionCode = host_token;
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         // get value of the session code user input
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         const sessionCodeInput = document.getElementById('sessioncode').value;
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         // check user session code to the correct code
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         if (sessionCodeInput === correctSessionCode) {
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             //if matches, redirect the user to the player dashboard page
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):             window.location.href = "../hostview/hostView2.html";
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         } else {
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             //if incorrect, display an alert
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             alert('Invalid session code. Please try again.');
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):         }
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):     });
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):     </script>
+hostlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):     </html>
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 20:37):             <h2>Player</h2>
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):         let correctSessionCode; // Variable to hold the correct session code
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):         // Fetch the JSON file to get the session code
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):         async function fetchSessionCode() {
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):             try {
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):                 const response = await fetch('./tokens.json'); 
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):                 if (!response.ok) {
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):                     throw new Error('Network response was not ok');
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):                 }
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):                 const data = await response.json();
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):                 let temp = data.player;
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):                 correctSessionCode = temp; // Assign the token to the variable
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):             } catch (error) {
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):                 console.error('There has been a problem with your fetch operation:', error);
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):             }
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):         }
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):         fetchSessionCode();
+playerlogin.html (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):             //const correctSessionCode = host_token;
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41): const util = require('util');
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35): const readline = require('node:readline');
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35): const { stdin: input, stdout: output } = require('node:process');
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41): const dns = require('node:dns');
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41): const os = require('node:os');
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41): const options = { family: 4 };
+server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02): function makeid(length) {
+server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02):     let result = '';
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):     const characters = '0123456789';
+server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02):     const charactersLength = characters.length;
+server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02):     let counter = 0;
+server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02):     while (counter < length) {
+server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02):         result += characters.charAt(Math.floor(Math.random() * charactersLength));
+server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02):         counter += 1;
+server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02):     }
+server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02):     return result;
+server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02): }
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35): var player_token_bool = 0;
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35): const rl = readline.createInterface({
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):     input: process.stdin,
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):     output: process.stdout,
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35): });
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35): rl.question(`Player Tokens? (Y/N) `, answer => {
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):     if (answer == 'Y') {
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):         player_token_bool = 1;
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):         rl.close();
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):     }
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):     else if (answer == 'N') {
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):         rl.close();
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):     }
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):     else {
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):         console.log('Improper Input');
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):     }
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35): });
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35): console.log("Starting Server...")
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54): const tokens = {
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):     host: makeid(5),
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):     player: makeid(5),
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54): };
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54): const jsonData = JSON.stringify(tokens);
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54): fs.writeFile("./web/startup/tokens.json", jsonData, function (err, result) {
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54):     if (err) console.log('error', err);
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54): });
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54): console.log("Host Token: " + tokens.host);
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 19:54): console.log("Player Token: " + tokens.player);
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41):     var q = require('url').parse(req.url, true);
+server.js    (aaronsparks2022@gmail.com on 10/13/2024 at 19:02):     var filename = "./web" + q.pathname;
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41): dns.lookup(os.hostname(), options, (err, addr) => {
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41):     if (err) {
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41):         console.error(err);
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41):     } else {
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):         let temp = addr;
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):         let log_dump = 'Server Started at http://' + temp + ':8000/startup/welcome.html . Address has been copied to clipboard. Have fun!'
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):         console.log(log_dump);
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 21:35):         require('child_process').spawn('clip').stdin.end(util.inspect("http://" + temp + ":8000/startup/welcome.html"));
+server.js    (aaronsparks2022@gmail.com on 10/14/2024 at 00:41):     }
+runserver.bat (aaronsparks2022@gmail.com on 10/14/2024 at 20:20): node ./server.js
+runserver.bat (aaronsparks2022@gmail.com on 10/14/2024 at 20:20): pause
