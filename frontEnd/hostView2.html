@@ -141,16 +141,17 @@
 
         // Add event listener for the dice button
         const diceButton = document.querySelector('.dice-button');
-        diceButton.addEventListener('click', function(){
-            const dropdownMenu = document.querySelector('.dropdown-menu');
-            dropdownMenu.style.display = 'block'; // Ensure the dropdown stays open
-            rollDice(); 
-        }); // Call rollDice on button click
+        diceButton.addEventListener('click', rollDice);
+        //     const dropdownMenu = document.querySelector('.dropdown-menu');
+        //     dropdownMenu.style.display = 'block'; // Ensure the dropdown stays open
+        //     rollDice(); 
+        // }); // Call rollDice on button click
 
-        document.addEventListener('click', function(event) {
-            const isClickInside = document.querySelector('.dropdown').contains(event.target);
-            if (!isClickInside) {
-                document.querySelector('.dropdown-menu').style.display = 'none'; // Close the dropdown if clicked outside
+        const diceInput = document.getElementById('dice-input');
+            diceInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') { // Check if Enter was pressed
+                event.preventDefault();  // Prevent the default form submission behavior
+                rollDice(); // Call the rollDice function
             }
         });
 
