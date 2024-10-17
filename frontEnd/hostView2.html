@@ -147,6 +147,13 @@
             rollDice(); 
         }); // Call rollDice on button click
 
+        document.addEventListener('click', function(event) {
+            const isClickInside = document.querySelector('.dropdown').contains(event.target);
+            if (!isClickInside) {
+                document.querySelector('.dropdown-menu').style.display = 'none'; // Close the dropdown if clicked outside
+            }
+        });
+
         // Function to add a new player
         addPlayerBtn.addEventListener('click', function() {
             const playerDiv = document.createElement('div');
