@@ -71,7 +71,7 @@ h2 {
     font-style: bold;
     margin-top: 30px;
     margin-bottom: -20px;
-    text-shadow: .75px 0px 0px #ffffff;
+    text-shadow: .75px 0px 0px #FFFF70;
 }
 
 form {
@@ -142,7 +142,7 @@ input:focus {
 
 button {
     background: #f72585;
-    color: white;
+    color: #ffffff;
     text-shadow: 1px 0px 0px #323131;
     padding: 10px;
     border: none;
