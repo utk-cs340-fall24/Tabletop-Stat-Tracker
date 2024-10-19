@@ -196,7 +196,7 @@
                         results.push(roll);
                         total += roll;
                     }
-                    rollResult.textContent = `Total: ${total}\nRolls: ${results.join(', ')}`; // Display results
+                    rollResult.textContent = `Total: ${total}\nRolls: \n${results.join(', ')}`; // Display results
                 } else {
                     rollResult.textContent = 'Invalid input! Please use format like 4d20.';
                 }
@@ -214,7 +214,7 @@
                     allResults.push(`${quantity}d${diceType}: [${diceResults.join(', ')}]`);
                 }
                 
-                rollResult.textContent = `Total: ${total}\nRolls: ${allResults.join('\n')}`;
+                rollResult.textContent = `Total: ${total}\nRolls: \n ${allResults.join('\n')}`;
             }
             else {
                 rollResult.textContent = 'Unable to process roll. Try again.';
