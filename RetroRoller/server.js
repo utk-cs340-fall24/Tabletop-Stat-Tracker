@@ -1,5 +1,6 @@
 var http = require('http');
 const util = require('util');
+const WebSocket = require('ws');
 const readline = require('node:readline');
 const { stdin: input, stdout: output } = require('node:process');
 var fs = require('fs');
@@ -64,7 +65,20 @@ var server = http.createServer(function (req, res) {
         res.write(data);
         return res.end();
     });
-}).listen(8000, '0.0.0.0');
+})
+
+const wss = new WebSocket.Server({ server });
+
+wss.on('connection', function connection(ws) {
+    ws.on('message', function incoming(message) {
+        console.log('received: %s', message);
+    });
+
+    ws.send('something');
+});
+
+
+server.listen(8000, '0.0.0.0');
 
 dns.lookup(os.hostname(), options, (err, addr) => {
     if (err) {

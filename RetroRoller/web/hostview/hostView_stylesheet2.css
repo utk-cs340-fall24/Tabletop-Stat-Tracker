@@ -461,6 +461,15 @@ h2.fade-in-text {
     pointer-events: none;
     transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
     transform: translateY(-10px);
+    display: block;
+    background-color: #323131;
+    height: 500px;
+    width: 300px;
+    border: 5px double #f72585;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
   }
   
   .dropdown.active > .dice-button + .dropdown-menu {
@@ -468,26 +477,93 @@ h2.fade-in-text {
     opacity: 1;
     transform: translateY(0);
   }
-  
-  .dropdown-menu {
-    display: block;
-    background-color: #f72585;
-    height: 150px;
-  }
-  .dropdown-input {
+
+  .dice-input {
+    width: 10px;
     position: relative;
     top: -2px;
-    display: flex;
   }
   
-  h1 {
+  h1, h5 {
     font-size: 10px;
-    color: #222;
+    color: white;
+    margin-bottom: 7px;
   }
   
   h4 {
-    position: relative;
-    top: 45px;
+    justify-content: center; /* Center the text horizontally */
     font-size: 10px;
-    color: #222;
+    color: white;
+    margin-top: 8px;
+    width: 100%; /* Make the element take up the full width of its container */
+}
+
+  .dice-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .dice-type {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+    margin: 3px;
+  }
+  
+  .dice-type img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+  
+  .quantity-control {
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+  }
+  
+  .quantity-control button {
+    background-color: #f72585;
+    color: white;
+    font-size: 0.5em;
+    width: 25px;
+    height: 25px;
+    margin: 0 2px;
+    padding: 3px;
+    cursor: pointer;
+  }
+  
+  .quantity-control span {
+    width: 37px;
+    padding: 5px;
+    font-size: 0.8rem;
+    background-color: #222;
+    color: white;
+    border: none;
+    font-family: inherit;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .roll-button {
+    background-color: #f72585;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 7px;
+    margin: 15px;
+    font-size: 0.7rem;
+    justify-self: center;
+    transition: background-color 0.3s;
+  }
+
+  #roll-result {
+    white-space: pre;
+    text-align: left;
+    text-wrap: wrap;
   }
