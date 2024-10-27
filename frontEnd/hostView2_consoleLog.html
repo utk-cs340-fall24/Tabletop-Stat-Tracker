@@ -23,6 +23,7 @@
                     <div class="dice-icons">
                         <!-- Dice d4 -->
                         <div class="dice-type" data-dice="4">
+                            <span class="dice-number">4</span> <!-- Add the dice type number here -->
                             <img src="d4.png" alt="d4">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
@@ -32,6 +33,7 @@
                         </div>
                         <!-- Dice d6 -->
                         <div class="dice-type" data-dice="6">
+                            <span class="dice-number">6</span> <!-- Add the dice type number here -->
                             <img src="d6.png" alt="d6">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
@@ -41,6 +43,7 @@
                         </div>
                         <!-- Dice d8 -->
                         <div class="dice-type" data-dice="8">
+                            <span class="dice-number">8</span> <!-- Add the dice type number here -->
                             <img src="d8.png" alt="d8">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
@@ -50,6 +53,7 @@
                         </div>
                         <!-- Dice d10 -->
                         <div class="dice-type" data-dice="10">
+                            <span class="dice-number">10</span> <!-- Add the dice type number here -->
                             <img src="d10.png" alt="d10">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
@@ -59,6 +63,7 @@
                         </div>
                         <!-- Dice d12 -->
                         <div class="dice-type" data-dice="12">
+                            <span class="dice-number">12</span> <!-- Add the dice type number here -->
                             <img src="d12.png" alt="d12">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
@@ -68,6 +73,7 @@
                         </div>     
                         <!-- Dice d20 -->
                         <div class="dice-type" data-dice="20">
+                            <span class="dice-number">20</span> <!-- Add the dice type number here -->
                             <img src="d20.png" alt="d20">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
@@ -373,7 +379,9 @@ submitPlayerBtn.addEventListener('click', function() {
     
     // Use '.item' class for inventory items
     const inventory = [...inventoryContainer.querySelectorAll('.item')].map(item => ({
-        name: item.querySelector('.item-name').value
+        name: item.querySelector('.item-name').value,
+        value: item.querySelector('.stat-input').value
+
     }));
 
     // Log player data to the console
