@@ -118,7 +118,25 @@
         <ul id="enemy-list"></ul>
     </div>
 
-    
+
+    <script>
+        const addEnemyBtn = document.getElementById('add-enemy');
+        const enemyList = document.getElementById('enemy-list');
+
+        addEnemyBtn.addEventListener('click', function() {
+        const enemyNameInput = document.getElementById('enemy-name-input');
+        const enemyName = enemyNameInput.value.trim();
+
+        if (enemyName) {
+            const listItem = document.createElement('li');
+            listItem.textContent = enemyName;
+            enemyList.appendChild(listItem);
+            enemyNameInput.value = ''; // Clear the input after adding
+        }
+    });
+    </script>
+
+
     <!-- Popup for icon selection -->
     <div id="icon-popup" class="icon-popup">
         <h3>Select Player Icon</h3>
