@@ -593,47 +593,45 @@ h2.fade-in-text {
   background-color: #555; /* Darker on hover */
 }
 
-/* Dummy Card Styling - Matches the player card look */
+/* Updated Dummy Card Styling to Match Player Card */
 .dummy-card {
+  background-color: #333;
+  border: 5px double #f72585;
+  border-radius: 10px;
+  padding: 15px;
   width: 300px;
-  background-color: #f5f5f5;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 8px auto;
-  font-family: 'VT323', monospace;
-  color: #333;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+  max-height: 400px;
+  overflow: auto;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
 }
 
-/* Dummy Card Header */
+/* Dummy Card Header to Match Font Style */
 .dummy-card h3 {
-  font-size: 1.5em;
-  margin-bottom: 8px;
-  color: #555;
+  font-size: 1rem;
+  color: #f8d210;
+  margin-bottom: 10px;
 }
 
-/* Dummy Card Text */
+/* Dummy Card Attribute and Item Text Styling */
 .dummy-card p {
-  font-size: 1.2em;
-  margin: 4px 0;
-  color: #444;
+  font-size: 0.8rem;
+  color: #fff;
+  margin: 8px 0;
 }
 
-/* Add padding for card content consistency */
+/* Dummy Card Inner Sections for Attribute and Item Display */
 .dummy-card .attribute, 
 .dummy-card .item {
-  padding: 4px 0;
+  padding: 3px 0;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  font-size: 0.8rem;
+  color: #f8d210;
 }
 
-/* Remove icon/button spacing within dummy card */
-.dummy-card button,
-.dummy-card input {
-  display: none; /* Hide editable fields if you want them to be read-only */
-}
 
 
 
