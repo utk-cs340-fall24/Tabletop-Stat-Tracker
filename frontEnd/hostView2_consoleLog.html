@@ -120,33 +120,32 @@
 
 
     <script>
-       const addEnemyBtn = document.getElementById('add-enemy');
-const enemyList = document.getElementById('enemy-list');
+        const addEnemyBtn = document.getElementById('add-enemy');
+        const enemyList = document.getElementById('enemy-list');
 
-addEnemyBtn.addEventListener('click', function() {
-    const enemyNameInput = document.getElementById('enemy-name-input');
-    const enemyName = enemyNameInput.value.trim();
+        addEnemyBtn.addEventListener('click', function() {
+        const enemyNameInput = document.getElementById('enemy-name-input');
+        const enemyName = enemyNameInput.value.trim();
 
-    if (enemyName) {
-        const listItem = document.createElement('li');
-        listItem.textContent = enemyName;
+        if (enemyName) {
+            const listItem = document.createElement('li');
+            listItem.textContent = enemyName;
 
-        // Create delete button
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = "Delete";
-        deleteButton.classList.add('delete-button'); // Optional: Add a CSS class for styling
+            // Create delete button
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = "Delete";
+            deleteButton.classList.add('delete-button'); // Optional: Add a CSS class for styling
 
-        // Add event listener to remove the enemy name on delete button click
-        deleteButton.addEventListener('click', function() {
-            listItem.remove();
-        });
+            // Add event listener to remove the enemy name on delete button click
+            deleteButton.addEventListener('click', function() {
+                listItem.remove();
+            });
 
-        listItem.appendChild(deleteButton); // Append delete button to the list item
-        enemyList.appendChild(listItem);    // Append the list item to the enemy list
-        enemyNameInput.value = '';          // Clear the input after adding
-    }
-});
-
+            listItem.appendChild(deleteButton); 
+            enemyList.appendChild(listItem);   
+            enemyNameInput.value = '';         
+        }
+    });
     </script>
 
 
