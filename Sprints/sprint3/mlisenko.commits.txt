@@ -1,0 +1,268 @@
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 545)     line-height: 1.5;
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 548)   .dice-number {
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 549)     font-size: 12px;
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 550)   }
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 551) 
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 552)   /* For webkit browsers (Chrome, Safari) */
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 553) .dropdown-menu::-webkit-scrollbar {
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 554)   width: 8px; /* Width of the scrollbar */
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 555) }
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 556) 
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 557) .dropdown-menu::-webkit-scrollbar-track {
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 558)   background: transparent; /* Background of the scrollbar track */
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 559) }
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 560) 
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 561) .dropdown-menu::-webkit-scrollbar-thumb {
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 562)   background-color: #888; /* Color of the scrollbar thumb */
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 563)   border-radius: 4px; /* Rounded corners */
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 564) }
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 565) 
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 566) .dropdown-menu::-webkit-scrollbar-thumb:hover {
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 567)   background-color: #555; /* Darker on hover */
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 568) }
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 569) 
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 570) /* Updated Dummy Card Styling to Match Player Card */
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 571) .dummy-card {
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 572)   background-color: #333;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 573)   border: 5px double #f72585;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 574)   border-radius: 10px;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 575)   padding: 15px;
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 576)   width: 300px;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 577)   text-align: left;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 578)   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 579)   max-height: 400px;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 580)   overflow: auto;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 581)   color: #fff;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 582)   font-family: 'Press Start 2P', cursive;
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 583) }
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 584) 
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 585) /* Dummy Card Header to Match Font Style */
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 586) .dummy-card h3 {
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 587)   font-size: 1rem;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 588)   color: #f8d210;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 589)   margin-bottom: 10px;
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 590) }
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 591) 
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 592) /* Dummy Card Attribute and Item Text Styling */
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 593) .dummy-card p {
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 594)   font-size: 0.8rem;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 595)   color: #fff;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 596)   margin: 8px 0;
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 597) }
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 598) 
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 599) /* Dummy Card Inner Sections for Attribute and Item Display */
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 600) .dummy-card .attribute, 
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 601) .dummy-card .item {
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 602)   padding: 3px 0;
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 603)   display: flex;
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 604)   justify-content: space-between;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 605)   font-size: 0.8rem;
+734807c9 (Mike Lisenko 2024-10-28 15:33:24 -0400 606)   color: #f8d210;
+8060cef8 (Mike Lisenko 2024-10-28 15:27:40 -0400 607) }
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 191) 
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 192) /* Dummy Card Styling - Matches the player card look */
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 193) .dummy-card {
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 194)   width: 300px;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 195)   background-color: #f5f5f5;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 196)   border: 2px solid #ccc;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 197)   border-radius: 8px;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 198)   padding: 16px;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 199)   margin: 8px auto;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 200)   font-family: 'VT323', monospace;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 201)   color: #333;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 202)   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 203) }
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 204) 
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 205) /* Dummy Card Header */
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 206) .dummy-card h3 {
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 207)   font-size: 1.5em;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 208)   margin-bottom: 8px;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 209)   color: #555;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 210) }
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 211) 
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 212) /* Dummy Card Text */
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 213) .dummy-card p {
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 214)   font-size: 1.2em;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 215)   margin: 4px 0;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 216)   color: #444;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 217) }
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 218) 
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 219) /* Add padding for card content consistency */
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 220) .dummy-card .attribute, 
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 221) .dummy-card .item {
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 222)   padding: 4px 0;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 223)   display: flex;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 224)   align-items: center;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 225)   justify-content: space-between;
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 226) }
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 227) 
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 228) /* Remove icon/button spacing within dummy card */
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 229) .dummy-card button,
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 230) .dummy-card input {
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 231)   display: none; /* Hide editable fields if you want them to be read-only */
+c2b0c653 (Mike Lisenko 2024-10-28 15:25:24 -0400 232) }
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400   1) <!DOCTYPE html>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400   2) <html lang="en">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400   3) <head>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400   4)     <meta charset="UTF-8">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400   5)     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400   6)     <title>Table-top Stat Tracker</title>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400   7)     <link rel="stylesheet" href="hostView_stylesheet2.css">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400   8)     <link rel="preconnect" href="https://fonts.googleapis.com">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400   9)     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  10)     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  11)     <script src="dice-dropdown.js" defer></script> <!-- Here's the linked .js file you can use! only has dice stuff -->
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  12)     <script src="node_modules/dice-roller-parser/dist/index.js"></script>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  13) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  14) </head>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  15) <body>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  16)     <header class="header">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  17)         <img src="dndLogo.png" alt="DnD Logo" class="logo-icon"> 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  18)     </header>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  19) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  20)     <div class="container">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  21)         <div class="fade-in-text">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  22)             <p>Retro Roller Player View</p>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  23)         </div>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  24) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  25)         <h2 class="fade-in-text">Virtual Table-Top Stat Tracker</h2>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  26)         <div id="players-container"></div>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  27)     </div>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  28) 
+0efbab40 (Mike Lisenko 2024-10-28 10:37:58 -0400  29)     <div id="dummyCardsContainer"></div>
+0efbab40 (Mike Lisenko 2024-10-28 10:37:58 -0400  30) 
+0efbab40 (Mike Lisenko 2024-10-28 10:37:58 -0400  31) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  32)     <!-- Popup for icon selection -->
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  33)     <div id="icon-popup" class="icon-popup">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  34)         <h3>Select Player Icon</h3>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  35)         <div class="icon-selection">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  36)             <img src="player_icon.png" alt="Player Icon 1" class="icon-option">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  37)             <img src="player_wizard.png" alt="Player Icon 2" class="icon-option">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  38)             <img src="knight.png" alt="Player Icon 3" class="icon-option">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  39)             <img src="wizard.png" alt="Player Icon 4" class="icon-option">
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  40)             <!-- Add more icons as needed -->
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  41)         </div>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  42)         <button id="close-popup">Close</button>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  43)     </div>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  44) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  45)     <script>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  46) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  47) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  48)         // PostCard class
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  49)         class PostCard {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  50)             constructor(ip, name, attributes = {}, items = []) {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  51)                 this.IP = ip;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  52)                 this.Name = name;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  53)                 this.Attributes = attributes;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  54)                 this.Items = items;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  55)             }
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  56)         }
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  57) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  58)         // Store all the dummy cards
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  59)         const dummyCards = {};
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  60) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  61)         // Creates a dummy player card
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  62)         function createDummyCard(postCard) {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  63)             const cardId = postCard.IP; // Use IP as the id
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  64)             const cardContainer = document.getElementById('dummyCardsContainer');
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  65) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  66)             // Check if card already exists
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  67)             if (!dummyCards[cardId]) {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  68)                 const cardElement = document.createElement('div');
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  69)                 cardElement.id = cardId;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  70)                 cardElement.className = 'dummy-card';
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  71)                 cardElement.innerHTML = `
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  72)                     <h3>${postCard.Name}</h3>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  73)                     <p>IP: ${postCard.IP}</p>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  74)                     <p>Attributes: ${JSON.stringify(postCard.Attributes)}</p>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  75)                     <p>Items: ${JSON.stringify(postCard.Items)}</p>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  76)                 `;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  77)                 cardContainer.appendChild(cardElement);
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  78)                 dummyCards[cardId] = cardElement; // Store reference
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  79)             }
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  80)         }
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  81) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  82)         // Updates dummy player card
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  83)         function updateDummyCard(postCard) {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  84)             const cardId = postCard.IP;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  85)             const cardElement = dummyCards[cardId];
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  86) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  87)             if (cardElement) {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  88)                 cardElement.innerHTML = `
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  89)                     <h3>${postCard.Name}</h3>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  90)                     <p>IP: ${postCard.IP}</p>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  91)                     <p>Attributes: ${JSON.stringify(postCard.Attributes)}</p>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  92)                     <p>Items: ${JSON.stringify(postCard.Items)}</p>
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  93)                 `;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  94)             }
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  95)         }
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  96) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  97)         // Destroys dummy player card
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  98)         function destroyDummyCard(ip) {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400  99)             const cardElement = dummyCards[ip];
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 100) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 101)             if (cardElement) {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 102)                 cardElement.remove(); // Remove from the DOM
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 103)                 delete dummyCards[ip]; // Remove from the reference
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 104)             }
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 105)         }
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 106) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 107) //-------------------------------------------------------------------------------------------------------------------------//
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 108) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 109)         const playerContainer = document.getElementById('players-container');
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 110)         const iconPopup = document.getElementById('icon-popup');
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 111)         let currentPlayerIcon = null; // Track the player icon currently being updated
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 112) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 113)         let players = [];
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 114)         let currentPlayerIndex = -1;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 115) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 116)         document.addEventListener("DOMContentLoaded", () => {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 117)             const incrementButtons = document.querySelectorAll(".increment");
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 118)             const decrementButtons = document.querySelectorAll(".decrement");
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 119)             const rollButton = document.querySelector(".roll-button");
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 120)             const resultDisplay = document.getElementById("roll-result");
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 121) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 122)             // Add event listeners for increment and decrement buttons
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 123)             incrementButtons.forEach(button => {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 124)                 button.addEventListener("click", () => {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 125)                     const quantitySpan = button.parentElement.querySelector("[data-quantity]");
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 126)                     let quantity = parseInt(quantitySpan.textContent);
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 127)                     quantitySpan.textContent = quantity + 1;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 128)                 });
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 129)             });
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 130) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 131)             decrementButtons.forEach(button => {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 132)                 button.addEventListener("click", () => {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 133)                     const quantitySpan = button.parentElement.querySelector("[data-quantity]");
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 134)                     let quantity = parseInt(quantitySpan.textContent);
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 135)                     if (quantity > 0) {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 136)                         quantitySpan.textContent = quantity - 1;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 137)                     }
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 138)                 });
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 139)             });
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 140) 
+
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 321)             // Update player data functionality
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 322)             const submitPlayerBtn = playerDiv.querySelector('.submit-player');
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 323)             submitPlayerBtn.addEventListener('click', function() {
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 324)                 const playerName = playerDiv.querySelector('.player-name').value;
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 325)                 const attributes = [...attributesContainer.querySelectorAll('.attribute')].map(attr => ({
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 326)                 name: attr.querySelector('.attribute-name').value,
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 327)                 value: attr.querySelector('.stat-input').value
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 328)                 }));
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 329)         
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 330)                 // Use '.item' class for inventory items
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 331)                 const inventory = [...inventoryContainer.querySelectorAll('.item')].map(item => ({
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 332)                     name: item.querySelector('.item-name').value,
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 333)                     value: item.querySelector('.stat-input').value
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 334) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 335)                 }));
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 336) 
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 337)                 //Log player data to the console
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 338)                 console.log({
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 339)                     playerName,
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 340)                     attributes,
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 341)                     inventory
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 342)                 });
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 343)             });
+27137787 (Mike Lisenko 2024-10-27 18:53:50 -0400 344) 
