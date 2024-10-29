@@ -23,6 +23,12 @@
 - RetroRoller/web/playerview/playerview2.html
 - frontEnd/hostView2_consoleLog.html
 - RetroRoller/web/hostview/hostView2.html
+- frontEnd/d4.png
+- frontEnd/d6.png
+- frontEnd/d8.png
+- frontEnd/d10.png
+- frontEnd/d12.png
+- frontEnd/d20.png
 
 ## What I accomplished:
 - I accomplished making the dice roller look better with our own icons instead of using pngs from the internet that weren't ours (the previous place we used those as a placeholder).
