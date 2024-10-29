@@ -5,22 +5,21 @@ class Pers{
     }
 }
 
-function initSort(a,b){
-    return a.init - b.init;
-}
-
-
 const track=[];
 let rounds = 1;
 let turn = 0;
 
-function setList(newTrack){
-    
-    for(let i = 0; i < newTrack.length; i++){
-        const init = parseInt(prompt("Enter Initiative: "));
-        track.push(new Pers(newTrack[i], init));
-    }
+function setList(name, init){
+    track.push(new Pers(name, init));
     track.sort(initSort);
+}
+
+function getList(){
+    return track;
+}
+
+function initSort(a,b){
+    return a.init - b.init;
 }
 
 function next(){
