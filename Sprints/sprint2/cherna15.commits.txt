@@ -1,43 +1,245 @@
-[InitTracker.js]
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39): <!DOCTYPE html>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39): <html lang="en">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39): <head>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <meta charset="UTF-8">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <title>Table-top Stat Tracker</title>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <link rel="stylesheet" href="hostView_stylesheet2.css">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <link rel="preconnect" href="https://fonts.googleapis.com">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <script type = "text/javascript" src = "InitTracker.js"></script>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39): </head>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39): <body>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <header class="header">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <img src="dndLogo.png" alt="DnD Logo" class="logo-icon"> 
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <div class="dice-section">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             <span>Dice: </span>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             <button class="dice-button">Roll</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         </div>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     </header>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <div class="search-container">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <input type="text" class="search-box" placeholder="Enter player names, separated by commas">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <button id="backward-btn">Next Turn</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <button id="forward-btn">Make List</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     </div>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <div class="container">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <div class="fade-in-text">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             <p>Retro Roller</p>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         </div>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <h2 class="fade-in-text">Virtual Table-Top Stat Tracker</h2>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <button id="add-player">Add Player</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <div id="players-container"></div>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     </div>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <!-- Popup for icon selection -->
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <div id="icon-popup" class="icon-popup">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <h3>Select Player Icon</h3>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <div class="icon-selection">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             <img src="player_icon.png" alt="Player Icon 1" class="icon-option">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             <img src="player_wizard.png" alt="Player Icon 2" class="icon-option">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             <img src="knight.png" alt="Player Icon 3" class="icon-option">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             <img src="wizard.png" alt="Player Icon 4" class="icon-option">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             <!-- Add more icons as needed -->
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         </div>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         <button id="close-popup">Close</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     </div>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     <script>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         const playerContainer = document.getElementById('players-container');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         const addPlayerBtn = document.getElementById('add-player');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         const forwardBtn = document.getElementById('forward-btn');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         const backwardBtn = document.getElementById('backward-btn');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         const searchBox = document.querySelector('.search-box');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         const iconPopup = document.getElementById('icon-popup');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         let currentPlayerIcon = null; // Track the player icon currently being updated
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         let players = [];
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         let currentPlayerIndex = -1;
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         // Function to open the icon popup
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         function openIconPopup(playerIcon) {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             currentPlayerIcon = playerIcon; // Store the current player's icon to update
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             iconPopup.style.display = 'block';
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         }
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         // Event listener for icon selection
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         const iconOptions = document.querySelectorAll('.icon-option');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         iconOptions.forEach(icon => {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             icon.addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 if (currentPlayerIcon) {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     currentPlayerIcon.src = this.src; // Update the player's icon
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 }
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 iconPopup.style.display = 'none'; // Close the popup
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         function highlightPlayer(playerName) {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             const allPlayerDivs = document.querySelectorAll('.player');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             allPlayerDivs.forEach(playerDiv => {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 const nameField = playerDiv.querySelector('.player-name');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 if (nameField.value.toLowerCase() === playerName.toLowerCase()) {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     playerDiv.classList.add('glow');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 } else {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     playerDiv.classList.remove('glow');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 }
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         }
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         forwardBtn.addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             const playerNames = searchBox.value.split(',').map(name => name.trim());
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             setList(playerNames);
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         backwardBtn.addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             next();
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         // Function to add a new player
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         addPlayerBtn.addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             const playerDiv = document.createElement('div');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             playerDiv.className = 'player';
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             playerDiv.innerHTML = `
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 <img src="player_icon.png" alt="Player Icon" class="player-icon" style="filter: hue-rotate(${Math.floor(Math.random() * 570)}deg)">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 <input type="text" placeholder="Player Name" class="player-name">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 <h3 class="attributes-h3">Attributes</h3>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 <div class="stat-container attributes-container"></div>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 <button class="add-attribute">Add Attribute</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 <!-- Inventory section -->
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 <h3>Inventory</h3>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 <div class="stat-container inventory-container"></div>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 <button class="add-item">Add Inventory</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 <button class="remove-player">Remove Player</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             `;
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             playerContainer.appendChild(playerDiv);
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             // Make the player icon clickable
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             const playerIcon = playerDiv.querySelector('.player-icon');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             playerIcon.addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 openIconPopup(playerIcon); // Open the popup for this specific player's icon
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             // Handle attribute addition
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             const addAttributeBtn = playerDiv.querySelector('.add-attribute');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             const attributesContainer = playerDiv.querySelector('.attributes-container');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             addAttributeBtn.addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 const newAttribute = document.createElement('div');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 newAttribute.className = 'stat-container';
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 newAttribute.innerHTML = `
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     <label class="attribute">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                         <button class="remove-attribute-x">X</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                         <input type="text" class="attribute-name" placeholder="Attribute Name">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                         <button class="stat-button decrement">-</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                         <input type="number" class="stat-input" value="0">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                         <button class="stat-button increment">+</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     </label>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 `;
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 const statInput = newAttribute.querySelector('.stat-input');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 newAttribute.querySelector('.increment').addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     statInput.value = parseInt(statInput.value) + 1;
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 newAttribute.querySelector('.decrement').addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     statInput.value = parseInt(statInput.value) - 1;
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 newAttribute.querySelector('.remove-attribute-x').addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     newAttribute.remove();
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 attributesContainer.appendChild(newAttribute);
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             // Handle inventory addition (similar to attributes)
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             const addItemBtn = playerDiv.querySelector('.add-item');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             const inventoryContainer = playerDiv.querySelector('.inventory-container');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             addItemBtn.addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 const newItem = document.createElement('div');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 newItem.className = 'stat-container';
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 newItem.innerHTML = `
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     <label class="inventory">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                         <button class="remove-item-x">X</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                         <input type="text" class="inventory-name" placeholder="Item Name">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                         <button class="stat-button decrement">-</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                         <input type="number" class="stat-input" value="0">
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                         <button class="stat-button increment">+</button>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     </label>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 `;
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 const statInput = newItem.querySelector('.stat-input');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 newItem.querySelector('.increment').addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     statInput.value = parseInt(statInput.value) + 1;
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 newItem.querySelector('.decrement').addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     statInput.value = parseInt(statInput.value) - 1;
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 newItem.querySelector('.remove-item-x').addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                     newItem.remove();
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 inventoryContainer.appendChild(newItem); // Append items to the correct inventory container
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             // Remove player functionality
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             const removePlayerBtn = playerDiv.querySelector('.remove-player');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             removePlayerBtn.addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):                 playerDiv.remove();
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         // Close popup button event listener
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         const closePopupBtn = document.getElementById('close-popup');
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         closePopupBtn.addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):             iconPopup.style.display = 'none';
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):         });
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39):     </script>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39): </body>
+hostViewInit.html (cohernandez117 on 10/14/2024 at 22:39): </html>
 
-function setList(newTrack){
-    
-    for(let i = 0; i < newTrack.length; i++){
-        const init = parseInt(prompt("Enter Initiative: "));
-        track.push(new Pers(newTrack[i], init));
-    }
-    track.sort(initSort);
-}
-
-function next(){
-
-    alert("Current Round: " + rounds + "\nCurrent Turn: " + track[turn].name);
-        if (turn === track.length - 1) {
-            turn = 0;
-            rounds++;
-        } else {
-            turn++;
-            return;
-        }
-}
-
-[hostViewInit.html]
-
-<script type = "text/javascript" src = "InitTracker.js"></script>
-
-...
-
-<button id="backward-btn">Next Turn</button>
-<button id="forward-btn">Make List</button>
-
-...
-
-forwardBtn.addEventListener('click', function() {
-    const playerNames = searchBox.value.split(',').map(name => name.trim());
-    setList(playerNames);
-});
-
-backwardBtn.addEventListener('click', function() {
-    next();
-});
-
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): class Pers{
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):     constructor(name, init){
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):         this.name = name;
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):         this.init = init;
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):     }
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): }
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): function initSort(a,b){
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):     return a.init - b.init;
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): }
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): const track=[];
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): let rounds = 1;
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): let turn = 0;
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): function setList(newTrack){
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):     for(let i = 0; i < newTrack.length; i++){
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):         const init = parseInt(prompt("Enter Initiative: "));
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):         track.push(new Pers(newTrack[i], init));
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):     }
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):     track.sort(initSort);
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): }
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): function next(){
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):     alert("Current Round: " + rounds + "\nCurrent Turn: " + track[turn].name);
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):         if (turn === track.length - 1) {
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):             turn = 0;
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):             rounds++;
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):         } else {
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):             turn++;
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):             return;
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):         }
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): }
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): class Pers{
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):     constructor(name, init){
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):         this.name = name;
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):         this.init - init;
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):     }
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): }
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): function initSort(a,b){
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):     return a.init - b.init;
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): }
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): const track=[];
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): let rounds = 1;
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): console.log("Begin by putting in initial Names, Health, and Initiative. Start your combat by typing START.");
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): while(true){
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):     const name = prompt("Enter a name, or type START: ");
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):     if(name === "START"){
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):             break;
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):     }
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):     const init = parseInt(prompt("Enter Initiative: "));
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):     track.push(new Pers(name, init));
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): }
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): track.sort(initSort);
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): let i = 0;
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): let inp;
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): while(true){
+InitTracker.js (cohernandez117 on 09/30/2024 at 21:29):     inp = prompt(`Type 'NEXT' for next turn, or 'END' to quit \nCurrent Round: ${rounds} \nCurrent Turn: ${track[i].name}` );
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):     if (inp === "NEXT") {
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):         if (i === track.length - 1) {
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):             i = 0;
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):             rounds++;
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):         } else {
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):             i++;
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):         }
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):     }else if (inp === "END") {
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):         console.log("Combat Ended!");
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):         break;
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03):     }
+InitTracker.js (cohernandez117 on 09/30/2024 at 19:03): }
