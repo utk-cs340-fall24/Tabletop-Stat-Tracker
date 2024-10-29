@@ -229,9 +229,8 @@
     });
         // Function to handle dice rolling
         function rollDice(input) {
-            //const input = document.getElementById('dice-input').value;
             if (typeof input == "string") {
-                const regex = /^(\d+)d(\d+)$/; // Regular expression to match dice format (e.g., 4d20)
+                const regex = /^(\d+)d(\d+)$/;
                 const match = input.match(regex);
                 if (match) {
                     const numDice = parseInt(match[1]);
@@ -243,7 +242,7 @@
                         results.push(roll);
                         total += roll;
                     }
-                    rollResult.textContent = `Total: ${total}\nRolls:\n${results.join(', ')}`; // Display results
+                     rollResult.textContent = `Total: ${total}\nRolls:\n${results.join(', ')}`;
                 } else {
                     rollResult.textContent = 'Invalid input! Please use format like 4d20.';
                 }
@@ -264,7 +263,7 @@
                 rollResult.textContent = `Total: ${total}\nRolls:\n${allResults.join('\n')}`;
             }
             else {
-                rollResult.textContent = 'Unable to process roll. Try again.';
+                rollResult.textContent = 'Unable to process roll. Try again. #ofDice\'d\'TypeOfDice';
             }
         }
 
@@ -299,7 +298,7 @@
 
         // Function to open the icon popup
         function openIconPopup(playerIcon) {
-            currentPlayerIcon = playerIcon; // Store the current player's icon to update
+            currentPlayerIcon = playerIcon;
             iconPopup.style.display = 'block';
         }
 
