@@ -95,7 +95,14 @@ wss.on('connection', function connection(ws) {
             });
         }
         else if (data == 2) {
-
+            wss.clients.forEach(function each(client) {
+                if (client !== ws && client.readyState === WebSocket.OPEN) {
+                    const Test = new PostCard(ws._socket.remoteAddress, "destroy");
+                    Letter = JSON.stringify(Test);
+                    console.log(Letter);
+                    client.send(Letter);
+                }
+            });
         }
         else {
             wss.clients.forEach(function each(client) {

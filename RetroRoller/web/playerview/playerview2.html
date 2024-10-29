@@ -43,7 +43,7 @@
     </div>
 
     <script>
-
+        const ws = new WebSocket("ws://" + window.location.host);
       
         // PostCard class
         class PostCard {
@@ -315,6 +315,7 @@
             const removePlayerBtn = playerDiv.querySelector('.remove-player');
             removePlayerBtn.addEventListener('click', function() {
                 playerDiv.remove();
+                ws.send(2)
             });
 
 
@@ -349,7 +350,7 @@
             iconPopup.style.display = 'none';
         });
 
-        const ws = new WebSocket("ws://" + window.location.host);
+        
 
         ws.addEventListener("open", () => {
             console.log("Connected");
@@ -362,17 +363,28 @@
                 package = JSON.stringify(postage);
                 ws.send(package);
             }
+            //else if (data.name == "destroy") {
+            //    console.log("Destroyed?");
+            //    destroyDummyCard(data.IP);
+            //}
             else {
                 const letter = JSON.parse(data);
-                console.log(letter);
-                console.log("Dummy Deployed?");
-                if (dummyCards[letter.IP] == null) {
-                    createDummyCard(letter);
+                console.log(letter.Name + "Bruh?");
+                if (letter.Name == "destroy") {
+                    console.log("Destroyed?");
+                    destroyDummyCard(letter.IP);
                 }
                 else {
-                    updateDummyCard(letter);
+                    console.log(letter);
+                    console.log("Dummy Deployed?");
+                    if (dummyCards[letter.IP] == null) {
+                        createDummyCard(letter);
+                    }
+                    else {
+                        updateDummyCard(letter);
+                    }
+                    console.log(dummyCards);
                 }
-                console.log(dummyCards);
             }
         });
 
