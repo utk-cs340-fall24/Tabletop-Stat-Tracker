@@ -443,6 +443,8 @@ h2.fade-in-text {
     text-align: center;
     align-items: center;
     z-index: 10;
+    max-height: 700px; /* Set a maximum height */
+    overflow-y: auto; /* Allows scrolling when the content overflows */
   }
   
   .dropdown.active > .dice-button + .dropdown-menu {
@@ -540,8 +542,69 @@ h2.fade-in-text {
     white-space: pre;
     text-align: left;
     text-wrap: wrap;
+    line-height: 1.5;
   }
 
+  .dice-number {
+    font-size: 12px;
+  }
+
+  /* For webkit browsers (Chrome, Safari) */
+.dropdown-menu::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: transparent; /* Background of the scrollbar track */
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker on hover */
+}
+
+/* Updated Dummy Card Styling to Match Player Card */
+.dummy-card {
+  background-color: #333;
+  border: 5px double #f72585;
+  border-radius: 10px;
+  padding: 15px;
+  width: 300px;
+  text-align: left;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+  max-height: 400px;
+  overflow: auto;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Dummy Card Header to Match Font Style */
+.dummy-card h3 {
+  font-size: 1rem;
+  color: #f8d210;
+  margin-bottom: 10px;
+}
+
+/* Dummy Card Attribute and Item Text Styling */
+.dummy-card p {
+  font-size: 0.8rem;
+  color: #fff;
+  margin: 8px 0;
+}
+
+/* Dummy Card Inner Sections for Attribute and Item Display */
+.dummy-card .attribute, 
+.dummy-card .item {
+  padding: 3px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #f8d210;
+}
 
 /* settings dropdown menu */
 

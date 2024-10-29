@@ -92,21 +92,62 @@
         </div>
     </header>
 
+       
     <div class="search-container">
         <input type="text" class="search-box" placeholder="Enter player names, separated by commas">
         <button id="backward-btn">Backward</button>
         <button id="forward-btn">Forward</button>
     </div>
-
+    
+    
+    
     <div class="container">
         <div class="fade-in-text">
             <p>Retro Roller</p>
         </div>
-
+        
         <h2 class="fade-in-text">Virtual Table-Top Stat Tracker</h2>
         <button id="add-player">Add Player</button>
         <div id="players-container"></div>
     </div>
+    
+    <div class="enemy-container">
+        <h3>Enemy List</h3>
+        <input type="text" id="enemy-name-input" placeholder="Enter enemy name">
+        <button id="add-enemy">Add Enemy</button>
+        <ul id="enemy-list"></ul>
+    </div>
+
+
+    <script>
+        const addEnemyBtn = document.getElementById('add-enemy');
+        const enemyList = document.getElementById('enemy-list');
+
+        addEnemyBtn.addEventListener('click', function() {
+        const enemyNameInput = document.getElementById('enemy-name-input');
+        const enemyName = enemyNameInput.value.trim();
+
+        if (enemyName) {
+            const listItem = document.createElement('li');
+            listItem.textContent = enemyName;
+
+            // Create delete button
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = "Delete";
+            deleteButton.classList.add('delete-button');
+
+            // Add event listener to remove the enemy name on delete button click
+            deleteButton.addEventListener('click', function() {
+                listItem.remove();
+            });
+
+            listItem.appendChild(deleteButton); 
+            enemyList.appendChild(listItem);   
+            enemyNameInput.value = '';         
+        }
+    });
+    </script>
+
 
     <!-- Popup for icon selection -->
     <div id="icon-popup" class="icon-popup">

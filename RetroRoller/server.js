@@ -68,13 +68,63 @@ var server = http.createServer(function (req, res) {
 })
 
 const wss = new WebSocket.Server({ server });
-
+class PostCard {
+    constructor(ip, name, attributes = {}, items = []) {
+        this.IP = ip;
+        this.Name = name;
+        this.Attributes = attributes;
+        this.Items = items;
+    }
+}
 wss.on('connection', function connection(ws) {
-    ws.on('message', function incoming(message) {
-        console.log('received: %s', message);
+    console.log("New client connected! on " + ws._socket.remoteAddress);
+    ws.id = ws._socket.remoteAddress;
+
+    ws.on("message", data => {
+        console.log(`Recieved Signal ${data} from ${ws._socket.remoteAddress}`);
+
+        if (data == 1) {
+            wss.clients.forEach(function each(client) {
+                if (client !== ws && client.readyState === WebSocket.OPEN) {
+                    const Test = new PostCard(ws._socket.remoteAddress, "");
+                    Letter = JSON.stringify(Test);
+                    console.log(Letter);
+                    client.send(Letter);
+                    client.send(1);
+                }
+            });
+        }
+        else if (data == 2) {
+            wss.clients.forEach(function each(client) {
+                if (client !== ws && client.readyState === WebSocket.OPEN) {
+                    const Test = new PostCard(ws._socket.remoteAddress, "destroy");
+                    Letter = JSON.stringify(Test);
+                    console.log(Letter);
+                    client.send(Letter);
+                }
+            });
+        }
+        else {
+            wss.clients.forEach(function each(client) {
+                if (client !== ws && client.readyState === WebSocket.OPEN) {
+                    IPadd = JSON.parse(data);
+                    IPadd.IP = ws._socket.remoteAddress;
+                    data = JSON.stringify(IPadd);
+                    client.send(data);
+                }
+            });
+        }
     });
 
-    ws.send('something');
+    //wss.clients.forEach(function each(client) {
+    //    if (client !== ws && client.readyState === WebSocket.OPEN) {
+    //        console.log(client.id);
+    //    }
+    //});
+
+    ws.on('close', () => {
+        console.log("Client has disconnected!");
+    });
 });
 
 
