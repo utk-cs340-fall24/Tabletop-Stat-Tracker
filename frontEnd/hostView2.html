@@ -14,6 +14,22 @@
 </head>
 <body>
     <header class="header">
+        <div class="settings-section">
+            <div class="dropdown" data-settings-dropdown>
+                <button class="settings-button" data-settings-button>
+                    <img src="settings.png" alt="Settings">
+                </button>
+                <div class="set-menu">
+                    <button class="end-session">End Session</button>
+                    <div class="end-session-confirmation" style="display: none;">
+                        <p>Are you sure you want to end the session?</p>
+                        <button class="save-session">Save the Session</button>
+                        <button class="dont-save">Don't Save</button>
+                        <button class="cancel-end-session">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <img src="dndLogo.png" alt="DnD Logo" class="logo-icon"> 
         <div class="dice-section"> 
             <div class="dropdown" data-dropdown> <!-- dice roller dropdown -->
