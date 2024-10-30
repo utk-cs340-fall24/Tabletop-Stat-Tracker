@@ -1,0 +1,98 @@
+a4ac57d1 (McKinley Harmon 2024-10-19 17:12:53 -0400 215)                     rollResult.textContent = `Total: ${total}\nRolls:\n${results.join(', ')}`; // Display results
+a4ac57d1 (McKinley Harmon 2024-10-19 17:12:53 -0400 233)                 rollResult.textContent = `Total: ${total}\nRolls:\n${allResults.join('\n')}`;
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400  95)        
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400 101)     
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400 102)     
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400 103)     
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400 108)         
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400 113)     
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400 114)     <div class="enemy-container">
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400 115)         <h3>Enemy List</h3>
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400 116)         <input type="text" id="enemy-name-input" placeholder="Enter enemy name">
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400 117)         <button id="add-enemy">Add Enemy</button>
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400 118)         <ul id="enemy-list"></ul>
+bc2d8734 (McKinley Harmon   2024-10-28 15:40:37 -0400 119)     </div>
+f916c26c (McKinley Harmon   2024-10-28 15:42:46 -0400 121) 
+f916c26c (McKinley Harmon   2024-10-28 15:42:46 -0400 122)     <script>
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 123)         const addEnemyBtn = document.getElementById('add-enemy');
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 124)         const enemyList = document.getElementById('enemy-list');
+f916c26c (McKinley Harmon   2024-10-28 15:42:46 -0400 125) 
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 126)         addEnemyBtn.addEventListener('click', function() {
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 127)         const enemyNameInput = document.getElementById('enemy-name-input');
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 128)         const enemyName = enemyNameInput.value.trim();
+f916c26c (McKinley Harmon   2024-10-28 15:42:46 -0400 129) 
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 130)         if (enemyName) {
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 131)             const listItem = document.createElement('li');
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 132)             listItem.textContent = enemyName;
+2a4b2eb8 (McKinley Harmon   2024-10-28 15:59:29 -0400 133) 
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 134)             // Create delete button
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 135)             const deleteButton = document.createElement('button');
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 136)             deleteButton.textContent = "Delete";
+5e92fbb9 (McKinley Harmon   2024-10-28 16:11:04 -0400 137)             deleteButton.classList.add('delete-button');
+2a4b2eb8 (McKinley Harmon   2024-10-28 15:59:29 -0400 138) 
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 139)             // Add event listener to remove the enemy name on delete button click
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 140)             deleteButton.addEventListener('click', function() {
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 141)                 listItem.remove();
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 142)             });
+2a4b2eb8 (McKinley Harmon   2024-10-28 15:59:29 -0400 143) 
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 144)             listItem.appendChild(deleteButton); 
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 145)             enemyList.appendChild(listItem);   
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 146)             enemyNameInput.value = '';         
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 147)         }
+e4aa5fbd (McKinley Harmon   2024-10-28 16:01:42 -0400 148)     });
+f916c26c (McKinley Harmon   2024-10-28 15:42:46 -0400 149)     </script>
+f916c26c (McKinley Harmon   2024-10-28 15:42:46 -0400 150) 
+f916c26c (McKinley Harmon   2024-10-28 15:42:46 -0400 151) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 220) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 225) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 230) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 234) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 236)         // Stop the animation after 1 second (or any duration you prefer)
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 237)         stopRollingAnimation();
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 238) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 239)         // Existing dice roll logic
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 240)         const diceQuantities = {};
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 241)         const manualInput = document.getElementById("dice-input").value;
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 242) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 243)         // Collect quantities for each type of die
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 244)         document.querySelectorAll(".dice-type").forEach(dice => {
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 245)             const diceValue = dice.getAttribute("data-dice");
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 246)             const quantity = parseInt(dice.querySelector("[data-quantity]").textContent);
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 247)             if (quantity > 0) {
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 248)                 diceQuantities[diceValue] = quantity; // Store quantity for the corresponding die type
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 249)             }
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 250)         });
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 251) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 252)         // Validation check: Either quantities or manual input must be provided, but not both
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 253)         if (Object.keys(diceQuantities).length > 0 && manualInput) {
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 254)             rollResult.textContent = "Please use either the dice selection or manual input, not both.";
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 255)             return; // Exit the function if both are provided
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 256)         }
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 257) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 258)         // Call the rollDice function with the collected quantities and manual input
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 259)         if(manualInput) rollDice(manualInput);
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 260)         else if(Object.keys(diceQuantities).length > 0) rollDice(diceQuantities);
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 261)         else rollResult.textContent = "No dice selected or input provided.";
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 262)     }, 1000); // Adjust duration as needed
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 264) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 265) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 266) 
+e1321b51 (McKinley Harmon   2024-10-29 20:28:46 -0400 267) 
+0adfe013 (McKinley Harmon   2024-10-29 09:21:30 -0400 283)                 const regex = /^(\d+)d(\d+)$/;
+0adfe013 (McKinley Harmon   2024-10-29 09:21:30 -0400 295)                      rollResult.textContent = `Total: ${total}\nRolls:\n${results.join(', ')}`;
+0adfe013 (McKinley Harmon   2024-10-29 09:21:30 -0400 316)                 rollResult.textContent = 'Unable to process roll. Try again. #ofDice\'d\'TypeOfDice';
+0adfe013 (McKinley Harmon   2024-10-29 09:21:30 -0400 351)             currentPlayerIcon = playerIcon;
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 713) }
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 714) 
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 715) 
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 716) @keyframes roll-animation {
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 717)   0% { transform: rotate(0deg); }
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 718)   25% { transform: rotate(90deg); }
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 719)   50% { transform: rotate(180deg); }
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 720)   75% { transform: rotate(270deg); }
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 721)   100% { transform: rotate(360deg); }
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 722) }
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 723) 
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 724) .rolling {
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 725)   animation: roll-animation 0.5s linear infinite;
+e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 726) }

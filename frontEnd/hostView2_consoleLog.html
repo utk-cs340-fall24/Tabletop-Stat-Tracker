@@ -215,24 +215,24 @@
                 }
             });
 
-// Select all dice images
-const diceImages = document.querySelectorAll(".dice-type img");
+        // Select all dice images
+        const diceImages = document.querySelectorAll(".dice-type img");
 
-// Function to start rolling animation
-function startRollingAnimation() {
-    diceImages.forEach(img => img.classList.add("rolling"));
-}
+        // Function to start rolling animation
+        function startRollingAnimation() {
+            diceImages.forEach(img => img.classList.add("rolling"));
+        }
 
-// Function to stop rolling animation
-function stopRollingAnimation() {
-    diceImages.forEach(img => img.classList.remove("rolling"));
-}
+                // Function to stop rolling animation
+        function stopRollingAnimation() {
+            diceImages.forEach(img => img.classList.remove("rolling"));
+        }
 
-// Roll button click event
-rollButton.addEventListener("click", () => {
-    startRollingAnimation();  // Start the rolling animation
+        // Roll button click event
+        rollButton.addEventListener("click", () => {
+        startRollingAnimation();  // Start the rolling animation
 
-    setTimeout(() => {
+        setTimeout(() => {
         // Stop the animation after 1 second (or any duration you prefer)
         stopRollingAnimation();
 
@@ -260,7 +260,7 @@ rollButton.addEventListener("click", () => {
         else if(Object.keys(diceQuantities).length > 0) rollDice(diceQuantities);
         else rollResult.textContent = "No dice selected or input provided.";
     }, 1000); // Adjust duration as needed
-});
+    });
 
 
 

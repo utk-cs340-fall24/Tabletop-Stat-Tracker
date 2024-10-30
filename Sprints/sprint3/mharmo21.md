@@ -5,7 +5,7 @@
 ### I ssues I planned to fix:
 - Fix the issue where the dice roller was rolling when you click on the dropdown and off the dropdown, instead of the roll biiton itself [#36](https://github.com/utk-cs340-fall24/Tabletop-Stat-Tracker/issues/32)
 - Fix the issue where we had no wat to track enemies using the UI itself[#39](https://github.com/utk-cs340-fall24/Tabletop-Stat-Tracker/issues/39)
--ADD ISSUE HERE
+- I added an animation for immersion and a little bit of fun to the dice roller[#40](https://github.com/utk-cs340-fall24/Tabletop-Stat-Tracker/issues/40)
 
 ## What I did not do:
 - I was not able to completely finish the enemy tracker as I would like the enemies names to glow, similar to how the player cards do, thankfully though, this should be a very simple issue to remedy in sprint 4 and shouldn't be an issue
@@ -24,4 +24,4 @@
 ## What I accomplished:
 - I accomplished making the dice roller function like it should, which was a big issue going into this sprint and I'm glad I was able to solve it
 - I added the enemy list and will continue to develop more for it to make it even more viable as a way to track enemies
-
+- I added an animation to the dice roller to make it more fun and funny to use
