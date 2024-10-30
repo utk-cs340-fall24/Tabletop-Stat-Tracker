@@ -724,3 +724,12 @@ h2.fade-in-text {
 .rolling {
   animation: roll-animation 0.5s linear infinite;
 }
+
+/* Add this CSS to create a border around enemy names */
+.enemy-name {
+  border: 2px solid #ff0000; /* Choose any color you like */
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px; /* Optional, for rounded corners */
+  display: inline-block;
+}
