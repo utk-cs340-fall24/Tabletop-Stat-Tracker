@@ -3,3 +3,6 @@
 ################################################################################
 
 /RetroRoller/web/startup/tokens.json
+/.vs
+/RetroRoller/node_modules
+/RetroRoller/web/hostview/hostView2_alt.html
