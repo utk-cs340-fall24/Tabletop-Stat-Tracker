@@ -215,6 +215,56 @@
                 }
             });
 
+// Select all dice images
+const diceImages = document.querySelectorAll(".dice-type img");
+
+// Function to start rolling animation
+function startRollingAnimation() {
+    diceImages.forEach(img => img.classList.add("rolling"));
+}
+
+// Function to stop rolling animation
+function stopRollingAnimation() {
+    diceImages.forEach(img => img.classList.remove("rolling"));
+}
+
+// Roll button click event
+rollButton.addEventListener("click", () => {
+    startRollingAnimation();  // Start the rolling animation
+
+    setTimeout(() => {
+        // Stop the animation after 1 second (or any duration you prefer)
+        stopRollingAnimation();
+
+        // Existing dice roll logic
+        const diceQuantities = {};
+        const manualInput = document.getElementById("dice-input").value;
+
+        // Collect quantities for each type of die
+        document.querySelectorAll(".dice-type").forEach(dice => {
+            const diceValue = dice.getAttribute("data-dice");
+            const quantity = parseInt(dice.querySelector("[data-quantity]").textContent);
+            if (quantity > 0) {
+                diceQuantities[diceValue] = quantity; // Store quantity for the corresponding die type
+            }
+        });
+
+        // Validation check: Either quantities or manual input must be provided, but not both
+        if (Object.keys(diceQuantities).length > 0 && manualInput) {
+            rollResult.textContent = "Please use either the dice selection or manual input, not both.";
+            return; // Exit the function if both are provided
+        }
+
+        // Call the rollDice function with the collected quantities and manual input
+        if(manualInput) rollDice(manualInput);
+        else if(Object.keys(diceQuantities).length > 0) rollDice(diceQuantities);
+        else rollResult.textContent = "No dice selected or input provided.";
+    }, 1000); // Adjust duration as needed
+});
+
+
+
+
             // Validation check: Either quantities or manual input must be provided, but not both
             if (Object.keys(diceQuantities).length > 0 && manualInput) {
                 rollResult.textContent = "Please use either the dice selection or manual input, not both.";
