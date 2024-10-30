@@ -1,0 +1,101 @@
+[InitTracker.js]
+
+InitTracker.js (cohernandez117 on 10/29/2024 at 00:52): function setList(name, init){
+InitTracker.js (cohernandez117 on 10/29/2024 at 00:52):     track.push(new Pers(name, init));
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39):     track.sort(initSort);
+InitTracker.js (cohernandez117 on 10/14/2024 at 22:39): }
+InitTracker.js (cohernandez117 on 10/29/2024 at 00:52): function getList(){
+InitTracker.js (cohernandez117 on 10/29/2024 at 00:52):     return track;
+InitTracker.js (cohernandez117 on 10/29/2024 at 00:52): }
+InitTracker.js (cohernandez117 on 10/29/2024 at 00:52): function initSort(a,b){
+InitTracker.js (cohernandez117 on 10/29/2024 at 00:52):     return a.init - b.init;
+InitTracker.js (cohernandez117 on 10/29/2024 at 00:52): }
+
+[hostViewInit.html]
+
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):     <link rel="stylesheet" href="hostView_stylesheet_init.css">
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         <!--<input type="text" class="search-box" placeholder="Enter player names, separated by commas">
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         <button id="forward-btn">Make List</button> -->
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         <div class="init-insert">
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             <h2>Add Combatant and Initiative</h2>
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             <input type="text" id="combatInput" class="combat-Input" placeholder="Enter Combatant" required>
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             <input type="text" id="initInput" class="init-Input" placeholder="Enter Initiative" required>
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             <button id="addButton">Add</button>
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             <button id="rmButton">Clear</button>
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         </div>
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         <div class="list">
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             <h2>Combat List</h2>
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             <ul class="combat-list" id="combatList"></ul>
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         </div>
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         const nameList = document.getElementById('combatList');
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         const nameInput = document.getElementById('combatInput');
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         const numberInput = document.getElementById('initInput');
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         const addButton = document.getElementById('addButton');
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         addButton.addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             const name = nameInput.value.trim();
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             const number = numberInput.value.trim();
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             if (name && number) {
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):                 setList(name, number);
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):                 const list = getList();
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):                 nameList.innerHTML = '';
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):                 list.forEach(function(combatant) {
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):                     const item = document.createElement('li');
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):                     item.textContent = `${combatant.name}: ${combatant.init}`;
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):                     nameList.appendChild(item);
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):                 });
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):                 nameInput.value = '';
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):                 numberInput.value = '';
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             } else {
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):                 alert('Please enter both a name and a number.');
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             }
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         });
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         rmButton.addEventListener('click', function() {
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):             nameList.innerHTML = '';
+hostViewInit.html (cohernandez117 on 10/29/2024 at 00:52):         });
+
+[hostView_stylesheet_init.css]
+
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): .search-container {
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   position: absolute;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   top: 20px;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   right: 50px; /* Adjust to position the search box */
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   display: block;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   align-items: center; /* This will align both input and button vertically */
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): }
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): .init-insert {
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   padding: 5px;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   margin-bottom: 20px;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   margin-right: 5px;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   font-size: 0.8rem;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   border: none;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   color: white;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   vertical-align: middle;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): }
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): .list {
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   margin-top: 10px;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   text-align: right;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): }
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): .combat-list {
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   padding: 0; /* Remove default padding */
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   list-style-type: none; /* Remove bullet points */
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): }
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): .combat-Input {
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   padding: 5px;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   font-size: 0.8rem;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   border: none;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   background-color: #222;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   color: white;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   margin-right: 10px;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   vertical-align: middle;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): }
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): .init-Input {
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   padding: 5px;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   font-size: 0.8rem;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   border: none;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   background-color: #222;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   color: white;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   margin-right: 10px;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   vertical-align: middle;
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): }
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52): #addbutton:hover {
+hostView_stylesheet_init.css (cohernandez117 on 10/29/2024 at 00:52):   background-color: #7209b7;
