@@ -96,3 +96,14 @@ e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 723)
 e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 724) .rolling {
 e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 725)   animation: roll-animation 0.5s linear infinite;
 e1321b51 (McKinley Harmon 2024-10-29 20:28:46 -0400 726) }
+
+I was running into issues with git blame so I just added the last thing I made here
+
+
+.enemy-name {
+  border: 2px solid #ff0000; /* Choose any color you like */
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px; /* Optional, for rounded corners */
+  display: inline-block;
+}
