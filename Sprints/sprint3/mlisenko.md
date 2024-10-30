@@ -6,11 +6,10 @@
 - Create new png icons for the dice in the dropdown and display their numerical value [#36](https://github.com/utk-cs340-fall24/Tabletop-Stat-Tracker/issues/36)
 - Create elements and stylings of "dummy card" displayed on player's client [#37](https://github.com/utk-cs340-fall24/Tabletop-Stat-Tracker/issues/37)
 - Create functions for creating, updating, and deleting dummy cards on player's client [#38](https://github.com/utk-cs340-fall24/Tabletop-Stat-Tracker/issues/38)
-- Create enemy card that lists enemies in a tabletop role-playing game [#39](https://github.com/utk-cs340-fall24/Tabletop-Stat-Tracker/issues/39)
 
 
 ## What I did not do:
-- I was not able to create the enemy list. We have something in development for it but it wasn't finished for the sprint 3.
+- I did all my assigned issues but I should have contributed more to the visual side of the enemy class. But that's okay because it wasn't a main concern for this sprint.
 
 ## Problems I encountered:
 - I encountered some problems testing as I was working on some code that worked along with the server (the dummy card functions) and since I am less familiar with the server side of our code, it made it difficult to test and see what I needed to fix on my own
