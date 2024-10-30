@@ -1,0 +1,391 @@
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):     <script>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         const ws = new WebSocket("ws://" + window.location.host);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         // PostCard class
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         class PostCard {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             constructor(ip, name, attributes = {}, items = []) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 this.IP = ip;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 this.Name = name;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 this.Attributes = attributes;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 this.Items = items;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         // Store all the dummy cards
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         const dummyCards = {};
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         // Creates a dummy player card
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         function createDummyCard(postCard) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const cardId = postCard.IP; // Use IP as the id
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const cardContainer = document.getElementById('dummyCardsContainer');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             // Check if card already exists
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             if (!dummyCards[cardId]) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 const cardElement = document.createElement('div');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 cardElement.id = cardId;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 cardElement.className = 'dummy-card';
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 cardElement.innerHTML = `
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     <h3>${postCard.Name}</h3>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     <p>IP: ${postCard.IP}</p>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     <p>Attributes: ${JSON.stringify(postCard.Attributes)}</p>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     <p>Items: ${JSON.stringify(postCard.Items)}</p>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 `;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 cardContainer.appendChild(cardElement);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 dummyCards[cardId] = cardElement; // Store reference
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         // Updates dummy player card
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         function updateDummyCard(postCard) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const cardId = postCard.IP;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const cardElement = dummyCards[cardId];
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             if (cardElement) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 cardElement.innerHTML = `
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     <h3>${postCard.Name}</h3>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     <p>IP: ${postCard.IP}</p>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     <p>Attributes: ${JSON.stringify(postCard.Attributes)}</p>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     <p>Items: ${JSON.stringify(postCard.Items)}</p>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 `;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         // Destroys dummy player card
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         function destroyDummyCard(ip) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const cardElement = dummyCards[ip];
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             if (cardElement) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 cardElement.remove(); // Remove from the DOM
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 delete dummyCards[ip]; // Remove from the reference
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44): //-------------------------------------------------------------------------------------------------------------------------//
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         const playerContainer = document.getElementById('players-container');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         const iconPopup = document.getElementById('icon-popup');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         let currentPlayerIcon = null; // Track the player icon currently being updated
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         let players = [];
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         let currentPlayerIndex = -1;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         document.addEventListener("DOMContentLoaded", () => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const incrementButtons = document.querySelectorAll(".increment");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const decrementButtons = document.querySelectorAll(".decrement");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const rollButton = document.querySelector(".roll-button");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const resultDisplay = document.getElementById("roll-result");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             // Add event listeners for increment and decrement buttons
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             incrementButtons.forEach(button => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 button.addEventListener("click", () => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     const quantitySpan = button.parentElement.querySelector("[data-quantity]");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     let quantity = parseInt(quantitySpan.textContent);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     quantitySpan.textContent = quantity + 1;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             decrementButtons.forEach(button => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 button.addEventListener("click", () => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     const quantitySpan = button.parentElement.querySelector("[data-quantity]");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     let quantity = parseInt(quantitySpan.textContent);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     if (quantity > 0) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         quantitySpan.textContent = quantity - 1;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //// Roll button click event
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //rollButton.addEventListener("click", () => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    const diceQuantities = {};
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    const manualInput = document.getElementById("dice-input").value;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    // Collect quantities for each type of die
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    document.querySelectorAll(".dice-type").forEach(dice => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        const diceValue = dice.getAttribute("data-dice");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        const quantity = parseInt(dice.querySelector("[data-quantity]").textContent);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        if (quantity > 0) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            diceQuantities[diceValue] = quantity; // Store quantity for the corresponding die type
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    // Validation check: Either quantities or manual input must be provided, but not both
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    if (Object.keys(diceQuantities).length > 0 && manualInput) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        rollResult.textContent = "Please use either the dice selection or manual input, not both.";
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        return; // Exit the function if both are provided
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    // Call the rollDice function with the collected quantities and manual input
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    if(manualInput) rollDice(manualInput);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    else if(Object.keys(diceQuantities).length > 0) rollDice(diceQuantities);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    else rollResult.textContent = "No dice selected or input provided.";
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //});
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):     });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //// Function to handle dice rolling
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //function rollDice(input) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    //const input = document.getElementById('dice-input').value;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    if (typeof input == "string") {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        const regex = /^(\d+)d(\d+)$/; // Regular expression to match dice format (e.g., 4d20)
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        const match = input.match(regex);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        if (match) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            const numDice = parseInt(match[1]);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            const diceType = parseInt(match[2]);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            let total = 0;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            const results = [];
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            for (let i = 0; i < numDice; i++) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //                const roll = Math.floor(Math.random() * diceType) + 1;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //                results.push(roll);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //                total += roll;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            rollResult.textContent = `Total: ${total}\nRolls:\n${results.join(', ')}`; // Display results
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        } else {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            rollResult.textContent = 'Invalid input! Please use format like 4d20.';
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    else if (typeof input == "object") {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        let total = 0;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        const allResults = [];
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        for (const [diceType, quantity] of Object.entries(input)) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            const diceResults = [];
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            for (let i = 0; i < quantity; i++) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //                const roll = Math.floor(Math.random() * parseInt(diceType)) + 1;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //                diceResults.push(roll);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //                total += roll;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            allResults.push(`${quantity}d${diceType}: [${diceResults.join(', ')}]`);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        rollResult.textContent = `Total: ${total}\nRolls:\n${allResults.join('\n')}`;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    else {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        rollResult.textContent = 'Unable to process roll. Try again.';
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //}
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         // Function to open the icon popup
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         function openIconPopup(playerIcon) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             currentPlayerIcon = playerIcon; // Store the current player's icon to update
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             iconPopup.style.display = 'block';
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         // Event listener for icon selection
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         const iconOptions = document.querySelectorAll('.icon-option');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         iconOptions.forEach(icon => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             icon.addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 if (currentPlayerIcon) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     currentPlayerIcon.src = this.src; // Update the player's icon
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 iconPopup.style.display = 'none'; // Close the popup
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         // Function to add a new player
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const playerDiv = document.createElement('div');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             playerDiv.className = 'player';
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             playerDiv.innerHTML = `
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 <img src="player_icon.png" alt="Player Icon" class="player-icon" style="filter: hue-rotate(${Math.floor(Math.random() * 570)}deg)">
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 <input type="text" placeholder="Player Name" class="player-name">
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 <h3 class="attributes-h3">Attributes</h3>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 <div class="stat-container attributes-container"></div>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 <button class="add-attribute">Add Attribute</button>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 <!-- Inventory section -->
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 <h3>Inventory</h3>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 <div class="stat-container inventory-container"></div>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 <button class="add-item">Add Inventory</button>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 <button class="remove-player">Remove Player</button>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 <!-- Button to log player data -->
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             `;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             playerContainer.appendChild(playerDiv);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             // Make the player icon clickable
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const playerIcon = playerDiv.querySelector('.player-icon');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             playerIcon.addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 openIconPopup(playerIcon); // Open the popup for this specific player's icon
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             // Handle attribute addition
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const addAttributeBtn = playerDiv.querySelector('.add-attribute');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const attributesContainer = playerDiv.querySelector('.attributes-container');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             addAttributeBtn.addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 const newAttribute = document.createElement('div');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 newAttribute.className = 'stat-container';
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 newAttribute.innerHTML = `
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     <label class="attribute">
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         <button class="remove-attribute-x">X</button>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         <input type="text" class="attribute-name" placeholder="Attribute Name">
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         <button class="stat-button decrement">-</button>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         <input type="number" class="stat-input" value="0">
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         <button class="stat-button increment">+</button>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     </label>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 `;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 const statInput = newAttribute.querySelector('.stat-input');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 newAttribute.querySelector('.increment').addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     statInput.value = parseInt(statInput.value) + 1;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 newAttribute.querySelector('.decrement').addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     statInput.value = parseInt(statInput.value) - 1;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 newAttribute.querySelector('.remove-attribute-x').addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     newAttribute.remove();
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 attributesContainer.appendChild(newAttribute);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             // Handle inventory addition (similar to attributes)
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const addItemBtn = playerDiv.querySelector('.add-item');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const inventoryContainer = playerDiv.querySelector('.inventory-container');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             addItemBtn.addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 const newItem = document.createElement('div');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 newItem.className = 'stat-container';
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 newItem.innerHTML = `
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     <label class="item">
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         <button class="remove-item-x">X</button>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         <input type="text" class="item-name" placeholder="Item Name">
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         <button class="stat-button decrement">-</button>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         <input type="number" class="stat-input" value="0">
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         <button class="stat-button increment">+</button>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     </label>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 `;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 const itemInput = newItem.querySelector('.stat-input');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 newItem.querySelector('.increment').addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     itemInput.value = parseInt(itemInput.value) + 1;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 newItem.querySelector('.decrement').addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     itemInput.value = parseInt(itemInput.value) - 1;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 newItem.querySelector('.remove-item-x').addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     newItem.remove();
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 inventoryContainer.appendChild(newItem);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             // Handle player removal
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const removePlayerBtn = playerDiv.querySelector('.remove-player');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             removePlayerBtn.addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 playerDiv.remove();
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 ws.send(2)
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //// Update player data functionality
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //const submitPlayerBtn = playerDiv.querySelector('.submit-player');
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //submitPlayerBtn.addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    const playerName = playerDiv.querySelector('.player-name').value;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    const attributes = [...attributesContainer.querySelectorAll('.attribute')].map(attr => ({
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    name: attr.querySelector('.attribute-name').value,
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    value: attr.querySelector('.stat-input').value
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    }));
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    // Use '.item' class for inventory items
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    const inventory = [...inventoryContainer.querySelectorAll('.item')].map(item => ({
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //        name: item.querySelector('.item-name').value,
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //        value: item.querySelector('.stat-input').value
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    }));
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    //Log player data to the console
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    console.log({
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //        playerName,
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //        attributes,
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //        inventory
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //});
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         // Close the icon popup
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         document.getElementById('close-popup').addEventListener('click', function() {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             iconPopup.style.display = 'none';
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         ws.addEventListener("open", () => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             console.log("Connected");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             ws.send(1);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         ws.addEventListener("message", ({ data }) => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             if (data == 1) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 const postage = new PostCard(0, playerDiv.querySelector('.player-name').value,);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 package = JSON.stringify(postage);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 ws.send(package);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //else if (data.name == "destroy") {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    console.log("Destroyed?");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //    destroyDummyCard(data.IP);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             //}
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             else {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 const letter = JSON.parse(data);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 console.log(letter.Name + "Bruh?");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 if (letter.Name == "destroy") {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     console.log("Destroyed?");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     destroyDummyCard(letter.IP);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 else {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     console.log(letter);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     console.log("Dummy Deployed?");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     if (dummyCards[letter.IP] == null) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         createDummyCard(letter);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     else {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                         updateDummyCard(letter);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                     console.log(dummyCards);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):                 }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         });
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         playerDiv.querySelector('.player-name').addEventListener('input', () => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             const postage = new PostCard(0, playerDiv.querySelector('.player-name').value,);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             package = JSON.stringify(postage);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):             ws.send(package);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         })
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //const markedIPs = [];
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //let joinedIPs = 0;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //ws.onmessage = (event) => {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    console.log(joinedIPs);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    const temp = JSON.parse(event.data);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    let found = 0;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    if (joinedIPs == 0) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        markedIPs[joinedIPs] = temp.IP;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        console.log("Marked IP " + joinedIPs + "is equal to " + markedIPs[joinedIPs]);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        createDummyCard(temp);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        joinedIPs++;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    else {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        for (let i = 0; i < joinedIPs; i++) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            console.log(markedIPs[i] + " Vs " + temp);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            if (markedIPs[i] == event.data) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //                console.log("IP already joined!");
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //                found = 1;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        if (found != 1) {
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            markedIPs[joinedIPs] = event.data;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            createDummyCard(temp);
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //            joinedIPs++;
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //        }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //    }
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):         //};
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44):     </script>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44): </body>
+playerview2.html (aaronsparks2022@gmail.com on 10/29/2024 at 23:44): </html>
+server.js    (aaronsparks2022@gmail.com on 10/25/2024 at 20:46): const WebSocket = require('ws');
+server.js    (aaronsparks2022@gmail.com on 10/25/2024 at 20:46): })
+server.js    (aaronsparks2022@gmail.com on 10/25/2024 at 20:46): const wss = new WebSocket.Server({ server });
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38): class PostCard {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     constructor(ip, name, attributes = {}, items = []) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         this.IP = ip;
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         this.Name = name;
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         this.Attributes = attributes;
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         this.Items = items;
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     }
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38): }
+server.js    (aaronsparks2022@gmail.com on 10/25/2024 at 20:46): wss.on('connection', function connection(ws) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     console.log("New client connected! on " + ws._socket.remoteAddress);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     ws.id = ws._socket.remoteAddress;
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     ws.on("message", data => {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         console.log(`Recieved Signal ${data} from ${ws._socket.remoteAddress}`);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         if (data == 1) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):             wss.clients.forEach(function each(client) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                 if (client !== ws && client.readyState === WebSocket.OPEN) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                     const Test = new PostCard(ws._socket.remoteAddress, "");
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                     Letter = JSON.stringify(Test);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                     console.log(Letter);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                     client.send(Letter);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                     client.send(1);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                 }
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):             });
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         }
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         else if (data == 2) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 23:02):             wss.clients.forEach(function each(client) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 23:02):                 if (client !== ws && client.readyState === WebSocket.OPEN) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 23:02):                     const Test = new PostCard(ws._socket.remoteAddress, "destroy");
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 23:02):                     Letter = JSON.stringify(Test);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 23:02):                     console.log(Letter);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 23:02):                     client.send(Letter);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 23:02):                 }
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 23:02):             });
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         }
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         else {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):             wss.clients.forEach(function each(client) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                 if (client !== ws && client.readyState === WebSocket.OPEN) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                     IPadd = JSON.parse(data);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                     IPadd.IP = ws._socket.remoteAddress;
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                     data = JSON.stringify(IPadd);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                     client.send(data);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):                 }
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):             });
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         }
+server.js    (aaronsparks2022@gmail.com on 10/25/2024 at 20:46):     });
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     //wss.clients.forEach(function each(client) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     //    if (client !== ws && client.readyState === WebSocket.OPEN) {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     //        console.log(client.id);
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     //    }
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     //});
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     ws.on('close', () => {
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):         console.log("Client has disconnected!");
+server.js    (aaronsparks2022@gmail.com on 10/28/2024 at 22:38):     });
+server.js    (aaronsparks2022@gmail.com on 10/25/2024 at 20:46): });
+server.js    (aaronsparks2022@gmail.com on 10/25/2024 at 20:46): server.listen(8000, '0.0.0.0');
