@@ -19,7 +19,16 @@ In order to make starting the journey into tabletops easier. Players can expect 
 To get started, the runserver.bat file should be run by the GM. This file is found in **/Tabletop-Stat-Tracker/RetroRoller/runserver.bat**. After this is run, all players and the GM should go to the IP of the machine on port ***Aaron help*** on your web browser of choice. Once there, you will find a login screen asking for what kind of player you are: GM or player. After that, a session token will be needed in order to login, the session token is given by the server at boot up. Once used, you will find the main UI of the software.
 
 ## Add players:
-In the center of the screen, you will find add player button. This will ask for a name, stats, and inventory spaces. You can add and remove sttributes as you see fit, these are for you to decide what will be used and what will not be, such is the beauty of table tops!
+![Add player](exImg/Add_player.png)
+In the center of the screen, you will find add player button. This will ask for a name, stats, and inventory spaces. You can add and remove attributes as you see fit, these are for you to decide what will be used and what will not be, such is the beauty of table tops!
 
+## Dice roller:
+![Dice Roller](exImg/Dice_roller.png)
+Starting back at the top an woring clock wise, we see a dice roller button. This dropdown will work one of two ways:
+- the text field 
+- the dice counters
+If the text field is used, then a specific format must be used as follows:
+##d##
+The first set of "##" is the number of dice you wish to roll. The second "##" is the type of dice you are rolling. To put it into words, you could read "4d20" as "I am rolling 4 20 sided dice". The second way of doing it is to use the counters, they work in the same kind of way, except you are using a counter to say how many dice you want to roll. Keep in mind only one can be used at a time, so choose wisely!
 
 
