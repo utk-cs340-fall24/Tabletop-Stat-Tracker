@@ -145,7 +145,7 @@ button.remove-item {
   margin: 0 auto 10px;
   position: absolute;
   top: 10px;
-  right: 1425px;
+  right: 1415px;
   width: 90px;
   height: auto;
   z-index: 10;
@@ -199,33 +199,6 @@ h2.fade-in-text {
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
-}
-
-/* dice section next to the logo */
-.dice-section {
-  position: absolute;
-  top: 20px;
-  right: 1250px; /* adjust this value to control the spacing between the logo and dice section */
-  color: white;
-  font-size: 20px;
-  font-family: 'Press Start 2P', cursive;
-  display: flex;
-  align-items: center;
-}
-
-.dice-button {
-  background-color: #f72585;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  margin-left: 10px;
-  transition: background-color 0.3s;
-}
-
-.dice-button:hover {
-  background-color: #7209b7;
 }
 
 .search-container {
@@ -463,13 +436,14 @@ h2.fade-in-text {
     transform: translateY(-10px);
     display: block;
     background-color: #323131;
-    height: 500px;
+    height: fit-content;
     width: 300px;
     border: 5px double #f72585;
     border-radius: 10px;
     justify-content: center;
     text-align: center;
     align-items: center;
+    z-index: 10;
   }
   
   .dropdown.active > .dice-button + .dropdown-menu {
@@ -557,13 +531,165 @@ h2.fade-in-text {
     cursor: pointer;
     padding: 7px;
     margin: 15px;
+    margin-right: 5px;
     font-size: 0.7rem;
     justify-self: center;
     transition: background-color 0.3s;
+  }
+
+  .clear-button {
+    background-color: #323131;
+    border: 1px solid #f72585;
+    color: white;
+    cursor: pointer;
+    padding: 7px;
+    margin: 15px;
+    margin-left: 0px;
+    font-size: 0.7rem;
+    justify-self: center;
+  }
+
+  .clear-button:hover {
+    border-color: #7209b7;
   }
 
   #roll-result {
     white-space: pre;
     text-align: left;
     text-wrap: wrap;
+    margin-left: 10px;
+    line-height: 115%;
   }
+
+/* settings dropdown menu */
+.settings-section {
+  position: absolute; 
+  top: 10px; 
+  right: 10px; 
+  z-index: 1000; 
+}
+.settings-button {
+  object-fit: fill;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 11px;
+  right: 12px;
+  background: none;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  display: flex;
+} 
+.settings-button:hover {
+  background-color:#f72585;
+}
+.settings-button img {
+  width: 23px;
+  height: 23px;
+}
+.set-menu {
+  position: absolute;
+  right: 0px;
+  top: 60px;
+  padding: .75rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  transform: translateY(-10px);
+  background-color: #323131;
+  height: fit-content;
+  width: 300px;
+  border: 5px double #f72585;
+  border-radius: 10px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  z-index: 10;
+}
+.set-menu .end-session {
+  font-size: 0.8rem;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #f72585; 
+  border: none;
+  cursor: pointer; 
+  transition: background-color 0.3s;
+}
+.set-menu .end-session:hover {
+  background-color: #7209b7; 
+}
+.dropdown.active > .settings-button + .set-menu {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+.header {
+  position: fixed; 
+  top: 0;
+  width: 100%; 
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  z-index: 1000;
+}
+.end-session-confirmation {
+  margin-top: 10px;
+  font-size: .8rem;
+}
+.set-menu p {
+  margin-bottom: 10px;
+  font-size: 10px;
+  line-height: 115%;
+}
+.end-session-confirmation button {
+  font-size: .6rem;
+  margin-right: 5px; 
+  padding: 5px 10px;
+  background-color: #f72585;
+  color: white;
+  cursor: pointer; 
+}
+.end-session-confirmation button:hover {
+  background-color: #7209b7; 
+}
+
+/* Style the modal (pop-up) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1; /* Sit on top*/
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/* Modal content (the box inside) */
+.modal-content {
+  background-color: #323131;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  height: fit-content;
+  width: 300px;
+  border: 5px double #f72585;
+  border-radius: 10px;
+}
+
+h6 {
+  color: white;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+/* Modal buttons */
+.modal-content button {
+  margin: 12px;
+  padding: 10px;
+  font-size: 10px;
+}
+ 

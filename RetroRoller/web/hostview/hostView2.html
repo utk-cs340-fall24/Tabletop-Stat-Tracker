@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +13,22 @@
     <script src="node_modules/dice-roller-parser/dist/index.js"></script>
 
 </head>
+
 <body>
     <header class="header">
-        <img src="dndLogo.png" alt="DnD Logo" class="logo-icon"> 
-        <div class="dice-section"> 
+        <div class="settings-section">
+            <div class="dropdown" data-settings-dropdown>
+                <button class="settings-button" data-settings-button>
+                    <img src="settings.png" alt="Settings">
+                </button>
+                <div class="set-menu">
+                    <button class="end-session" id="end-session">End Session</button>
+                    <p><br><br>Report an issue? <br> Have a suggestion? <br><br> Email us: aspark17@vols.utk.edu </p>
+                </div>
+            </div>
+        </div>
+        <img src="dndLogo.png" alt="DnD Logo" class="logo-icon">
+        <div class="dice-section">
             <div class="dropdown" data-dropdown> <!-- dice roller dropdown -->
                 <button class="dice-button" data-dropdown-button>Dice Roller</button>
                 <div class="dropdown-menu">
@@ -65,7 +78,7 @@
                                 <span class="quantity" data-quantity>0</span>
                                 <button class="increment">+</button>
                             </div>
-                        </div>     
+                        </div>
                         <!-- Dice d20 -->
                         <div class="dice-type" data-dice="20">
                             <img src="d20.png" alt="d20">
@@ -74,17 +87,29 @@
                                 <span class="quantity" data-quantity>0</span>
                                 <button class="increment">+</button>
                             </div>
-                        </div>    
-                    </div>   
-                    <h5>Or enter dice manually:</h5>                           
+                        </div>
+                    </div>
+                    <h5>Or enter dice manually:</h5>
                     <div class="dropdown-input"> <!-- dice roller user input -->
-                        <input type="text" id="dice-input" name="dice-input" placeholder="ex. 4d20">
-                    </div>                 
-                <button class="roll-button">Roll</button>
-                <h4 id="roll-result"></h4> <!-- Display roll results here -->
+                        <input type="text" id="dice-input" name="dice-input" placeholder="ex. 4d10, 2d20, . . .">
+                    </div>
+                    <button class="roll-button">Roll</button>
+                    <button class="clear-button" id="clear-button">Clear</button>
+                    <h4 id="roll-result"></h4> <!-- Display roll results here -->
+                </div>
             </div>
-        </div>
     </header>
+
+    <!-- Modal (Confirmation Pop-up) -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <h6>End the session?</h6>
+            <hr width="100%" size="1" color=#0000E0>
+            <button class="save-session">Save Stats</button>
+            <button class="dont-save">Don't Save</button>
+            <button class="cancel-end-session">Cancel</button>
+        </div>
+    </div>
 
     <div class="search-container">
         <input type="text" class="search-box" placeholder="Enter player names, separated by commas">
@@ -132,7 +157,10 @@
             const incrementButtons = document.querySelectorAll(".increment");
             const decrementButtons = document.querySelectorAll(".decrement");
             const rollButton = document.querySelector(".roll-button");
+            const clearButton = document.getElementById("clear-button"); // Select by ID
             const resultDisplay = document.getElementById("roll-result");
+            const diceQuantityFields = document.querySelectorAll(".dice-type [data-quantity]");
+            const manualInput = document.getElementById("dice-input"); // Correct selector
 
             // Add event listeners for increment and decrement buttons
             incrementButtons.forEach(button => {
@@ -153,73 +181,102 @@
                 });
             });
 
-        // Roll button click event
-        rollButton.addEventListener("click", () => {
-            
-            const diceQuantities = {};
-            const manualInput = document.getElementById("dice-input").value;
+            // Roll button click event
+            rollButton.addEventListener("click", () => {
+                const diceQuantities = {};
+                const manualInputValue = manualInput.value;
 
-            // Collect quantities for each type of die
-            document.querySelectorAll(".dice-type").forEach(dice => {
-                const diceValue = dice.getAttribute("data-dice");
-                const quantity = parseInt(dice.querySelector("[data-quantity]").textContent);
-                if (quantity > 0) {
-                    diceQuantities[diceValue] = quantity; // Store quantity for the corresponding die type
+                document.querySelectorAll(".dice-type").forEach(dice => {
+                    const diceValue = dice.getAttribute("data-dice");
+                    const quantity = parseInt(dice.querySelector("[data-quantity]").textContent);
+                    if (quantity > 0) {
+                        diceQuantities[diceValue] = quantity;
+                    }
+                });
+
+                if (Object.keys(diceQuantities).length > 0 && manualInputValue) {
+                    resultDisplay.textContent = "Please use either the dice selection or manual input, not both.";
+                    return;
                 }
+
+                if (manualInputValue) rollDice(manualInputValue);
+                else if (Object.keys(diceQuantities).length > 0) rollDice(diceQuantities);
+                else resultDisplay.textContent = "No dice selected or input provided.";
             });
 
-            // Validation check: Either quantities or manual input must be provided, but not both
-            if (Object.keys(diceQuantities).length > 0 && manualInput) {
-                rollResult.textContent = "Please use either the dice selection or manual input, not both.";
-                return; // Exit the function if both are provided
-            }
-
-            // Call the rollDice function with the collected quantities and manual input
-            if(manualInput) rollDice(manualInput);
-            else if(Object.keys(diceQuantities).length > 0) rollDice(diceQuantities);
-            else rollResult.textContent = "No dice selected or input provided.";
+            // Clear button click event
+            clearButton.addEventListener("click", () => {
+                diceQuantityFields.forEach(field => {
+                    field.textContent = "0";
+                });
+                manualInput.value = ""; // Clear input field
+                resultDisplay.textContent = ""; // Clear result display
+            });
         });
-    });
-        // Function to handle dice rolling
+
         function rollDice(input) {
-            //const input = document.getElementById('dice-input').value;
             if (typeof input == "string") {
-                const regex = /^(\d+)d(\d+)$/; // Regular expression to match dice format (e.g., 4d20)
-                const match = input.match(regex);
-                if (match) {
-                    const numDice = parseInt(match[1]);
-                    const diceType = parseInt(match[2]);
-                    let total = 0;
-                    const results = [];
-                    for (let i = 0; i < numDice; i++) {
-                        const roll = Math.floor(Math.random() * diceType) + 1;
-                        results.push(roll);
-                        total += roll;
+                const diceInputs = input.split(',').map(dice => dice.trim());
+                let total = 0;
+                const allResults = [];  // Array to store each formatted result
+
+                // Loop through each dice notation
+                diceInputs.forEach(dice => {
+                    const regex = /^(\d+)d(\d+)$/; // Match format like 4d20
+                    const match = dice.match(regex);
+
+                    if (match) {
+                        const numDice = parseInt(match[1]); // Number of dice to roll
+                        const diceType = parseInt(match[2]); // Number of sides on the dice
+                        const diceResults = [];
+                        let diceTotal = 0;
+
+                        // Roll each die and collect the results
+                        for (let i = 0; i < numDice; i++) {
+                            const roll = Math.floor(Math.random() * diceType) + 1;
+                            diceResults.push(roll);
+                            total += roll;
+                            diceTotal += roll;
+                        }
+
+                        // Format each dice notation result
+                        allResults.push(`- ${numDice}d${diceType}:\n  Rolls: [${diceResults.join(', ')}]\n  Subtotal: ${diceTotal}`);
+                    } else {
+                        // If invalid input, add an error message to results
+                        allResults.push(`${dice}: Invalid input! Please use format like 4d20.`);
                     }
-                    rollResult.textContent = `Total: ${total}\nRolls:\n${results.join(', ')}`; // Display results
-                } else {
-                    rollResult.textContent = 'Invalid input! Please use format like 4d20.';
-                }
+                });
+
+                // Display the final output
+                rollResult.textContent = `Total: ${total}\n\nDetails:\n${allResults.join('\n\n')}`;
             }
             else if (typeof input == "object") {
                 let total = 0;
                 const allResults = [];
+
                 for (const [diceType, quantity] of Object.entries(input)) {
                     const diceResults = [];
+                    let diceTotal = 0;
+
                     for (let i = 0; i < quantity; i++) {
                         const roll = Math.floor(Math.random() * parseInt(diceType)) + 1;
                         diceResults.push(roll);
                         total += roll;
+                        diceTotal += roll;
                     }
-                    allResults.push(`${quantity}d${diceType}: [${diceResults.join(', ')}]`);
+
+                    // Collect formatted results per dice type
+                    allResults.push(`- ${quantity}d${diceType}:\n  Rolls: [${diceResults.join(', ')}]\n  Subtotal: ${diceTotal}`);
                 }
-                
-                rollResult.textContent = `Total: ${total}\nRolls:\n${allResults.join('\n')}`;
+
+                // Display final output
+                rollResult.textContent = `Total: ${total}\n\nDetails:\n${allResults.join('\n\n')}`;
             }
             else {
                 rollResult.textContent = 'Unable to process roll. Try again.';
             }
         }
+
 
         // Forward and backward navigation logic for highlighting players
         function highlightPlayer(playerName) {
@@ -234,7 +291,7 @@
             });
         }
 
-        forwardBtn.addEventListener('click', function() {
+        forwardBtn.addEventListener('click', function () {
             const playerNames = searchBox.value.split(',').map(name => name.trim());
             if (playerNames.length > 0) {
                 currentPlayerIndex = (currentPlayerIndex + 1) % playerNames.length;
@@ -242,7 +299,7 @@
             }
         });
 
-        backwardBtn.addEventListener('click', function() {
+        backwardBtn.addEventListener('click', function () {
             const playerNames = searchBox.value.split(',').map(name => name.trim());
             if (playerNames.length > 0) {
                 currentPlayerIndex = (currentPlayerIndex - 1 + playerNames.length) % playerNames.length;
@@ -259,7 +316,7 @@
         // Event listener for icon selection
         const iconOptions = document.querySelectorAll('.icon-option');
         iconOptions.forEach(icon => {
-            icon.addEventListener('click', function() {
+            icon.addEventListener('click', function () {
                 if (currentPlayerIcon) {
                     currentPlayerIcon.src = this.src; // Update the player's icon
                 }
@@ -268,7 +325,7 @@
         });
 
         // Function to add a new player
-        addPlayerBtn.addEventListener('click', function() {
+        addPlayerBtn.addEventListener('click', function () {
             const playerDiv = document.createElement('div');
             playerDiv.className = 'player';
 
@@ -291,14 +348,14 @@
 
             // Make the player icon clickable
             const playerIcon = playerDiv.querySelector('.player-icon');
-            playerIcon.addEventListener('click', function() {
+            playerIcon.addEventListener('click', function () {
                 openIconPopup(playerIcon); // Open the popup for this specific player's icon
             });
 
             // Handle attribute addition
             const addAttributeBtn = playerDiv.querySelector('.add-attribute');
             const attributesContainer = playerDiv.querySelector('.attributes-container');
-            addAttributeBtn.addEventListener('click', function() {
+            addAttributeBtn.addEventListener('click', function () {
                 const newAttribute = document.createElement('div');
                 newAttribute.className = 'stat-container';
                 newAttribute.innerHTML = `
@@ -311,13 +368,13 @@
                     </label>
                 `;
                 const statInput = newAttribute.querySelector('.stat-input');
-                newAttribute.querySelector('.increment').addEventListener('click', function() {
+                newAttribute.querySelector('.increment').addEventListener('click', function () {
                     statInput.value = parseInt(statInput.value) + 1;
                 });
-                newAttribute.querySelector('.decrement').addEventListener('click', function() {
+                newAttribute.querySelector('.decrement').addEventListener('click', function () {
                     statInput.value = parseInt(statInput.value) - 1;
                 });
-                newAttribute.querySelector('.remove-attribute-x').addEventListener('click', function() {
+                newAttribute.querySelector('.remove-attribute-x').addEventListener('click', function () {
                     newAttribute.remove();
                 });
 
@@ -327,7 +384,7 @@
             // Handle inventory addition (similar to attributes)
             const addItemBtn = playerDiv.querySelector('.add-item');
             const inventoryContainer = playerDiv.querySelector('.inventory-container');
-            addItemBtn.addEventListener('click', function() {
+            addItemBtn.addEventListener('click', function () {
                 const newItem = document.createElement('div');
                 newItem.className = 'stat-container';
                 newItem.innerHTML = `
@@ -340,13 +397,13 @@
                     </label>
                 `;
                 const itemInput = newItem.querySelector('.stat-input');
-                newItem.querySelector('.increment').addEventListener('click', function() {
+                newItem.querySelector('.increment').addEventListener('click', function () {
                     itemInput.value = parseInt(itemInput.value) + 1;
                 });
-                newItem.querySelector('.decrement').addEventListener('click', function() {
+                newItem.querySelector('.decrement').addEventListener('click', function () {
                     itemInput.value = parseInt(itemInput.value) - 1;
                 });
-                newItem.querySelector('.remove-item-x').addEventListener('click', function() {
+                newItem.querySelector('.remove-item-x').addEventListener('click', function () {
                     newItem.remove();
                 });
 
@@ -355,16 +412,16 @@
 
             // Handle player removal
             const removePlayerBtn = playerDiv.querySelector('.remove-player');
-            removePlayerBtn.addEventListener('click', function() {
+            removePlayerBtn.addEventListener('click', function () {
                 playerDiv.remove();
             });
         });
 
         // Close the icon popup
-        document.getElementById('close-popup').addEventListener('click', function() {
+        document.getElementById('close-popup').addEventListener('click', function () {
             iconPopup.style.display = 'none';
         });
     </script>
 </body>
-</html>
 
+</html>
