@@ -82,8 +82,14 @@ wss.on('connection', function connection(ws) {
 
     ws.on("message", data => {
         console.log(`Recieved Signal ${data} from ${ws._socket.remoteAddress}`);
-
-        if (data == 1) {
+        if (data == 0) {
+            wss.clients.forEach(function each(client) {
+                if (client !== ws && client.readyState === WebSocket.OPEN) {
+                    client.send(1);
+                }
+            });
+        }
+        else if (data == 1) {
             wss.clients.forEach(function each(client) {
                 if (client !== ws && client.readyState === WebSocket.OPEN) {
                     const Test = new PostCard(ws._socket.remoteAddress, "");
