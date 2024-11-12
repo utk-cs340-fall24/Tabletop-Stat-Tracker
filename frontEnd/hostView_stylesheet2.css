@@ -330,14 +330,20 @@ h2.fade-in-text {
 }
 
 .icon-popup {
-  display: none; /* Hidden by default */
+  display: none; /* Initially hidden */
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
   padding: 20px;
-  border: 3px solid
+  width: 80%;
+  max-width: 500px; /* Max width for the popup */
+  height: 60%;
+  overflow-y: auto; /* Allow vertical scroll */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 
