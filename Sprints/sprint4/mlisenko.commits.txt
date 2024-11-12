@@ -1,0 +1,103 @@
+59cabe67 (Mike Lisenko              2024-11-12 00:35:52 -0500 156)             <img src="player_base.png" alt="Player Icon 1" class="icon-option">
+59cabe67 (Mike Lisenko              2024-11-12 00:35:52 -0500 158)             <img src="player_knight.png" alt="Player Icon 3" class="icon-option">
+5b52f3ac (Mike Lisenko              2024-11-12 00:51:04 -0500 159)             <img src="player_boy.png" alt="Player Icon 4" class="icon-option">
+59cabe67 (Mike Lisenko              2024-11-12 00:35:52 -0500 160)             <img src="player_girl.png" alt="Player Icon 5" class="icon-option">
+59cabe67 (Mike Lisenko              2024-11-12 00:35:52 -0500 161)             <img src="player_elf.png" alt="Player Icon 6" class="icon-option">
+59cabe67 (Mike Lisenko              2024-11-12 00:35:52 -0500 162)             <img src="player_hood.png" alt="Player Icon 7" class="icon-option">
+59cabe67 (Mike Lisenko              2024-11-12 00:35:52 -0500 163)             <img src="player_wings.png" alt="Player Icon 8" class="icon-option">
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 370)         // Close the icon popup
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 371)         document.getElementById('close-popup').addEventListener('click', function() {
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 372)             iconPopup.style.display = 'none'; // Hide the popup when clicked
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 373)         });
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 374) 
+5b52f3ac (Mike Lisenko              2024-11-12 00:51:04 -0500 333)   display: none; /* Initially hidden */
+5b52f3ac (Mike Lisenko              2024-11-12 00:51:04 -0500 338)   background-color: rgba(0, 0, 0, 0.8);
+5b52f3ac (Mike Lisenko              2024-11-12 00:51:04 -0500 339)   color: white;
+5b52f3ac (Mike Lisenko              2024-11-12 00:51:04 -0500 341)   width: 80%;
+5b52f3ac (Mike Lisenko              2024-11-12 00:51:04 -0500 342)   max-width: 500px; /* Max width for the popup */
+5b52f3ac (Mike Lisenko              2024-11-12 00:51:04 -0500 343)   height: 60%;
+5b52f3ac (Mike Lisenko              2024-11-12 00:51:04 -0500 344)   overflow-y: auto; /* Allow vertical scroll */
+5b52f3ac (Mike Lisenko              2024-11-12 00:51:04 -0500 345)   border-radius: 10px;
+5b52f3ac (Mike Lisenko              2024-11-12 00:51:04 -0500 346)   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+c2150997 (Mike Lisenko              2024-11-12 01:01:32 -0500  36)             <img src="player_base.png" alt="Player Icon 1" class="icon-option">
+c2150997 (Mike Lisenko              2024-11-12 01:01:32 -0500  38)             <img src="player_knight.png" alt="Player Icon 3" class="icon-option">
+c2150997 (Mike Lisenko              2024-11-12 01:01:32 -0500  39)             <img src="player_boy.png" alt="Player Icon 4" class="icon-option">
+c2150997 (Mike Lisenko              2024-11-12 01:01:32 -0500  40)             <img src="player_girl.png" alt="Player Icon 5" class="icon-option">
+c2150997 (Mike Lisenko              2024-11-12 01:01:32 -0500  41)             <img src="player_elf.png" alt="Player Icon 6" class="icon-option">
+c2150997 (Mike Lisenko              2024-11-12 01:01:32 -0500  42)             <img src="player_hood.png" alt="Player Icon 7" class="icon-option">
+c2150997 (Mike Lisenko              2024-11-12 01:01:32 -0500  43)             <img src="player_wings.png" alt="Player Icon 8" class="icon-option">
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 230) 
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 231)         // Close the icon popup
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 232)         document.getElementById('close-popup').addEventListener('click', function() {
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 233)             iconPopup.style.display = 'none'; // Hide the popup when clicked
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)         });
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)    
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)        /* Apply this CSS to highlight buttons on hover */
+2b9a5e3e (Mike Lisenko              2024-11-12 11:34:39 -0500 234)        button:hover {
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)          background-color: #f0e68c; /* Change to your preferred color */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)          color: #333; /* Optional: Change text color */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)          border: 1px solid #ccc; /* Optional: Add border */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)          cursor: pointer; /* Adds pointer to indicate it's clickable */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)          transition: background-color 0.3s; /* Smooth transition */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)         }
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)          /* Apply a fading color change effect to the text */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)        .fade-in-text p {
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)           font-weight: bold; /* Optional, to make the text stand out */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)           animation: colorChange 12s infinite; /* Apply the animation */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)        }
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)          /* Define the colorChange animation */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)          @keyframes colorChange {
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)            0% {
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)             color: #FF5733; /* Start with red */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)            }
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)            25% {
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)             color: #33FF57; /* Change to green */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)            }
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)            50% {
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)             color: #3357FF; /* Change to blue */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)            }
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)            75% {
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)             color: #FFD700; /* Change to gold */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)            }
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)            100% {
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)             color: #FF5733; /* Return to red */
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)            }
+2b9a5e3e (Mike Lisenko              2024-11-12 12:34:39 -0500 234)          }
+
+
+NOTE: These are the player icons I worked on. I coulnd't find a better way of showing the blame for them since it isn't lines of code but thought I should still include it
+Date:   Tue Nov 12 09:39:19 2024 -0500
+diff --git a/RetroRoller/web/playerview/player_base.png b/RetroRoller/web/playerview/player_base.png
+new file mode 100644
+index 0000000..d5cdb32
+Binary files /dev/null and b/RetroRoller/web/playerview/player_base.png differ
+diff --git a/RetroRoller/web/playerview/player_boy.png b/RetroRoller/web/playerview/player_boy.png
+new file mode 100644
+index 0000000..6c6730e
+Binary files /dev/null and b/RetroRoller/web/playerview/player_boy.png differ
+diff --git a/RetroRoller/web/playerview/player_elf.png b/RetroRoller/web/playerview/player_elf.png
+new file mode 100644
+index 0000000..790d508
+Binary files /dev/null and b/RetroRoller/web/playerview/player_elf.png differ
+diff --git a/RetroRoller/web/playerview/player_girl.png b/RetroRoller/web/playerview/player_girl.png
+new file mode 100644
+index 0000000..6959ad2
+Binary files /dev/null and b/RetroRoller/web/playerview/player_girl.png differ
+diff --git a/RetroRoller/web/playerview/player_hood.png b/RetroRoller/web/playerview/player_hood.png
+new file mode 100644
+index 0000000..eb299b0
+Binary files /dev/null and b/RetroRoller/web/playerview/player_hood.png differ
+diff --git a/RetroRoller/web/playerview/player_knight.png b/RetroRoller/web/playerview/player_knight.png
+new file mode 100644
+index 0000000..82ba4ba
+Binary files /dev/null and b/RetroRoller/web/playerview/player_knight.png differ
+diff --git a/RetroRoller/web/playerview/player_wings.png b/RetroRoller/web/playerview/player_wings.png
+new file mode 100644
+index 0000000..66a0f8a
+Binary files /dev/null and b/RetroRoller/web/playerview/player_wings.png differ
+diff --git a/RetroRoller/web/playerview/player_wizard.png b/RetroRoller/web/playerview/player_wizard.png
+new file mode 100644
+index 0000000..ed15449
+Binary files /dev/null and b/RetroRoller/web/playerview/player_wizard.png differ
+
