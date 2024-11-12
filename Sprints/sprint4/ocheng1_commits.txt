@@ -1,0 +1,168 @@
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):     z-index: 10;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):     display: block;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):     justify-content: center; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):     width: 100%; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): /* settings dropdown menu */
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .settings-section {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   position: absolute; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   top: 10px; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   right: 10px; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   z-index: 1000; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .settings-button {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   object-fit: fill;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   justify-content: center;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   align-items: center;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   position: relative;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   top: 11px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   right: 12px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   background: none;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   cursor: pointer;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   border: none;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   padding: 0;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   display: flex;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): } 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .settings-button:hover {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   background-color:#f72585;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .settings-button img {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   width: 23px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   height: 23px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .set-menu {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   position: absolute;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   right: 0px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   top: 60px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   background-color: white;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   padding: .75rem;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   opacity: 0;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   pointer-events: none;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   transform: translateY(-10px);
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   background-color: #323131;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   height: 215px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   width: 300px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   border: 5px double #f72585;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   border-radius: 10px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   justify-content: center;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   text-align: center;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   align-items: center;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   z-index: 10;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .set-menu .end-session {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   font-size: 0.8rem;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   margin-top: 10px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   padding: 5px 10px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   background-color: #f72585; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   border: none;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   cursor: pointer; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   transition: background-color 0.3s;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .set-menu .end-session:hover {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   background-color: #7209b7; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .dropdown.active > .settings-button + .set-menu {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   pointer-events: auto;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   opacity: 1;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   transform: translateY(0);
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .header {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   position: fixed; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   top: 0;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   width: 100%; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   display: flex;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   justify-content: space-between; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   align-items: center;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   z-index: 1000;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .end-session-confirmation {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   margin-top: 10px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   font-size: .8rem;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .end-session-confirmation p {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   margin-bottom: 10px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .end-session-confirmation button {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   font-size: .6rem;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   margin-right: 5px; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   padding: 5px 10px;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   background-color: #f72585;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   color: white;
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   cursor: pointer; 
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): }
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06): .end-session-confirmation button:hover {
+hostView_stylesheet2.css (oliviaccheng on 10/28/2024 at 23:06):   background-color: #7209b7; 
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):         <div class="settings-section">
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):             <div class="dropdown" data-settings-dropdown>
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                 <button class="settings-button" data-settings-button>
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                     <img src="settings.png" alt="Settings">
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                 </button>
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                 <div class="set-menu">
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                     <button class="end-session">End Session</button>
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                     <div class="end-session-confirmation" style="display: none;">
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                         <p>Are you sure you want to end the session?</p>
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                         <button class="save-session">Save the Session</button>
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                         <button class="dont-save">Don't Save</button>
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                         <button class="cancel-end-session">Cancel</button>
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                     </div>
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):                 </div>
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):             </div>
+hostView2.html (oliviaccheng on 10/28/2024 at 23:06):         </div>
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06): // Dice roller js code
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06): // This stuff here rn makes the box show up when user clicks the button 
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06): document.addEventListener('keydown', e => {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     if (e.key === "Escape") {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         document.querySelectorAll(".active").forEach(dropdown => dropdown.classList.remove("active"));
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     }
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06): });
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06): document.addEventListener('click', (e) => {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     const isDropdownButton = document.querySelector('[data-dropdown-button]');
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     const isDropdown = document.querySelector('[data-dropdown]');
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     // Check if the click target is the dice button
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     if (isDropdownButton.contains(e.target)) {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         isDropdown.classList.toggle('active');
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         return; // Exit if the dice button was clicked
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     }
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     // Check if the click is outside of the dropdown and dice button
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     if (!isDropdownButton.contains(e.target) && !isDropdown.contains(e.target)) {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         isDropdown.classList.remove('active');
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     }
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06): });
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06): // Settings dropdown logic
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06): document.addEventListener('click', (e) => {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     const settingsDropdown = document.querySelector('[data-settings-dropdown]');
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     const settingsButton = document.querySelector('[data-settings-button]');
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     // Check if the click target is the settings button
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     if (settingsButton.contains(e.target)) {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         settingsDropdown.classList.toggle('active');
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         return; // Exit if the settings button was clicked
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     }
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     // Check if the click is outside of the dropdown and settings button
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     if (!settingsDropdown.contains(e.target) && !settingsButton.contains(e.target)) {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         settingsDropdown.classList.remove('active');
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06): });
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06): document.addEventListener("DOMContentLoaded", () => {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     const endSessionButton = document.querySelector(".end-session");
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     const confirmationDiv = document.querySelector(".end-session-confirmation");
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     endSessionButton.addEventListener("click", () => {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         confirmationDiv.style.display = confirmationDiv.style.display === "none" ? "block" : "none";
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     });
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     // Handle Save Session
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     document.querySelector(".save-session").addEventListener("click", () => {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         // Logic to save the session goes here
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         alert("Session saved!");
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         confirmationDiv.style.display = "none"; // Hide confirmation options.
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     });
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     // Handle Don't Save
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     document.querySelector(".dont-save").addEventListener("click", () => {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         // Logic to end the session without saving goes here
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         alert("Session ended without saving.");
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         confirmationDiv.style.display = "none";
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     });
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     // Handle Cancel, nothing happens. 
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     document.querySelector(".cancel-end-session").addEventListener("click", () => {
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):         confirmationDiv.style.display = "none";
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06):     });
+dice-dropdown.js (oliviaccheng on 10/28/2024 at 23:06): });
