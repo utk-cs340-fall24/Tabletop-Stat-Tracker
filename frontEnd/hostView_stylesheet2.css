@@ -330,14 +330,20 @@ h2.fade-in-text {
 }
 
 .icon-popup {
-  display: none; /* Hidden by default */
+  display: none; /* Initially hidden */
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
   padding: 20px;
-  border: 3px solid
+  width: 80%;
+  max-width: 500px; /* Max width for the popup */
+  height: 60%;
+  overflow-y: auto; /* Allow vertical scroll */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -732,4 +738,38 @@ h2.fade-in-text {
   margin-bottom: 5px;
   border-radius: 4px; /* Optional, for rounded corners */
   display: inline-block;
+}
+
+/* Apply this CSS to highlight buttons on hover */
+button:hover {
+  background-color: #f0e68c; /* Change to your preferred color */
+  color: #333; /* Optional: Change text color */
+  border: 1px solid #ccc; /* Optional: Add border */
+  cursor: pointer; /* Adds pointer to indicate it's clickable */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Apply a fading color change effect to the text */
+.fade-in-text p {
+  font-weight: bold; /* Optional, to make the text stand out */
+  animation: colorChange 12s infinite; /* Apply the animation */
+}
+
+/* Define the colorChange animation */
+@keyframes colorChange {
+  0% {
+      color: #FF5733; /* Start with red */
+  }
+  25% {
+      color: #33FF57; /* Change to green */
+  }
+  50% {
+      color: #3357FF; /* Change to blue */
+  }
+  75% {
+      color: #FFD700; /* Change to gold */
+  }
+  100% {
+      color: #FF5733; /* Return to red */
+  }
 }
