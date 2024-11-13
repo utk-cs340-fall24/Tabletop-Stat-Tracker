@@ -1,0 +1,290 @@
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500  17) 
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500  33)             <div class="dropdown" data-dropdown>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500  34)                 <!-- dice roller dropdown -->
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500  95)                     <div class="dropdown-input">
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500  96)                         <!-- dice roller user input -->
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500 123)     <!--<div class="container">
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500 130)     </div>-->
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 132)     <div id="dummyCardsContainer"></div>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 133) 
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 150)     <script>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 151)         const ws = new WebSocket("ws://" + window.location.host);
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 152) 
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 153)         // PostCard class
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 154)         class PostCard {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 155)             constructor(ip, name, attributes = {}, items = []) {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 156)                 this.IP = ip;
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 157)                 this.Name = name;
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 158)                 this.Attributes = attributes;
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 159)                 this.Items = items;
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 160)             }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 161)         }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 162)         // Store all the dummy cards
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 163)         const dummyCards = {};
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 164) 
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 165)         // Creates a dummy player card
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 166)         function createDummyCard(postCard) {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 167)             const cardId = postCard.IP; // Use IP as the id
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 168)             const cardContainer = document.getElementById('dummyCardsContainer');
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 169) 
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 170)             // Check if card already exists
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 171)             if (!dummyCards[cardId]) {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 172)                 const cardElement = document.createElement('div');
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 173)                 cardElement.id = cardId;
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 174)                 cardElement.className = 'dummy-card';
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 175)                 cardElement.innerHTML = `
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 176)                 <h3>${postCard.Name}</h3>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 177)                 <p>IP: ${postCard.IP}</p>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 178)                 <p>Attributes: ${JSON.stringify(postCard.Attributes)}</p>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 179)                 <p>Items: ${JSON.stringify(postCard.Items)}</p>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 180)                         `;
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 181)                 cardContainer.appendChild(cardElement);
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 182)                 dummyCards[cardId] = cardElement; // Store reference
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 183)             }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 184)         }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 185) 
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 186)         // Updates dummy player card
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 187)         function updateDummyCard(postCard) {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 188)             const cardId = postCard.IP;
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 189)             const cardElement = dummyCards[cardId];
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 190) 
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 191)             if (cardElement) {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 192)                 cardElement.innerHTML = `
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 193)                 <h3>${postCard.Name}</h3>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 194)                 <p>IP: ${postCard.IP}</p>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 195)                 <p>Attributes: ${JSON.stringify(postCard.Attributes)}</p>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 196)                 <p>Items: ${JSON.stringify(postCard.Items)}</p>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 197)                         `;
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 198)             }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 199)         }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 200) 
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 201)         // Destroys dummy player card
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 202)         function destroyDummyCard(ip) {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 203)             const cardElement = dummyCards[ip];
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 204) 
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 205)             if (cardElement) {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 206)                 cardElement.remove(); // Remove from the DOM
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 207)                 delete dummyCards[ip]; // Remove from the reference
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 208)             }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 209)         }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 210)     </script>
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 385) 
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500 386)         ws.addEventListener("open", () => {
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500 387)             console.log("Connected");
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500 388)             ws.send(0);
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500 389)         });
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500 390) 
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 391)         ws.addEventListener("message", ({ data }) => {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 392)             if (data == 1) {
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500 393)                 //absorb
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 394)             }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 395)             //else if (data.name == "destroy") {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 396)             //    console.log("Destroyed?");
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 397)             //    destroyDummyCard(data.IP);
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 398)             //}
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 399)             else {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 400)                 const letter = JSON.parse(data);
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 401)                 console.log(letter.Name + "Bruh?");
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 402)                 if (letter.Name == "destroy") {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 403)                     console.log("Destroyed?");
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 404)                     destroyDummyCard(letter.IP);
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 405)                 }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 406)                 else {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 407)                     console.log(letter);
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 408)                     console.log("Dummy Deployed?");
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 409)                     if (dummyCards[letter.IP] == null) {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 410)                         createDummyCard(letter);
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 411)                     }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 412)                     else {
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 413)                         updateDummyCard(letter);
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 414)                     }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 415)                     console.log(dummyCards);
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 416)                 }
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500 417)            }
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 418)         });
+4bf8910b (aaronsparks2022@gmail.com 2024-11-12 10:09:45 -0500 419) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  17)         <img src="dndLogo.png" alt="DnD Logo" class="logo-icon">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  18)         <div class="dice-section">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  19)             <div class="dropdown" data-dropdown>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  20)                 <!-- dice roller dropdown -->
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  21)                 <button class="dice-button" data-dropdown-button>Dice Roller</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  22)                 <div class="dropdown-menu">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  23)                     <h1>Select Dice:</h1>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  24)                     <div class="dice-icons">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  25)                         <!-- Dice d4 -->
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  26)                         <div class="dice-type" data-dice="4">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  27)                             <img src="d4.png" alt="d4">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  28)                             <div class="quantity-control">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  29)                                 <button class="decrement">-</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  30)                                 <span class="quantity" data-quantity>0</span>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  31)                                 <button class="increment">+</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  32)                             </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  33)                         </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  34)                         <!-- Dice d6 -->
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  35)                         <div class="dice-type" data-dice="6">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  36)                             <img src="d6.png" alt="d6">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  37)                             <div class="quantity-control">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  38)                                 <button class="decrement">-</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  39)                                 <span class="quantity" data-quantity>0</span>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  40)                                 <button class="increment">+</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  41)                             </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  42)                         </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  43)                         <!-- Dice d8 -->
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  44)                         <div class="dice-type" data-dice="8">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  45)                             <img src="d8.png" alt="d8">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  46)                             <div class="quantity-control">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  47)                                 <button class="decrement">-</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  48)                                 <span class="quantity" data-quantity>0</span>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  49)                                 <button class="increment">+</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  50)                             </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  51)                         </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  52)                         <!-- Dice d10 -->
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  53)                         <div class="dice-type" data-dice="10">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  54)                             <img src="d10.png" alt="d10">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  55)                             <div class="quantity-control">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  56)                                 <button class="decrement">-</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  57)                                 <span class="quantity" data-quantity>0</span>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  58)                                 <button class="increment">+</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  59)                             </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  60)                         </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  61)                         <!-- Dice d12 -->
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  62)                         <div class="dice-type" data-dice="12">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  63)                             <img src="d12.png" alt="d12">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  64)                             <div class="quantity-control">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  65)                                 <button class="decrement">-</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  66)                                 <span class="quantity" data-quantity>0</span>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  67)                                 <button class="increment">+</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  68)                             </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  69)                         </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  70)                         <!-- Dice d20 -->
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  71)                         <div class="dice-type" data-dice="20">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  72)                             <img src="d20.png" alt="d20">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  73)                             <div class="quantity-control">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  74)                                 <button class="decrement">-</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  75)                                 <span class="quantity" data-quantity>0</span>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  76)                                 <button class="increment">+</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  77)                             </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  78)                         </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  79)                     </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  80)                     <h5>Or enter dice manually:</h5>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  81)                     <div class="dropdown-input">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  82)                         <!-- dice roller user input -->
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  83)                         <input type="text" id="dice-input" name="dice-input" placeholder="ex. 4d10, 2d20, . . .">
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  84)                     </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  85)                     <button class="roll-button">Roll</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  86)                     <button class="clear-button" id="clear-button">Clear</button>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  87)                     <h4 id="roll-result"></h4> <!-- Display roll results here -->
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  88)                 </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500  89)             </div>
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 185)         const addPlayerBtn = document.getElementById('add-player');
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 186)         const forwardBtn = document.getElementById('forward-btn');
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 187)         const backwardBtn = document.getElementById('backward-btn');
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 188)         const searchBox = document.querySelector('.search-box');
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 190)         const rollResult = document.getElementById('roll-result'); // Element to display roll result
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 200)             const clearButton = document.getElementById("clear-button"); // Select by ID
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 202)             const diceQuantityFields = document.querySelectorAll(".dice-type [data-quantity]");
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 203)             const manualInput = document.getElementById("dice-input"); // Correct selector
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 224)             // Roll button click event
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 225)             rollButton.addEventListener("click", () => {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 226)                 const diceQuantities = {};
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 227)                 const manualInputValue = manualInput.value;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 228) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 229)                 document.querySelectorAll(".dice-type").forEach(dice => {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 230)                     const diceValue = dice.getAttribute("data-dice");
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 231)                     const quantity = parseInt(dice.querySelector("[data-quantity]").textContent);
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 232)                     if (quantity > 0) {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 233)                         diceQuantities[diceValue] = quantity;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 234)                     }
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 235)                 });
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 236) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 237)                 if (Object.keys(diceQuantities).length > 0 && manualInputValue) {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 238)                     resultDisplay.textContent = "Please use either the dice selection or manual input, not both.";
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 239)                     return;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 240)                 }
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 241) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 242)                 if (manualInputValue) rollDice(manualInputValue);
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 243)                 else if (Object.keys(diceQuantities).length > 0) rollDice(diceQuantities);
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 244)                 else resultDisplay.textContent = "No dice selected or input provided.";
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 245)             });
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 246) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 247)             // Clear button click event
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 248)             clearButton.addEventListener("click", () => {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 249)                 diceQuantityFields.forEach(field => {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 250)                     field.textContent = "0";
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 251)                 });
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 252)                 manualInput.value = ""; // Clear input field
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 253)                 resultDisplay.textContent = ""; // Clear result display
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 254)             });
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 255)         });
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 256)         // Function to handle dice rolling
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 257)         function rollDice(input) {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 258)             if (typeof input == "string") {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 259)                 const diceInputs = input.split(',').map(dice => dice.trim());
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 260)                 let total = 0;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 261)                 const allResults = [];  // Array to store each formatted result
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 262) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 263)                 // Loop through each dice notation
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 264)                 diceInputs.forEach(dice => {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 265)                     const regex = /^(\d+)d(\d+)$/; // Match format like 4d20
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 266)                     const match = dice.match(regex);
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 267) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 268)                     if (match) {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 269)                         const numDice = parseInt(match[1]); // Number of dice to roll
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 270)                         const diceType = parseInt(match[2]); // Number of sides on the dice
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 271)                         const diceResults = [];
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 272)                         let diceTotal = 0;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 273) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 274)                         // Roll each die and collect the results
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 275)                         for (let i = 0; i < numDice; i++) {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 276)                             const roll = Math.floor(Math.random() * diceType) + 1;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 277)                             diceResults.push(roll);
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 278)                             total += roll;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 279)                             diceTotal += roll;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 280)                         }
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 281) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 282)                         // Format each dice notation result
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 283)                         allResults.push(`- ${numDice}d${diceType}:\n  Rolls: [${diceResults.join(', ')}]\n  Subtotal: ${diceTotal}`);
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 284)                     } else {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 285)                         // If invalid input, add an error message to results
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 286)                         allResults.push(`${dice}: Invalid input! Please use format like 4d20.`);
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 287)                     }
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 288)                 });
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 289) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 290)                 // Display the final output
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 291)                 rollResult.textContent = `Total: ${total}\n\nDetails:\n${allResults.join('\n\n')}`;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 292)             }
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 293)             else if (typeof input == "object") {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 294)                 let total = 0;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 295)                 const allResults = [];
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 296) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 297)                 for (const [diceType, quantity] of Object.entries(input)) {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 298)                     const diceResults = [];
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 299)                     let diceTotal = 0;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 300) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 301)                     for (let i = 0; i < quantity; i++) {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 302)                         const roll = Math.floor(Math.random() * parseInt(diceType)) + 1;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 303)                         diceResults.push(roll);
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 304)                         total += roll;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 305)                         diceTotal += roll;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 306)                     }
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 307) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 308)                     // Collect formatted results per dice type
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 309)                     allResults.push(`- ${quantity}d${diceType}:\n  Rolls: [${diceResults.join(', ')}]\n  Subtotal: ${diceTotal}`);
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 310)                 }
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 311) 
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 312)                 // Display final output
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 313)                 rollResult.textContent = `Total: ${total}\n\nDetails:\n${allResults.join('\n\n')}`;
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 314)             }
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 315)             else {
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 316)                 rollResult.textContent = 'Unable to process roll. Try again.';
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 317)             }
+7174c3ec (aaronsparks2022@gmail.com 2024-11-12 19:07:19 -0500 318)         }
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500  85)         if (data == 0) {
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500  86)             wss.clients.forEach(function each(client) {
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500  87)                 if (client !== ws && client.readyState === WebSocket.OPEN) {
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500  88)                     client.send(1);
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500  89)                 }
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500  90)             });
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500  91)         }
+b92d613e (aaronsparks2022@gmail.com 2024-11-12 10:49:16 -0500  92)         else if (data == 1) {
+
