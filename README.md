@@ -1,14 +1,15 @@
-![retro roller logo](frontEnd/dndLogo.png)
-
+<p align="center">
+    <img src="frontEnd/dndLogo.png">
+</p>
 
 # Retro Roller
 ---
 
 ## Introduction:
-It can be a little overwhelming the amount of stuff to keep track of and write down in a TT game, but it doesn't have to be. With this piece of software that is what we intend to solve. Using a simple UI and non-invasive controls, we hope to create an environment that is condusive to making the entry into TT a better experience. In addition, we also hope to have returning players find our software an easy to implement solution to many different applications that were used before.
+&nbsp; &nbsp; &nbsp; &nbsp; It can be a little overwhelming the amount of stuff to keep track of and write down in a TT game, but it doesn't have to be. With this piece of software that is what we intend to solve. Using a simple UI and non-invasive controls, we hope to create an environment that is condusive to making the entry into TT a better experience. In addition, we also hope to have returning players find our software an easy to implement solution to many different applications that were used before.
 
 ## Description:
-In order to make starting the journey into tabletops easier. Players can expect to find the following:
+&nbsp; &nbsp; &nbsp; &nbsp; In order to make starting the journey into tabletops easier. Players can expect to find the following:
 - Player cards updated in real time
 - initiative tracker for combat
 - enemy tracker for combat
@@ -16,10 +17,26 @@ In order to make starting the journey into tabletops easier. Players can expect 
 - the ability to save sessions to quickly pick up where you left off
 
 ## How to start:
-To get started, the runserver.bat file should be run by the GM. This file is found in **/Tabletop-Stat-Tracker/RetroRoller/runserver.bat**. After this is run, all players and the GM should go to the IP of the machine on port ***Aaron help*** on your web browser of choice. Once there, you will find a login screen asking for what kind of player you are: GM or player. After that, a session token will be needed in order to login, the session token is given by the server at boot up. Once used, you will find the main UI of the software.
+&nbsp; &nbsp; &nbsp; &nbsp; To get started, the runserver.bat file should be run by the GM. This file is found in **/Tabletop-Stat-Tracker/RetroRoller/runserver.bat**. After this is run, all players and the GM should go to the IP of the machine on port ***Aaron help*** on your web browser of choice. Once there, you will find a login screen asking for what kind of player you are: GM or player. After that, a session token will be needed in order to login, the session token is given by the server at boot up. Once used, you will find the main UI of the software.
 
 ## Add players:
-In the center of the screen, you will find add player button. This will ask for a name, stats, and inventory spaces. You can add and remove sttributes as you see fit, these are for you to decide what will be used and what will not be, such is the beauty of table tops!
+![Add player](exImg/Add_player.png)
+&nbsp; &nbsp; &nbsp; &nbsp; In the center of the screen, you will find add player button. This will ask for a name, stats, and inventory spaces. You can add and remove attributes as you see fit, these are for you to decide what will be used and what will not be, such is the beauty of table tops!
 
+## Dice roller:
+![Dice Roller](exImg/Dice_roller.png)
+&nbsp; &nbsp; &nbsp; &nbsp; Starting back at the top an working clock wise, we see a dice roller button. This dropdown will work one of two ways:
+- the text field 
+- the dice counters
+If the text field is used, then a specific format must be used as follows:
+##d##
+The first set of "##" is the number of dice you wish to roll. The second "##" is the type of dice you are rolling. To put it into words, you could read "4d20" as "I am rolling 4 20 sided dice". The second way of doing it is to use the counters, they work in the same kind of way, except you are using a counter to say how many dice you want to roll. Keep in mind only one can be used at a time, so choose wisely!
 
+## initiative tracker:
+![Init_tracker](exImg/Init_tarcker.png)
+&nbsp; &nbsp; &nbsp; &nbsp; Looking to the top right we see our intitiative tracker. This is used for tracking whose turn it is during combat! To use, simply type in the player names in the order you rolled for intitative then use the forward, and sometimes backward, button as needed. The player whose tuen it is should glow to make it easier to know who is going!
+![Player_glow](exImg/Player_glow.png)
 
+## Settings:
+![End_session](exImg/End_session.png)
+&nbsp; &nbsp; &nbsp; &nbsp; To the immediate right of the init tracker is the settings button. In there, you will find the button to end you current session. This allows you to save your current data and play again next time you're ready, I hope you enjoyed your session!

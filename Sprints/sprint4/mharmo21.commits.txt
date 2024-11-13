@@ -1,0 +1,72 @@
+]633;E;for file in $(git ls-files);ac0b9985-e2e6-4af9-bb78-a41dd3630767]633;Cb84b4cb5 (McKinley Harmon   2024-11-12 14:33:11 -0500  1) <p align="center">
+b84b4cb5 (McKinley Harmon   2024-11-12 14:33:11 -0500  2)     <img src="frontEnd/dndLogo.png">
+b84b4cb5 (McKinley Harmon   2024-11-12 14:33:11 -0500  3) </p>
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400  4) 
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400  5) # Retro Roller
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400  6) ---
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400  7) 
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400  8) ## Introduction:
+b84b4cb5 (McKinley Harmon   2024-11-12 14:33:11 -0500  9) &nbsp; &nbsp; &nbsp; &nbsp; It can be a little overwhelming the amount of stuff to keep track of and write down in a TT game, but it doesn't have to be. With this piece of software that is what we intend to solve. Using a simple UI and non-invasive controls, we hope to create an environment that is condusive to making the entry into TT a better experience. In addition, we also hope to have returning players find our software an easy to implement solution to many different applications that were used before.
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 10) 
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 11) ## Description:
+b84b4cb5 (McKinley Harmon   2024-11-12 14:33:11 -0500 12) &nbsp; &nbsp; &nbsp; &nbsp; In order to make starting the journey into tabletops easier. Players can expect to find the following:
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 13) - Player cards updated in real time
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 14) - initiative tracker for combat
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 15) - enemy tracker for combat
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 16) - dice roller for quick results
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 17) - the ability to save sessions to quickly pick up where you left off
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 18) 
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 19) ## How to start:
+b84b4cb5 (McKinley Harmon   2024-11-12 14:33:11 -0500 20) &nbsp; &nbsp; &nbsp; &nbsp; To get started, the runserver.bat file should be run by the GM. This file is found in **/Tabletop-Stat-Tracker/RetroRoller/runserver.bat**. After this is run, all players and the GM should go to the IP of the machine on port ***Aaron help*** on your web browser of choice. Once there, you will find a login screen asking for what kind of player you are: GM or player. After that, a session token will be needed in order to login, the session token is given by the server at boot up. Once used, you will find the main UI of the software.
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 21) 
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 22) ## Add players:
+3696a6a6 (McKinley Harmon   2024-11-02 12:14:28 -0400 23) ![Add player](exImg/Add_player.png)
+b84b4cb5 (McKinley Harmon   2024-11-12 14:33:11 -0500 24) &nbsp; &nbsp; &nbsp; &nbsp; In the center of the screen, you will find add player button. This will ask for a name, stats, and inventory spaces. You can add and remove attributes as you see fit, these are for you to decide what will be used and what will not be, such is the beauty of table tops!
+3696a6a6 (McKinley Harmon   2024-11-02 12:14:28 -0400 25) 
+3696a6a6 (McKinley Harmon   2024-11-02 12:14:28 -0400 26) ## Dice roller:
+3696a6a6 (McKinley Harmon   2024-11-02 12:14:28 -0400 27) ![Dice Roller](exImg/Dice_roller.png)
+3696a6a6 (McKinley Harmon   2024-11-02 12:14:28 -0400 29) - the text field 
+3696a6a6 (McKinley Harmon   2024-11-02 12:14:28 -0400 30) - the dice counters
+3696a6a6 (McKinley Harmon   2024-11-02 12:14:28 -0400 31) If the text field is used, then a specific format must be used as follows:
+3696a6a6 (McKinley Harmon   2024-11-02 12:14:28 -0400 32) ##d##
+3696a6a6 (McKinley Harmon   2024-11-02 12:14:28 -0400 33) The first set of "##" is the number of dice you wish to roll. The second "##" is the type of dice you are rolling. To put it into words, you could read "4d20" as "I am rolling 4 20 sided dice". The second way of doing it is to use the counters, they work in the same kind of way, except you are using a counter to say how many dice you want to roll. Keep in mind only one can be used at a time, so choose wisely!
+0cad95df (McKinley Harmon   2024-11-02 11:59:38 -0400 34) 
+eaf97f6d (McKinley Harmon   2024-11-02 12:24:11 -0400 35) ## initiative tracker:
+eaf97f6d (McKinley Harmon   2024-11-02 12:24:11 -0400 36) ![Init_tracker](exImg/Init_tarcker.png)
+b84b4cb5 (McKinley Harmon   2024-11-12 14:33:11 -0500 37) &nbsp; &nbsp; &nbsp; &nbsp; Looking to the top right we see our intitiative tracker. This is used for tracking whose turn it is during combat! To use, simply type in the player names in the order you rolled for intitative then use the forward, and sometimes backward, button as needed. The player whose tuen it is should glow to make it easier to know who is going!
+eaf97f6d (McKinley Harmon   2024-11-02 12:24:11 -0400 38) ![Player_glow](exImg/Player_glow.png)
+eaf97f6d (McKinley Harmon   2024-11-02 12:24:11 -0400 39) 
+eaf97f6d (McKinley Harmon   2024-11-02 12:24:11 -0400 40) ## Settings:
+eaf97f6d (McKinley Harmon   2024-11-02 12:24:11 -0400 41) ![End_session](exImg/End_session.png)
+b84b4cb5 (McKinley Harmon   2024-11-12 14:33:11 -0500 42) &nbsp; &nbsp; &nbsp; &nbsp; To the immediate right of the init tracker is the settings button. In there, you will find the button to end you current session. This allows you to save your current data and play again next time you're ready, I hope you enjoyed your session!
+
+
+Below is the license as well, for some reason I could not get git blame to see that it was something I wrote so I just added it below
+
+Copyright 2024 Mike Lisenko, Aaron Sparks, 
+               Olivia Cheng, McKinley Harmon, 
+               Cayden Hernandez
+
+Permission is hereby granted, free of charge,
+to any person obtaining a copy of this software 
+and associated documentation files Retro Roller, 
+to deal in the Software without restriction, 
+including without limitation the rights to use, 
+copy, modify, merge, publish, distribute, sublicense, 
+and/or sell copies of the Software, and to permit persons 
+to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission 
+notice shall be included in all copies or 
+substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, 
+WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
+PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR 
+ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
+ARISING FROM, OUT OF OR IN CONNECTION WITH
+ THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -335,6 +335,11 @@
             });
         });
 
+        // Close the icon popup
+        document.getElementById('close-popup').addEventListener('click', function() {
+            iconPopup.style.display = 'none'; // Hide the popup when clicked
+        });
+
         // Function to add a new player
  
             const playerDiv = document.createElement('div');
