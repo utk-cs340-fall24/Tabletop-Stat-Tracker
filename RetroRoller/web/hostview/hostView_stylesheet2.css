@@ -205,11 +205,42 @@ h2.fade-in-text {
   position: absolute;
   top: 20px;
   right: 50px; /* Adjust to position the search box */
-  display: flex;
+  display: block;
   align-items: center; /* This will align both input and button vertically */
 }
 
-.search-box {
+.init-insert {
+  padding: 5px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+  vertical-align: middle;
+}
+
+.list {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.combat-list {
+  padding: 0; /* Remove default padding */
+  list-style-type: none; /* Remove bullet points */
+}
+
+.combat-Input {
+  padding: 5px;
+  font-size: 0.8rem;
+  border: none;
+  background-color: #222;
+  color: white;
+  margin-right: 10px;
+  vertical-align: middle;
+
+}
+
+.init-Input {
   padding: 5px;
   font-size: 0.8rem;
   border: none;
@@ -219,19 +250,13 @@ h2.fade-in-text {
   vertical-align: middle;
 }
 
-#search-btn {
-  background-color: #f72585;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  transition: background-color 0.3s;
-  vertical-align: middle;
+#addbutton:hover {
+  background-color: #7209b7;
 }
 
-#search-btn:hover {
-  background-color: #7209b7;
+.tracker {
+  display: flex;
+  justify-content: flex-end; /* Align the Prev and Next buttons to the right */
 }
 
 #forward-btn, #backward-btn {
@@ -248,6 +273,13 @@ h2.fade-in-text {
 #forward-btn:hover, #backward-btn:hover {
   background-color: #7209b7; /* Change background on hover */
 }
+
+/* #roundText, #turnText{
+  font-size: 0.8rem;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+} */
 
 .glow {
   box-shadow: 0px 10px 30px 10px rgba(230, 247, 37, 0.7); /* Neon yellow glowing effect */

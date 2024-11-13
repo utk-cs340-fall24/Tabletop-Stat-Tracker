@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <script src="dice-dropdown.js" defer></script> <!-- Here's the linked .js file you can use! only has dice stuff -->
     <script src="node_modules/dice-roller-parser/dist/index.js"></script>
+    <script type = "text/javascript" src = "InitTracker.js"></script>
 
 </head>
 
@@ -115,9 +116,29 @@
     </div>
 
     <div class="search-container">
-        <input type="text" class="search-box" placeholder="Enter player names, separated by commas">
+        <!--<input type="text" class="search-box" placeholder="Enter player names, separated by commas">
         <button id="backward-btn">Backward</button>
-        <button id="forward-btn">Forward</button>
+        <button id="forward-btn">Forward</button>-->
+    
+        <div class="init-insert">
+            <h2>Add Combatant and Initiative</h2>
+            <input type="text" id="combatInput" class="combat-Input" placeholder="Enter Combatant" required>
+            <input type="text" id="initInput" class="init-Input" placeholder="Enter Initiative" required>
+            <!-- <button id="addButton">Add</button>
+            <button id="rmButton">Clear</button> -->
+        </div>
+
+        <div class="list">
+            <h2>Combat List</h2>
+            <ul class="combat-list" id="combatList"></ul>
+        </div>
+
+        <div class="tracker">
+            <button id="backward-btn">Prev</button>
+            <button id="forward-btn">Next</button>
+        </div>
+        <div id="roundText">Rounds: </div>
+        <div id="turnText">Turn: </div>
     </div>
 
     <!--<div class="container">
@@ -346,6 +367,43 @@
             }
         }
 
+        //Initiative Tracker
+        const nameList = document.getElementById('combatList');
+        const nameInput = document.getElementById('combatInput');
+        const numberInput = document.getElementById('initInput');
+        const addButton = document.getElementById('addButton');
+
+        addButton.addEventListener('click', function() {
+            const name = nameInput.value.trim();
+            const number = numberInput.value.trim();
+
+            if (name && number) {
+                setList(name, number);
+                const list = getList();
+                
+                nameList.innerHTML = '';
+                i = 1;
+
+                list.forEach(function(combatant) {
+                    const item = document.createElement('li');
+                    item.textContent = `${i}. ${combatant.name}: ${combatant.init}`;
+                    i++;
+
+                    nameList.appendChild(item);
+
+                });
+                
+                nameInput.value = '';
+                numberInput.value = '';
+            } else {
+                alert('Please enter both a name and a number.');
+            }
+        });
+
+        rmButton.addEventListener('click', function() {
+            clearList();
+            nameList.innerHTML = '';
+        });
 
         // Forward and backward navigation logic for highlighting players
         function highlightPlayer(playerName) {
@@ -360,12 +418,21 @@
             });
         }
 
+        
+        // const turns = document.getElementById('turnText');
+        // const rounds = document.getElementById('roundText');
+
         forwardBtn.addEventListener('click', function () {
             const playerNames = searchBox.value.split(',').map(name => name.trim());
             if (playerNames.length > 0) {
                 currentPlayerIndex = (currentPlayerIndex + 1) % playerNames.length;
                 highlightPlayer(playerNames[currentPlayerIndex]);
             }
+            // next();
+            // turns.textContent = `Turn: ${getTurns()}`;
+            // rounds.textContent = `Round: ${getRounds()}`;
+
+
         });
 
         backwardBtn.addEventListener('click', function () {
@@ -374,6 +441,9 @@
                 currentPlayerIndex = (currentPlayerIndex - 1 + playerNames.length) % playerNames.length;
                 highlightPlayer(playerNames[currentPlayerIndex]);
             }
+            // prev();
+            // turns.textContent = `Turn: ${getTurns()}`;
+            // rounds.textContent = `Round: ${getRounds()}`;
         });
 
 
