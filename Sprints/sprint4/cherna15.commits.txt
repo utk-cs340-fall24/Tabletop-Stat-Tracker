@@ -1,0 +1,128 @@
+[hostView_stylesheet2.css]
+hostView_stylesheet2.css (oliviaccheng on 11/11/2024 at 17:44):   right: 1415px;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   display: block;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): .init-insert {
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   padding: 5px;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   margin-bottom: 20px;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   margin-right: 5px;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   font-size: 0.8rem;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   border: none;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   color: white;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   vertical-align: middle;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): }
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): .list {
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   margin-top: 10px;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   text-align: right;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): }
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): .combat-list {
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   padding: 0; /* Remove default padding */
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   list-style-type: none; /* Remove bullet points */
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): }
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): .combat-Input {
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): .init-Input {
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   padding: 5px;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   border: none;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   background-color: #222;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   color: white;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   margin-right: 10px;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): #addbutton:hover {
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): .tracker {
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   display: flex;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   justify-content: flex-end; /* Align the Prev and Next buttons to the right */
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): }
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): /* #roundText, #turnText{
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   font-size: 0.8rem;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   color: white;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   display: flex;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37):   justify-content: flex-end;
+hostView_stylesheet2.css (cohernandez117 on 11/12/2024 at 20:37): } */
+
+
+
+[hostView2.html]
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):     <script type = "text/javascript" src = "InitTracker.js"></script>
+
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         <!--<input type="text" class="search-box" placeholder="Enter player names, separated by commas">
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         <button id="forward-btn">Forward</button>-->
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         <div class="init-insert">
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             <h2>Add Combatant and Initiative</h2>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             <input type="text" id="combatInput" class="combat-Input" placeholder="Enter Combatant" required>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             <input type="text" id="initInput" class="init-Input" placeholder="Enter Initiative" required>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             <!-- <button id="addButton">Add</button>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             <button id="rmButton">Clear</button> -->
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         </div>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         <div class="list">
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             <h2>Combat List</h2>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             <ul class="combat-list" id="combatList"></ul>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         </div>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         <div class="tracker">
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             <button id="backward-btn">Prev</button>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             <button id="forward-btn">Next</button>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         </div>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         <div id="roundText">Rounds: </div>
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         <div id="turnText">Turn: </div>
+
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         //Initiative Tracker
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         const nameList = document.getElementById('combatList');
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         const nameInput = document.getElementById('combatInput');
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         const numberInput = document.getElementById('initInput');
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         const addButton = document.getElementById('addButton');
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         addButton.addEventListener('click', function() {
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             const name = nameInput.value.trim();
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             const number = numberInput.value.trim();
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             if (name && number) {
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                 setList(name, number);
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                 const list = getList();
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                 nameList.innerHTML = '';
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                 i = 1;
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                 list.forEach(function(combatant) {
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                     const item = document.createElement('li');
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                     item.textContent = `${i}. ${combatant.name}: ${combatant.init}`;
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                     i++;
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                     nameList.appendChild(item);
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                 });
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                 nameInput.value = '';
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                 numberInput.value = '';
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             } else {
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):                 alert('Please enter both a name and a number.');
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             }
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         });
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         rmButton.addEventListener('click', function() {
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             clearList();
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             nameList.innerHTML = '';
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         });
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         // const turns = document.getElementById('turnText');
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):         // const rounds = document.getElementById('roundText');
+
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             // next();
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             // turns.textContent = `Turn: ${getTurns()}`;
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             // rounds.textContent = `Round: ${getRounds()}`;
+
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             // prev();
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             // turns.textContent = `Turn: ${getTurns()}`;
+hostView2.html (cohernandez117 on 11/12/2024 at 20:37):             // rounds.textContent = `Round: ${getRounds()}`;
+
+
+[InitTracker.js]
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37): function getTurns(){
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37):     return turn + 1;
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37): }
+
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37): function getRounds(){
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37):     return round;
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37): }
+
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37): function prev(){
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37):     if(turn === 0){
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37):         turn = track.length - 1;
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37):         round--;
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37):     }else{
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37):         turn--;
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37):     }
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37): }
+
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37): function clearList() {
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37):     track.length = 0; // Clears all contents of the track array
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37):     turn = 0;         // Reset turn counter
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37):     round = 1;       // Reset rounds counter
+InitTracker.js (cohernandez117 on 11/12/2024 at 20:37): }
