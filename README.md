@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="frontEnd/dndLogo.png">
+    <img src="RetroRoller/web/images/dndLogo.png">
 </p>
 
 # Retro Roller
