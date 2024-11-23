@@ -14,79 +14,7 @@
 </head>
 <body>
     <header class="header">
-        <img src="dndLogo.png" alt="DnD Logo" class="logo-icon">
-        <div class="dice-section">
-            <div class="dropdown" data-dropdown>
-                <!-- dice roller dropdown -->
-                <button class="dice-button" data-dropdown-button>Dice Roller</button>
-                <div class="dropdown-menu">
-                    <h1>Select Dice:</h1>
-                    <div class="dice-icons">
-                        <!-- Dice d4 -->
-                        <div class="dice-type" data-dice="4">
-                            <img src="d4.png" alt="d4">
-                            <div class="quantity-control">
-                                <button class="decrement">-</button>
-                                <span class="quantity" data-quantity>0</span>
-                                <button class="increment">+</button>
-                            </div>
-                        </div>
-                        <!-- Dice d6 -->
-                        <div class="dice-type" data-dice="6">
-                            <img src="d6.png" alt="d6">
-                            <div class="quantity-control">
-                                <button class="decrement">-</button>
-                                <span class="quantity" data-quantity>0</span>
-                                <button class="increment">+</button>
-                            </div>
-                        </div>
-                        <!-- Dice d8 -->
-                        <div class="dice-type" data-dice="8">
-                            <img src="d8.png" alt="d8">
-                            <div class="quantity-control">
-                                <button class="decrement">-</button>
-                                <span class="quantity" data-quantity>0</span>
-                                <button class="increment">+</button>
-                            </div>
-                        </div>
-                        <!-- Dice d10 -->
-                        <div class="dice-type" data-dice="10">
-                            <img src="d10.png" alt="d10">
-                            <div class="quantity-control">
-                                <button class="decrement">-</button>
-                                <span class="quantity" data-quantity>0</span>
-                                <button class="increment">+</button>
-                            </div>
-                        </div>
-                        <!-- Dice d12 -->
-                        <div class="dice-type" data-dice="12">
-                            <img src="d12.png" alt="d12">
-                            <div class="quantity-control">
-                                <button class="decrement">-</button>
-                                <span class="quantity" data-quantity>0</span>
-                                <button class="increment">+</button>
-                            </div>
-                        </div>
-                        <!-- Dice d20 -->
-                        <div class="dice-type" data-dice="20">
-                            <img src="d20.png" alt="d20">
-                            <div class="quantity-control">
-                                <button class="decrement">-</button>
-                                <span class="quantity" data-quantity>0</span>
-                                <button class="increment">+</button>
-                            </div>
-                        </div>
-                    </div>
-                    <h5>Or enter dice manually:</h5>
-                    <div class="dropdown-input">
-                        <!-- dice roller user input -->
-                        <input type="text" id="dice-input" name="dice-input" placeholder="ex. 4d10, 2d20, . . .">
-                    </div>
-                    <button class="roll-button">Roll</button>
-                    <button class="clear-button" id="clear-button">Clear</button>
-                    <h4 id="roll-result"></h4> <!-- Display roll results here -->
-                </div>
-            </div>
+        <img src="dndLogo.png" alt="DnD Logo" class="logo-icon"> 
     </header>
 
     <div class="container">
@@ -181,13 +109,9 @@
         }
 
 //-------------------------------------------------------------------------------------------------------------------------//
+
         const playerContainer = document.getElementById('players-container');
-        const addPlayerBtn = document.getElementById('add-player');
-        const forwardBtn = document.getElementById('forward-btn');
-        const backwardBtn = document.getElementById('backward-btn');
-        const searchBox = document.querySelector('.search-box');
         const iconPopup = document.getElementById('icon-popup');
-        const rollResult = document.getElementById('roll-result'); // Element to display roll result
         let currentPlayerIcon = null; // Track the player icon currently being updated
 
         let players = [];
@@ -197,10 +121,7 @@
             const incrementButtons = document.querySelectorAll(".increment");
             const decrementButtons = document.querySelectorAll(".decrement");
             const rollButton = document.querySelector(".roll-button");
-            const clearButton = document.getElementById("clear-button"); // Select by ID
             const resultDisplay = document.getElementById("roll-result");
-            const diceQuantityFields = document.querySelectorAll(".dice-type [data-quantity]");
-            const manualInput = document.getElementById("dice-input"); // Correct selector
 
             // Add event listeners for increment and decrement buttons
             incrementButtons.forEach(button => {
@@ -221,101 +142,73 @@
                 });
             });
 
-            // Roll button click event
-            rollButton.addEventListener("click", () => {
-                const diceQuantities = {};
-                const manualInputValue = manualInput.value;
+        //// Roll button click event
+        //rollButton.addEventListener("click", () => {
+            
+        //    const diceQuantities = {};
+        //    const manualInput = document.getElementById("dice-input").value;
 
-                document.querySelectorAll(".dice-type").forEach(dice => {
-                    const diceValue = dice.getAttribute("data-dice");
-                    const quantity = parseInt(dice.querySelector("[data-quantity]").textContent);
-                    if (quantity > 0) {
-                        diceQuantities[diceValue] = quantity;
-                    }
-                });
+        //    // Collect quantities for each type of die
+        //    document.querySelectorAll(".dice-type").forEach(dice => {
+        //        const diceValue = dice.getAttribute("data-dice");
+        //        const quantity = parseInt(dice.querySelector("[data-quantity]").textContent);
+        //        if (quantity > 0) {
+        //            diceQuantities[diceValue] = quantity; // Store quantity for the corresponding die type
+        //        }
+        //    });
 
-                if (Object.keys(diceQuantities).length > 0 && manualInputValue) {
-                    resultDisplay.textContent = "Please use either the dice selection or manual input, not both.";
-                    return;
-                }
+        //    // Validation check: Either quantities or manual input must be provided, but not both
+        //    if (Object.keys(diceQuantities).length > 0 && manualInput) {
+        //        rollResult.textContent = "Please use either the dice selection or manual input, not both.";
+        //        return; // Exit the function if both are provided
+        //    }
 
-                if (manualInputValue) rollDice(manualInputValue);
-                else if (Object.keys(diceQuantities).length > 0) rollDice(diceQuantities);
-                else resultDisplay.textContent = "No dice selected or input provided.";
-            });
-
-            // Clear button click event
-            clearButton.addEventListener("click", () => {
-                diceQuantityFields.forEach(field => {
-                    field.textContent = "0";
-                });
-                manualInput.value = ""; // Clear input field
-                resultDisplay.textContent = ""; // Clear result display
-            });
-        });
-        // Function to handle dice rolling
-        function rollDice(input) {
-            if (typeof input == "string") {
-                const diceInputs = input.split(',').map(dice => dice.trim());
-                let total = 0;
-                const allResults = [];  // Array to store each formatted result
-
-                // Loop through each dice notation
-                diceInputs.forEach(dice => {
-                    const regex = /^(\d+)d(\d+)$/; // Match format like 4d20
-                    const match = dice.match(regex);
-
-                    if (match) {
-                        const numDice = parseInt(match[1]); // Number of dice to roll
-                        const diceType = parseInt(match[2]); // Number of sides on the dice
-                        const diceResults = [];
-                        let diceTotal = 0;
-
-                        // Roll each die and collect the results
-                        for (let i = 0; i < numDice; i++) {
-                            const roll = Math.floor(Math.random() * diceType) + 1;
-                            diceResults.push(roll);
-                            total += roll;
-                            diceTotal += roll;
-                        }
-
-                        // Format each dice notation result
-                        allResults.push(`- ${numDice}d${diceType}:\n  Rolls: [${diceResults.join(', ')}]\n  Subtotal: ${diceTotal}`);
-                    } else {
-                        // If invalid input, add an error message to results
-                        allResults.push(`${dice}: Invalid input! Please use format like 4d20.`);
-                    }
-                });
-
-                // Display the final output
-                rollResult.textContent = `Total: ${total}\n\nDetails:\n${allResults.join('\n\n')}`;
-            }
-            else if (typeof input == "object") {
-                let total = 0;
-                const allResults = [];
-
-                for (const [diceType, quantity] of Object.entries(input)) {
-                    const diceResults = [];
-                    let diceTotal = 0;
-
-                    for (let i = 0; i < quantity; i++) {
-                        const roll = Math.floor(Math.random() * parseInt(diceType)) + 1;
-                        diceResults.push(roll);
-                        total += roll;
-                        diceTotal += roll;
-                    }
-
-                    // Collect formatted results per dice type
-                    allResults.push(`- ${quantity}d${diceType}:\n  Rolls: [${diceResults.join(', ')}]\n  Subtotal: ${diceTotal}`);
-                }
-
-                // Display final output
-                rollResult.textContent = `Total: ${total}\n\nDetails:\n${allResults.join('\n\n')}`;
-            }
-            else {
-                rollResult.textContent = 'Unable to process roll. Try again.';
-            }
-        }
+        //    // Call the rollDice function with the collected quantities and manual input
+        //    if(manualInput) rollDice(manualInput);
+        //    else if(Object.keys(diceQuantities).length > 0) rollDice(diceQuantities);
+        //    else rollResult.textContent = "No dice selected or input provided.";
+        //});
+    });
+        //// Function to handle dice rolling
+        //function rollDice(input) {
+        //    //const input = document.getElementById('dice-input').value;
+        //    if (typeof input == "string") {
+        //        const regex = /^(\d+)d(\d+)$/; // Regular expression to match dice format (e.g., 4d20)
+        //        const match = input.match(regex);
+        //        if (match) {
+        //            const numDice = parseInt(match[1]);
+        //            const diceType = parseInt(match[2]);
+        //            let total = 0;
+        //            const results = [];
+        //            for (let i = 0; i < numDice; i++) {
+        //                const roll = Math.floor(Math.random() * diceType) + 1;
+        //                results.push(roll);
+        //                total += roll;
+        //            }
+        //            rollResult.textContent = `Total: ${total}\nRolls:\n${results.join(', ')}`; // Display results
+        //        } else {
+        //            rollResult.textContent = 'Invalid input! Please use format like 4d20.';
+        //        }
+        //    }
+        //    else if (typeof input == "object") {
+        //        let total = 0;
+        //        const allResults = [];
+        //        for (const [diceType, quantity] of Object.entries(input)) {
+        //            const diceResults = [];
+        //            for (let i = 0; i < quantity; i++) {
+        //                const roll = Math.floor(Math.random() * parseInt(diceType)) + 1;
+        //                diceResults.push(roll);
+        //                total += roll;
+        //            }
+        //            allResults.push(`${quantity}d${diceType}: [${diceResults.join(', ')}]`);
+        //        }
+                
+        //        rollResult.textContent = `Total: ${total}\nRolls:\n${allResults.join('\n')}`;
+        //    }
+        //    else {
+        //        rollResult.textContent = 'Unable to process roll. Try again.';
+        //    }
+        //}
 
 
         // Function to open the icon popup
@@ -333,11 +226,6 @@
                 }
                 iconPopup.style.display = 'none'; // Close the popup
             });
-        });
-
-        // Close the icon popup
-        document.getElementById('close-popup').addEventListener('click', function() {
-            iconPopup.style.display = 'none'; // Hide the popup when clicked
         });
 
         // Function to add a new player
