@@ -146,7 +146,3 @@ dns.lookup(os.hostname(), options, (err, addr) => {
         require('child_process').spawn('clip').stdin.end(util.inspect("http://" + temp + ":8000/startup/welcome.html"));
     }
 });
-
-
-
-
