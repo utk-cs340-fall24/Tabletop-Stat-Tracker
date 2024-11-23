@@ -14,7 +14,7 @@
 </head>
 <body>
     <header class="header">
-        <img src="dndLogo.png" alt="DnD Logo" class="logo-icon">
+        <img src="../images/dndLogo.png" alt="DnD Logo" class="logo-icon">
         <div class="dice-section">
             <div class="dropdown" data-dropdown>
                 <!-- dice roller dropdown -->
@@ -24,7 +24,7 @@
                     <div class="dice-icons">
                         <!-- Dice d4 -->
                         <div class="dice-type" data-dice="4">
-                            <img src="d4.png" alt="d4">
+                            <img src="../images/d4.png" alt="d4">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
                                 <span class="quantity" data-quantity>0</span>
@@ -33,7 +33,7 @@
                         </div>
                         <!-- Dice d6 -->
                         <div class="dice-type" data-dice="6">
-                            <img src="d6.png" alt="d6">
+                            <img src="../images/d6.png" alt="d6">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
                                 <span class="quantity" data-quantity>0</span>
@@ -42,7 +42,7 @@
                         </div>
                         <!-- Dice d8 -->
                         <div class="dice-type" data-dice="8">
-                            <img src="d8.png" alt="d8">
+                            <img src="../images/d8.png" alt="d8">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
                                 <span class="quantity" data-quantity>0</span>
@@ -51,7 +51,7 @@
                         </div>
                         <!-- Dice d10 -->
                         <div class="dice-type" data-dice="10">
-                            <img src="d10.png" alt="d10">
+                            <img src="../images/d10.png" alt="d10">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
                                 <span class="quantity" data-quantity>0</span>
@@ -60,7 +60,7 @@
                         </div>
                         <!-- Dice d12 -->
                         <div class="dice-type" data-dice="12">
-                            <img src="d12.png" alt="d12">
+                            <img src="../images/d12.png" alt="d12">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
                                 <span class="quantity" data-quantity>0</span>
@@ -69,7 +69,7 @@
                         </div>
                         <!-- Dice d20 -->
                         <div class="dice-type" data-dice="20">
-                            <img src="d20.png" alt="d20">
+                            <img src="../images/d20.png" alt="d20">
                             <div class="quantity-control">
                                 <button class="decrement">-</button>
                                 <span class="quantity" data-quantity>0</span>
@@ -105,14 +105,14 @@
     <div id="icon-popup" class="icon-popup">
         <h3>Select Player Icon</h3>
         <div class="icon-selection">
-            <img src="player_base.png" alt="Player Icon 1" class="icon-option">
-            <img src="player_wizard.png" alt="Player Icon 2" class="icon-option">
-            <img src="player_knight.png" alt="Player Icon 3" class="icon-option">
-            <img src="player_boy.png" alt="Player Icon 4" class="icon-option">
-            <img src="player_girl.png" alt="Player Icon 5" class="icon-option">
-            <img src="player_elf.png" alt="Player Icon 6" class="icon-option">
-            <img src="player_hood.png" alt="Player Icon 7" class="icon-option">
-            <img src="player_wings.png" alt="Player Icon 8" class="icon-option">
+            <img src="../images/player_base.png" alt="Player Icon 1" class="icon-option">
+            <img src="../images/player_wizard.png" alt="Player Icon 2" class="icon-option">
+            <img src="../images/player_knight.png" alt="Player Icon 3" class="icon-option">
+            <img src="../images/player_boy.png" alt="Player Icon 4" class="icon-option">
+            <img src="../images/player_girl.png" alt="Player Icon 5" class="icon-option">
+            <img src="../images/player_elf.png" alt="Player Icon 6" class="icon-option">
+            <img src="../images/player_hood.png" alt="Player Icon 7" class="icon-option">
+            <img src="../images/player_wings.png" alt="Player Icon 8" class="icon-option">
             <!-- Add more icons as needed -->
         </div>
         <button id="close-popup">Close</button>
@@ -346,7 +346,7 @@
             playerDiv.className = 'player';
 
             playerDiv.innerHTML = `
-                <img src="player_icon.png" alt="Player Icon" class="player-icon" style="filter: hue-rotate(${Math.floor(Math.random() * 570)}deg)">
+                <img src="../images/player_icon.png" alt="Player Icon" class="player-icon" style="filter: hue-rotate(${Math.floor(Math.random() * 570)}deg)">
                 <input type="text" placeholder="Player Name" class="player-name">
                 <h3 class="attributes-h3">Attributes</h3>
                 <div class="stat-container attributes-container"></div>
