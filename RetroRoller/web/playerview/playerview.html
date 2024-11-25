@@ -372,6 +372,7 @@
             icon.addEventListener('click', function() {
                 if (currentPlayerIcon) {
                     currentPlayerIcon.src = this.src; // Update the player's icon
+                    sendPostCard();
                 }
                 iconPopup.style.display = 'none'; // Close the popup
             });
@@ -570,7 +571,7 @@
         function sendPostCard() {
             sessionStorage.setItem('username', playerDiv.querySelector('.player-name').value);
             const postage = new PostCard(1, 0, 
-                0,
+                currentPlayerIcon.src,
                 playerDiv.querySelector('.player-name').value,
                 extractAttributes(attributesContainer),
                 extractItems(inventoryContainer)
