@@ -123,8 +123,10 @@
       
         // PostCard class
         class PostCard {
-            constructor(ip, name, attributes = [], items = []) {
+            constructor(code, ip, icon, name, attributes = [], items = []) {
+                this.Code = code;
                 this.IP = ip;
+                this.Icon = icon;
                 this.Name = name;
                 this.Attributes = attributes;
                 this.Items = items;
@@ -477,6 +479,7 @@
         ws.addEventListener("message", ({ data }) => {
             if (data == 1) {
                 const postage = new PostCard(0, playerDiv.querySelector('.player-name').value,);
+
                 package = JSON.stringify(postage);
                 ws.send(package);
             }
