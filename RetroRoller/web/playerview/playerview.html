@@ -478,19 +478,14 @@
 
         ws.addEventListener("message", ({ data }) => {
             if (data == 1) {
-                const postage = new PostCard(0, playerDiv.querySelector('.player-name').value,);
+                const postage = new PostCard(1, 0, 0, playerDiv.querySelector('.player-name').value,);
 
                 package = JSON.stringify(postage);
                 ws.send(package);
             }
-            //else if (data.name == "destroy") {
-            //    console.log("Destroyed?");
-            //    destroyDummyCard(data.IP);
-            //}
             else {
                 const letter = JSON.parse(data);
-                console.log(letter.Name + "Bruh?");
-                if (letter.Name == "destroy") {
+                if (letter.Code == 2) {
                     console.log("Destroyed?");
                     destroyDummyCard(letter.IP);
                 }
@@ -509,7 +504,7 @@
         });
 
         playerDiv.querySelector('.player-name').addEventListener('input', () => {
-            const postage = new PostCard(0, playerDiv.querySelector('.player-name').value,);
+            const postage = new PostCard(1, 0, 0, playerDiv.querySelector('.player-name').value,);
             package = JSON.stringify(postage);
             ws.send(package);
         })
