@@ -123,7 +123,7 @@
       
         // PostCard class
         class PostCard {
-            constructor(ip, name, attributes = {}, items = []) {
+            constructor(ip, name, attributes = [], items = []) {
                 this.IP = ip;
                 this.Name = name;
                 this.Attributes = attributes;
@@ -134,6 +134,41 @@
         // Store all the dummy cards
         const dummyCards = {};
 
+        function extractAttributes(container) {
+            const attributes = [];
+            container.querySelectorAll('.attribute').forEach(attribute => {
+                const name = attribute.querySelector('.attribute-name').value;
+                const value = parseInt(attribute.querySelector('.attr-stat-input').value);
+                attributes.push({ name, value });
+            });
+            return attributes;
+        }
+
+        function extractItems(container) {
+            const items = [];
+            container.querySelectorAll('.item').forEach(item => {
+                const name = item.querySelector('.item-name').value;
+                const quantity = parseInt(item.querySelector('.stat-input').value);
+                items.push({ name, quantity });
+            });
+            return items;
+        }
+        
+        function renderAttributes(attributes) {
+            return attributes
+                .filter(attr => attr.name) // Exclude empty attributes
+                .map(attr => `${attr.name}: ${attr.value}`)
+                .join('<br>');
+        }
+
+        // Render inventory items as "name: quantity"
+        function renderInventory(items) {
+            return items
+                .filter(item => item.name) // Exclude empty items
+                .map(item => `${item.name}: ${item.quantity}`)
+                .join('<br>');
+        }
+        
         // Creates a dummy player card
         function createDummyCard(postCard) {
             const cardId = postCard.IP; // Use IP as the id
@@ -147,8 +182,8 @@
                 cardElement.innerHTML = `
                     <h3>${postCard.Name}</h3>
                     <p>IP: ${postCard.IP}</p>
-                    <p>Attributes: ${JSON.stringify(postCard.Attributes)}</p>
-                    <p>Items: ${JSON.stringify(postCard.Items)}</p>
+                    <p>Attributes: <br>${renderAttributes(postCard.Attributes)}</p>
+                    <p>Inventory: <br>${renderInventory(postCard.Items)}</p>    
                 `;
                 cardContainer.appendChild(cardElement);
                 dummyCards[cardId] = cardElement; // Store reference
@@ -164,8 +199,8 @@
                 cardElement.innerHTML = `
                     <h3>${postCard.Name}</h3>
                     <p>IP: ${postCard.IP}</p>
-                    <p>Attributes: ${JSON.stringify(postCard.Attributes)}</p>
-                    <p>Items: ${JSON.stringify(postCard.Items)}</p>
+                    <p>Attributes: <br>${renderAttributes(postCard.Attributes)}</p>
+                    <p>Inventory: <br>${renderInventory(postCard.Items)}</p>
                 `;
             }
         }
@@ -380,11 +415,17 @@
                         <button class="remove-attribute-x">X</button>
                         <input type="text" class="attribute-name" placeholder="Attribute Name">
                         <button class="stat-button decrement">-</button>
-                        <input type="number" class="stat-input" value="0">
+                        <input type="number" class="attr-stat-input" value="0">
                         <button class="stat-button increment">+</button>
                     </label>
                 `;
-                const statInput = newAttribute.querySelector('.stat-input');
+                                // Attach event listeners for real-time updates
+                const statInput = newAttribute.querySelector('.attr-stat-input');
+                const attributeNameInput = newAttribute.querySelector('.attribute-name');
+
+                attributeNameInput.addEventListener('input', sendPostCard);
+                statInput.addEventListener('input', sendPostCard);
+
                 newAttribute.querySelector('.increment').addEventListener('click', function() {
                     statInput.value = parseInt(statInput.value) + 1;
                 });
@@ -396,6 +437,7 @@
                 });
 
                 attributesContainer.appendChild(newAttribute);
+                sendPostCard();
             });
 
             // Handle inventory addition (similar to attributes)
@@ -413,7 +455,13 @@
                         <button class="stat-button increment">+</button>
                     </label>
                 `;
+                                // Attach event listeners for real-time updates
                 const itemInput = newItem.querySelector('.stat-input');
+                const itemNameInput = newItem.querySelector('.item-name');
+
+                itemNameInput.addEventListener('input', sendPostCard);
+                itemInput.addEventListener('input', sendPostCard);
+
                 newItem.querySelector('.increment').addEventListener('click', function() {
                     itemInput.value = parseInt(itemInput.value) + 1;
                 });
@@ -425,6 +473,8 @@
                 });
 
                 inventoryContainer.appendChild(newItem);
+
+                sendPostCard();
             });
 
             // Handle player removal
@@ -475,7 +525,11 @@
 
         ws.addEventListener("message", ({ data }) => {
             if (data == 1) {
-                const postage = new PostCard(0, playerDiv.querySelector('.player-name').value,);
+                const postage = new PostCard(                
+                0,
+                playerDiv.querySelector('.player-name').value,
+                extractAttributes(attributesContainer),
+                extractItems(inventoryContainer));
                 package = JSON.stringify(postage);
                 ws.send(package);
             }
@@ -504,11 +558,17 @@
             }
         });
 
-        playerDiv.querySelector('.player-name').addEventListener('input', () => {
-            const postage = new PostCard(0, playerDiv.querySelector('.player-name').value,);
-            package = JSON.stringify(postage);
-            ws.send(package);
-        })
+        playerDiv.querySelector('.player-name').addEventListener('input', sendPostCard);
+
+        function sendPostCard() {
+            const postage = new PostCard(
+                0,
+                playerDiv.querySelector('.player-name').value,
+                extractAttributes(attributesContainer),
+                extractItems(inventoryContainer)
+            );
+            ws.send(JSON.stringify(postage));
+        } 
 
         //const markedIPs = [];
         //let joinedIPs = 0;
