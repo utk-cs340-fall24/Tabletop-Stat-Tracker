@@ -546,7 +546,7 @@
         function sendPostCard() {
             sessionStorage.setItem('username', playerDiv.querySelector('.player-name').value);
             const postage = new PostCard(1, 0, 
-                currentPlayerIcon.src,
+                currentPlayerIcon,
                 playerDiv.querySelector('.player-name').value,
                 extractAttributes(attributesContainer),
                 extractItems(inventoryContainer)
