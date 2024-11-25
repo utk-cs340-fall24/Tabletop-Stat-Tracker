@@ -120,6 +120,10 @@
 
     <script>
         const ws = new WebSocket("ws://" + window.location.host);
+        const storedUsername = sessionStorage.getItem('username');
+
+/*         const playerNameInput = document.querySelector('.player-name');
+        playerNameInput.value = storedUsername; */
       
         // PostCard class
         class PostCard {
@@ -350,7 +354,7 @@
 
             playerDiv.innerHTML = `
                 <img src="../images/player_icon.png" alt="Player Icon" class="player-icon" style="filter: hue-rotate(${Math.floor(Math.random() * 570)}deg)">
-                <input type="text" placeholder="Player Name" class="player-name">
+                <input type="text" placeholder="Player Name" class="player-name" value="${storedUsername}">
                 <h3 class="attributes-h3">Attributes</h3>
                 <div class="stat-container attributes-container"></div>
                 <button class="add-attribute">Add Attribute</button>
