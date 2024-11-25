@@ -47,6 +47,10 @@
         document.getElementById('login-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
+            // Get the username value from the input field
+            const usernameInput = document.getElementById('username');
+            const username = usernameInput.value;
+
             // define the correct session code
             //const correctSessionCode = host_token;
 
@@ -55,8 +59,15 @@
 
             // check user session code to the correct code
             if (sessionCodeInput === correctSessionCode) {
+
+                // Store the username in session storage
+                sessionStorage.setItem('username', username);
+
                 //if matches, redirect the user to the player dashboard page
                 window.location.href = "../playerview/playerview.html";
+
+/*                   // Store the username in session storage
+                  sessionStorage.setItem('username', usernameInput.value); */
             } else {
                 //if incorrect, display an alert
                 alert('Invalid session code. Please try again.');
