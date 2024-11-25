@@ -274,12 +274,12 @@ h2.fade-in-text {
   background-color: #7209b7; /* Change background on hover */
 }
 
-/* #roundText, #turnText{
+ #roundText, #turnText{
   font-size: 0.8rem;
   color: white;
   display: flex;
   justify-content: flex-end;
-} */
+} 
 
 .glow {
   box-shadow: 0px 10px 30px 10px rgba(230, 247, 37, 0.7); /* Neon yellow glowing effect */
