@@ -40,29 +40,5 @@ document.addEventListener("click", (e) => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('confirmation-modal').style.display = 'none';
-    const endSessionButton = document.querySelector(".end-session");
-    endSessionButton.addEventListener("click", () => {
-        document.getElementById('confirmation-modal').style.display = 'flex';
-    });
-    // Handle Save Session
-    document.querySelector(".save-session").addEventListener("click", () => {
-        // Logic to save the session goes here
-        alert("Session saved!");
-        document.getElementById('confirmation-modal').style.display = 'none';
-    });
-    // Handle Don't Save
-    document.querySelector(".dont-save").addEventListener("click", () => {
-        // Logic to end the session without saving goes here
-        alert("Session ended without saving.");
-        document.getElementById('confirmation-modal').style.display = 'none';
-    });
 
-    // Handle Cancel, nothing happens.
-    document.querySelector(".cancel-end-session")
-        .addEventListener("click", () => {
-        document.getElementById('confirmation-modal').style.display = 'none';
-        });
-    })
 

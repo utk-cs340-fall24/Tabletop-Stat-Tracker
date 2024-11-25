@@ -19,24 +19,6 @@ function makeid(length) {
     return result;
 }
 
-//var player_token_bool = 0;
-//const rl = readline.createInterface({
-//    input: process.stdin,
-//    output: process.stdout,
-//});
-//rl.question(`Player Tokens? (Y/N) `, answer => {
-//    if (answer == 'Y') {
-//        player_token_bool = 1;
-//        rl.close();
-//    }
-//    else if (answer == 'N') {
-//        rl.close();
-//    }
-//    else {
-//        console.log('Improper Input');
-//    }
-//});
-
 console.log("Starting Server...")
 const tokens = {
     host: makeid(5),
@@ -69,8 +51,10 @@ var server = http.createServer(function (req, res) {
 
 const wss = new WebSocket.Server({ server });
 class PostCard {
-    constructor(ip, name, attributes = {}, items = []) {
+    constructor(code, ip, icon, name, attributes = {}, items = []) {
+        this.Code = code;
         this.IP = ip;
+        this.Icon = icon;
         this.Name = name;
         this.Attributes = attributes;
         this.Items = items;
@@ -92,7 +76,7 @@ wss.on('connection', function connection(ws) {
         else if (data == 1) {
             wss.clients.forEach(function each(client) {
                 if (client !== ws && client.readyState === WebSocket.OPEN) {
-                    const Test = new PostCard(ws._socket.remoteAddress, "");
+                    const Test = new PostCard(1, ws._socket.remoteAddress, 0, "");
                     Letter = JSON.stringify(Test);
                     console.log(Letter);
                     client.send(Letter);
@@ -103,12 +87,15 @@ wss.on('connection', function connection(ws) {
         else if (data == 2) {
             wss.clients.forEach(function each(client) {
                 if (client !== ws && client.readyState === WebSocket.OPEN) {
-                    const Test = new PostCard(ws._socket.remoteAddress, "destroy");
+                    const Test = new PostCard(2, 0, ws._socket.remoteAddress); // UTILITY CARD
                     Letter = JSON.stringify(Test);
                     console.log(Letter);
                     client.send(Letter);
                 }
             });
+        }
+        else if (data == -1) {
+            process.exit(1);
         }
         else {
             wss.clients.forEach(function each(client) {
@@ -122,14 +109,16 @@ wss.on('connection', function connection(ws) {
         }
     });
 
-    //wss.clients.forEach(function each(client) {
-    //    if (client !== ws && client.readyState === WebSocket.OPEN) {
-    //        console.log(client.id);
-    //    }
-    //});
-
     ws.on('close', () => {
-        console.log("Client has disconnected!");
+        console.log("Client has disconnected! " + ws._socket.remoteAddress);
+        wss.clients.forEach(function each(client) {
+            if (client !== ws && client.readyState === WebSocket.OPEN) {
+                const Test = new PostCard(2, ws._socket.remoteAddress);
+                Letter = JSON.stringify(Test);
+                console.log(Letter);
+                client.send(Letter);
+            }
+        });
     });
 });
 
