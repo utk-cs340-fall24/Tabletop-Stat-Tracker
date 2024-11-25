@@ -123,14 +123,15 @@
       
         // PostCard class
         class PostCard {
-            constructor(ip, name, attributes = {}, items = []) {
+            constructor(ip, name, attributes = [], items = []) {
                 this.IP = ip;
                 this.Name = name;
                 this.Attributes = attributes;
                 this.Items = items;
             }
-        }
 
+        }
+        
         // Store all the dummy cards
         const dummyCards = {};
 
