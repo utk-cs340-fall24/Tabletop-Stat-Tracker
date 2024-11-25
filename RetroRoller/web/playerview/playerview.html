@@ -104,6 +104,7 @@
     <!-- Popup for icon selection -->
     <div id="icon-popup" class="icon-popup">
         <h3>Select Player Icon</h3>
+        <button id="close-popup">Close</button>
         <div class="icon-selection">
             <img src="../images/player_base.png" alt="Player Icon 1" class="icon-option">
             <img src="../images/player_wizard.png" alt="Player Icon 2" class="icon-option">
@@ -115,7 +116,15 @@
             <img src="../images/player_wings.png" alt="Player Icon 8" class="icon-option">
             <!-- Add more icons as needed -->
         </div>
-        <button id="close-popup">Close</button>
+        <!-- <button id="close-popup">Close</button> -->
+        <hr>
+        <!-- Upload Image Section -->
+        <div id="upload-section">
+            <h4>Upload Custom Icon</h4>
+            <input type="file" id="upload-icon-input" accept="image/*">
+            <button id="upload-icon-button">Upload Icon</button>
+            <div id="uploaded-preview"></div>
+        </div>
     </div>
 
     <script>
@@ -360,6 +369,41 @@
                 rollResult.textContent = 'Unable to process roll. Try again.';
             }
         }
+
+
+//-------------------------------------------------------------------------
+// Elements for upload functionality
+const uploadInput = document.getElementById('upload-icon-input');
+const uploadButton = document.getElementById('upload-icon-button');
+const uploadedPreview = document.getElementById('uploaded-preview');
+
+// Handle the uploaded image
+uploadButton.addEventListener('click', () => {
+    const file = uploadInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const uploadedImageSrc = e.target.result;
+
+            // Display the uploaded image as a new icon option
+            uploadedPreview.innerHTML = `<img src="${uploadedImageSrc}" alt="Uploaded Icon" class="icon-option">`;
+
+            // Add click functionality to the uploaded icon
+            const uploadedIcon = uploadedPreview.querySelector('img');
+            uploadedIcon.addEventListener('click', function () {
+                if (currentPlayerIcon) {
+                    currentPlayerIcon.src = uploadedImageSrc; // Update the player's icon
+                    sendPostCard(); // Notify other players
+                }
+                iconPopup.style.display = 'none'; // Close the popup
+            });
+        };
+        reader.readAsDataURL(file); // Convert the file to a data URL
+    } else {
+        alert('Please select an image file to upload.');
+    }
+});
+//--------------------------------------------------------------------------
 
 
         // Function to open the icon popup
