@@ -187,6 +187,7 @@
                 cardElement.id = cardId;
                 cardElement.className = 'dummy-card';
                 cardElement.innerHTML = `
+                    <img src="../images/${postCard.Icon}.png" alt="${postCard.Icon}" class="card-icon">
                     <h3>${postCard.Name}</h3>
                     <p>IP: ${postCard.IP}</p>
                     <p>Attributes: <br>${renderAttributes(postCard.Attributes)}</p>
@@ -204,6 +205,7 @@
 
             if (cardElement) {
                 cardElement.innerHTML = `
+                    <img src="../images/${postCard.Icon}.png" alt="${postCard.Icon}" class="card-icon">
                     <h3>${postCard.Name}</h3>
                     <p>IP: ${postCard.IP}</p>
                     <p>Attributes: <br>${renderAttributes(postCard.Attributes)}</p>
@@ -372,6 +374,7 @@
             icon.addEventListener('click', function() {
                 if (currentPlayerIcon) {
                     currentPlayerIcon.src = this.src; // Update the player's icon
+                    sendPostCard();
                 }
                 iconPopup.style.display = 'none'; // Close the popup
             });
@@ -399,7 +402,7 @@
                 <div class="stat-container inventory-container"></div>
                 <button class="add-item">Add Inventory</button>
 
-                <button class="remove-player">Remove Player</button>
+                <button class="remove-player">Disconnect</button>
                 <!-- Button to log player data -->
             `;
 
@@ -489,32 +492,8 @@
             removePlayerBtn.addEventListener('click', function() {
                 playerDiv.remove();
                 ws.send(2)
+                ws.close();
             });
-
-
-            //// Update player data functionality
-            //const submitPlayerBtn = playerDiv.querySelector('.submit-player');
-            //submitPlayerBtn.addEventListener('click', function() {
-            //    const playerName = playerDiv.querySelector('.player-name').value;
-            //    const attributes = [...attributesContainer.querySelectorAll('.attribute')].map(attr => ({
-            //    name: attr.querySelector('.attribute-name').value,
-            //    value: attr.querySelector('.stat-input').value
-            //    }));
-        
-            //    // Use '.item' class for inventory items
-            //    const inventory = [...inventoryContainer.querySelectorAll('.item')].map(item => ({
-            //        name: item.querySelector('.item-name').value,
-            //        value: item.querySelector('.stat-input').value
-
-            //    }));
-
-            //    //Log player data to the console
-            //    console.log({
-            //        playerName,
-            //        attributes,
-            //        inventory
-            //    });
-            //});
 
     
 
@@ -569,46 +548,13 @@
         function sendPostCard() {
             sessionStorage.setItem('username', playerDiv.querySelector('.player-name').value);
             const postage = new PostCard(1, 0, 
-                0,
+                currentPlayerIcon,
                 playerDiv.querySelector('.player-name').value,
                 extractAttributes(attributesContainer),
                 extractItems(inventoryContainer)
             );
             ws.send(JSON.stringify(postage));
         } 
-
-        //const markedIPs = [];
-        //let joinedIPs = 0;
-        //ws.onmessage = (event) => {
-        //    console.log(joinedIPs);
-        //    const temp = JSON.parse(event.data);
-
-        //    let found = 0;
-        //    if (joinedIPs == 0) {
-        //        markedIPs[joinedIPs] = temp.IP;
-        //        console.log("Marked IP " + joinedIPs + "is equal to " + markedIPs[joinedIPs]);
-        //        createDummyCard(temp);
-        //        joinedIPs++;
-
-        //    }
-        //    else {
-        //        for (let i = 0; i < joinedIPs; i++) {
-        //            console.log(markedIPs[i] + " Vs " + temp);
-        //            if (markedIPs[i] == event.data) {
-        //                console.log("IP already joined!");
-        //                found = 1;
-        //            }
-        //        }
-        //        if (found != 1) {
-        //            markedIPs[joinedIPs] = event.data;
-        //            createDummyCard(temp);
-        //            joinedIPs++;
-
-        //        }
-        //    }
-
-        //};
-
 
     </script>
 </body>
