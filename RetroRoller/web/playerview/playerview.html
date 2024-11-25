@@ -489,6 +489,7 @@
             removePlayerBtn.addEventListener('click', function() {
                 playerDiv.remove();
                 ws.send(2)
+                ws.close();
             });
 
 
