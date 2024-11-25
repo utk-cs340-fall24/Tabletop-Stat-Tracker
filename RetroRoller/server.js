@@ -87,7 +87,7 @@ wss.on('connection', function connection(ws) {
         else if (data == 2) {
             wss.clients.forEach(function each(client) {
                 if (client !== ws && client.readyState === WebSocket.OPEN) {
-                    const Test = new PostCard(2, 0, ws._socket.remoteAddress); // UTILITY CARD
+                    const Test = new PostCard(2, ws._socket.remoteAddress); // UTILITY CARD
                     Letter = JSON.stringify(Test);
                     console.log(Letter);
                     client.send(Letter);
