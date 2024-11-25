@@ -351,6 +351,7 @@
  
             const playerDiv = document.createElement('div');
             playerDiv.className = 'player';
+
             playerDiv.innerHTML = `
                 <img src="../images/player_icon.png" alt="Player Icon" class="player-icon" style="filter: hue-rotate(${Math.floor(Math.random() * 570)}deg)">
                 <input type="text" placeholder="Player Name" class="player-name" value="${storedUsername}">
@@ -477,6 +478,9 @@
         ws.addEventListener("open", () => {
             console.log("Connected");
             ws.send(1);
+            const postage = new PostCard(1, 0, 0, playerDiv.querySelector('.player-name').value,);
+            package = JSON.stringify(postage);
+            ws.send(package);
         });
 
         ws.addEventListener("message", ({ data }) => {
@@ -506,16 +510,8 @@
             }
         });
 
-        if (document.cookie != null) {
-            var txtBox = playerDiv.querySelector('.player-name');
-            txtBox.value = document.cookie;
-            const postage = new PostCard(1, 0, 0, playerDiv.querySelector('.player-name').value,);
-            package = JSON.stringify(postage);
-            ws.send(package);
-        }
-
         playerDiv.querySelector('.player-name').addEventListener('input', () => {
-            document.cookie = playerDiv.querySelector('.player-name').value;
+            sessionStorage.setItem('username', playerDiv.querySelector('.player-name').value);
             const postage = new PostCard(1, 0, 0, playerDiv.querySelector('.player-name').value,);
             package = JSON.stringify(postage);
             ws.send(package);
