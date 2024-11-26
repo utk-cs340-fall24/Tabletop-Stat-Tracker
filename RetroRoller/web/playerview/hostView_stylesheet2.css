@@ -757,3 +757,34 @@ h6 {
   margin-top: 10px;
   cursor: pointer;
 }
+
+.attr-stat-input {
+  width: 37px;
+  padding: 5px;
+  font-size: 0.8rem;
+  background-color: #222;
+  color: white;
+  border: none;
+  font-family: inherit;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.item-name {
+  width: 150px;
+  padding: 3px;
+  font-size: 0.8rem;
+  background-color: #222;
+  color: white;
+  border: none;
+  margin-left: 3px;
+}
+
+/* For WebKit browsers (Chrome, Safari) */
+.attr-stat-input::-webkit-outer-spin-button,
+.attr-stat-input::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Hides the spinners */
+  margin: 0; /* Remove default margin */
+}
+
+
