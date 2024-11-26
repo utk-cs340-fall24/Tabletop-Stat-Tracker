@@ -483,15 +483,17 @@ uploadButton.addEventListener('click', () => {
 
                 attributeNameInput.addEventListener('input', sendPostCard);
                 statInput.addEventListener('input', sendPostCard);
-
                 newAttribute.querySelector('.increment').addEventListener('click', function() {
                     statInput.value = parseInt(statInput.value) + 1;
+                    sendPostCard();
                 });
                 newAttribute.querySelector('.decrement').addEventListener('click', function() {
                     statInput.value = parseInt(statInput.value) - 1;
+                    sendPostCard();
                 });
                 newAttribute.querySelector('.remove-attribute-x').addEventListener('click', function() {
                     newAttribute.remove();
+                    sendPostCard();
                 });
 
                 attributesContainer.appendChild(newAttribute);
@@ -522,16 +524,19 @@ uploadButton.addEventListener('click', () => {
 
                 newItem.querySelector('.increment').addEventListener('click', function() {
                     itemInput.value = parseInt(itemInput.value) + 1;
+                    sendPostCard();
                 });
                 newItem.querySelector('.decrement').addEventListener('click', function() {
                     itemInput.value = parseInt(itemInput.value) - 1;
+                    sendPostCard();
                 });
+
                 newItem.querySelector('.remove-item-x').addEventListener('click', function() {
                     newItem.remove();
+                    sendPostCard();
                 });
 
                 inventoryContainer.appendChild(newItem);
-
                 sendPostCard();
             });
 
