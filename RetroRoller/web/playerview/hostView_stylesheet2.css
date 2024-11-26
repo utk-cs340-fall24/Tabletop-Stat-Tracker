@@ -319,6 +319,10 @@ h2.fade-in-text {
   padding: 15px 0px;
 }
 
+.inventory-h3{
+  padding-bottom: 10px;
+}
+
 /* Hide the scrollbar for WebKit browsers (Chrome, Safari) */
 .player::-webkit-scrollbar {
   display: none; /* Hide the scrollbar */
