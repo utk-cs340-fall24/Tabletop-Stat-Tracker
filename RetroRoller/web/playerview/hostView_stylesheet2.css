@@ -186,6 +186,7 @@ label {
   font-size: 45px;
   animation: fadeIn 2s;
   padding: 15px;
+  text-shadow: 2px 0px 0px #f72585;
 }
 
 h2.fade-in-text {
@@ -193,6 +194,7 @@ h2.fade-in-text {
     font-size: 9px;
     animation: fadeIn 5s;
     padding: 15px;
+    text-shadow: none;
   }
 
   /* for animations */
@@ -807,17 +809,6 @@ h6 {
 
 .stat-input[type="number"] {
   -moz-appearance: textfield; /* Hides the spinner */
-}
-
-h6 {
-  position: absolute;
-  font-family: 'Press Start 2P';
-  color: white; 
-  text-shadow: 2px 0px 0px #f72585;
-  font-size: 45px;
-  top: 100px;
-  right: 485px;
-  margin-bottom: 20px;
 }
 
 .remove-player {
