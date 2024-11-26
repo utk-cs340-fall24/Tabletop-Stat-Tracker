@@ -735,6 +735,7 @@ h6 {
 
 /* Updated Dummy Card Styling to Match Player Card */
 .dummy-card {
+    display: inline-block;
     background-color: #333;
     border: 5px double #f72585;
     border-radius: 10px;
