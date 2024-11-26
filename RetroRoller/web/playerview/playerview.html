@@ -128,7 +128,11 @@
     </div>
 
     <script>
+        const test = sessionStorage.getItem('playeraccepted')
+        
         const ws = new WebSocket("ws://" + window.location.host);
+       
+        
         const storedUsername = sessionStorage.getItem('username');
 
 /*         const playerNameInput = document.querySelector('.player-name');
@@ -442,7 +446,7 @@ uploadButton.addEventListener('click', () => {
                 <button class="add-attribute">Add Attribute</button>
 
                 <!-- Inventory section -->
-                <h3>Inventory</h3>
+                <h3 class="inventory-h3">Inventory</h3>
                 <div class="stat-container inventory-container"></div>
                 <button class="add-item">Add Inventory</button>
 
@@ -551,14 +555,18 @@ uploadButton.addEventListener('click', () => {
         });
 
         
-
-        ws.addEventListener("open", () => {
-            console.log("Connected");
-            ws.send(1);
-            const postage = new PostCard(1, 0, playerDiv.querySelector('.player-icon').src, playerDiv.querySelector('.player-name').value,);
-            package = JSON.stringify(postage);
-            ws.send(package);
-        });
+        if (test == 1) {
+            ws.addEventListener("open", () => {
+                console.log("Connected");
+                ws.send(1);
+                const postage = new PostCard(1, 0, playerDiv.querySelector('.player-icon').src, playerDiv.querySelector('.player-name').value,);
+                package = JSON.stringify(postage);
+                ws.send(package);
+            });
+        }
+        else {
+            window.location.href = "../startup/playerlogin.html"
+        }
 
         ws.addEventListener("message", ({ data }) => {
             if (data == 1) {

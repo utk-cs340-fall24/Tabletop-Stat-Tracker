@@ -319,6 +319,10 @@ h2.fade-in-text {
   padding: 15px 0px;
 }
 
+.inventory-h3{
+  padding-bottom: 10px;
+}
+
 /* Hide the scrollbar for WebKit browsers (Chrome, Safari) */
 .player::-webkit-scrollbar {
   display: none; /* Hide the scrollbar */
@@ -790,6 +794,7 @@ h6 {
 .card-icon {
   display: block; /* Ensures the image behaves like a block element */
   margin: 0 auto; /* Horizontally centers the image */
+  padding-bottom:10px;
   width: 130px; /* Scales down the size if necessary */
   height: auto; /* Maintains aspect ratio */
 }
