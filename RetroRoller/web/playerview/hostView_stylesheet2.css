@@ -787,4 +787,18 @@ h6 {
   margin: 0; /* Remove default margin */
 }
 
+.card-icon {
+  display: block; /* Ensures the image behaves like a block element */
+  margin: 0 auto; /* Horizontally centers the image */
+  width: 130px; /* Scales down the size if necessary */
+  height: auto; /* Maintains aspect ratio */
+}
 
+/* For Firefox */
+.attr-stat-input[type="number"] {
+  -moz-appearance: textfield; /* Hides the spinner */
+}
+
+.stat-input[type="number"] {
+  -moz-appearance: textfield; /* Hides the spinner */
+}
