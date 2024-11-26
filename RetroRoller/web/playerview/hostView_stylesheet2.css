@@ -273,7 +273,6 @@ h2.fade-in-text {
   height: 20px; /* Set height to match the input field */
   margin: 0;
   padding: 0;
-  margin-left: -15px;
   margin-right: 2px; /* Space between the X button and the input */
   background-color: transparent; /* Keep it transparent */
   border: none; /* Remove default button border */
