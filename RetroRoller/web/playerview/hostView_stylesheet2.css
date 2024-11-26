@@ -806,3 +806,14 @@ h6 {
 .stat-input[type="number"] {
   -moz-appearance: textfield; /* Hides the spinner */
 }
+
+h6 {
+  position: absolute;
+  font-family: 'Press Start 2P';
+  color: white; 
+  text-shadow: 2px 0px 0px #f72585;
+  font-size: 45px;
+  top: 100px;
+  right: 485px;
+  margin-bottom: 20px;
+}
