@@ -27,7 +27,8 @@ function getRounds(){
 }
 
 function initSort(a,b){
-    return a.init - b.init;
+    //return a.init - b.init;
+    return b.init - a.init;
 }
 
 function next(){
