@@ -196,7 +196,7 @@
                 cardElement.id = cardId;
                 cardElement.className = 'dummy-card';
                 cardElement.innerHTML = `
-                    <img src="${postCard.Icon}.src" alt="${postCard.Icon}" class="card-icon">
+                    <img src="${postCard.Icon}" alt="${postCard.Icon}" class="card-icon">
                     <h3>${postCard.Name}</h3>
                     <p>IP: ${postCard.IP}</p>
                     <p>Attributes: <br>${renderAttributes(postCard.Attributes)}</p>
@@ -214,7 +214,7 @@
 
             if (cardElement) {
                 cardElement.innerHTML = `
-                    <img src="${postCard.Icon}.src" alt="${postCard.Icon}" class="card-icon">
+                    <img src="${postCard.Icon}" alt="${postCard.Icon}" class="card-icon">
                     <h3>${postCard.Name}</h3>
                     <p>IP: ${postCard.IP}</p>
                     <p>Attributes: <br>${renderAttributes(postCard.Attributes)}</p>
@@ -538,7 +538,6 @@ uploadButton.addEventListener('click', () => {
                 ws.send(2)
                 ws.close();
             });
-
     
 
         // Close the icon popup
@@ -551,21 +550,22 @@ uploadButton.addEventListener('click', () => {
         ws.addEventListener("open", () => {
             console.log("Connected");
             ws.send(1);
-            const postage = new PostCard(1, 0, 0, playerDiv.querySelector('.player-name').value,);
+            const postage = new PostCard(1, 0, playerDiv.querySelector('.player-icon').src, playerDiv.querySelector('.player-name').value,);
             package = JSON.stringify(postage);
             ws.send(package);
         });
 
         ws.addEventListener("message", ({ data }) => {
             if (data == 1) {
-                const postage = new PostCard(1, 0,                 
-                0,
-                playerDiv.querySelector('.player-name').value,
-                extractAttributes(attributesContainer),
-                extractItems(inventoryContainer));
+                //const postage = new PostCard(1, 0,
+                //0,
+                //playerDiv.querySelector('.player-name').value,
+                //extractAttributes(attributesContainer),
+                //extractItems(inventoryContainer));
 
-                package = JSON.stringify(postage);
-                ws.send(package);
+                //package = JSON.stringify(postage);
+                //ws.send(package);
+                sendPostCard();
             }
             else {
                 const letter = JSON.parse(data);
@@ -592,13 +592,14 @@ uploadButton.addEventListener('click', () => {
         function sendPostCard() {
             sessionStorage.setItem('username', playerDiv.querySelector('.player-name').value);
             const postage = new PostCard(1, 0, 
-                currentPlayerIcon,
+                playerDiv.querySelector('.player-icon').src,
                 playerDiv.querySelector('.player-name').value,
                 extractAttributes(attributesContainer),
                 extractItems(inventoryContainer)
             );
             ws.send(JSON.stringify(postage));
         } 
+
 
     </script>
 </body>

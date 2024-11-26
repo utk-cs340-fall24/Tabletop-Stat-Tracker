@@ -65,7 +65,7 @@ wss.on('connection', function connection(ws) {
     ws.id = ws._socket.remoteAddress;
 
     ws.on("message", data => {
-        console.log(`Recieved Signal ${data} from ${ws._socket.remoteAddress}`);
+        //console.log(`Recieved Signal ${data} from ${ws._socket.remoteAddress}`);
         if (data == 0) {
             wss.clients.forEach(function each(client) {
                 if (client !== ws && client.readyState === WebSocket.OPEN) {
@@ -78,7 +78,7 @@ wss.on('connection', function connection(ws) {
                 if (client !== ws && client.readyState === WebSocket.OPEN) {
                     const Test = new PostCard(1, ws._socket.remoteAddress, 0, "");
                     Letter = JSON.stringify(Test);
-                    console.log(Letter);
+                    //console.log(Letter);
                     client.send(Letter);
                     client.send(1);
                 }
@@ -89,7 +89,7 @@ wss.on('connection', function connection(ws) {
                 if (client !== ws && client.readyState === WebSocket.OPEN) {
                     const Test = new PostCard(2, ws._socket.remoteAddress); // UTILITY CARD
                     Letter = JSON.stringify(Test);
-                    console.log(Letter);
+                    //console.log(Letter);
                     client.send(Letter);
                 }
             });
