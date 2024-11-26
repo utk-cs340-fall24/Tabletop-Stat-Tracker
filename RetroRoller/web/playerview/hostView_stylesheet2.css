@@ -57,7 +57,7 @@ button.add-item {
   opacity: 0.6;
   color: rgb(0, 0, 0);
   border: none;
-  padding: 10px 10px;
+  padding: 5px 15px;
   cursor: pointer;
   font-size: 0.6rem;
   margin-bottom: 30px;
@@ -89,15 +89,15 @@ button.add-attribute {
   color: rgb(0, 0, 0);
   background-color: #f8d210;
   opacity: 0.6;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   padding: 5px 15px;
 }
 
 button.remove-item {
     color: rgb(255, 255, 255);
-    background-color: #d92505;
-    font-size: 0.7rem;
-    padding: 3px 8px;
+    background-color: #f8d210;
+    font-size: 0.2rem;
+    padding: 5px 15px;
 }
 
 .inventory {
@@ -273,7 +273,6 @@ h2.fade-in-text {
   height: 20px; /* Set height to match the input field */
   margin: 0;
   padding: 0;
-  margin-left: -15px;
   margin-right: 2px; /* Space between the X button and the input */
   background-color: transparent; /* Keep it transparent */
   border: none; /* Remove default button border */
@@ -317,10 +316,12 @@ h2.fade-in-text {
 
 .attributes-h3 {
   padding: 15px 0px;
+  font-size: small;
 }
 
 .inventory-h3{
   padding-bottom: 10px;
+  font-size: small;
 }
 
 /* Hide the scrollbar for WebKit browsers (Chrome, Safari) */
@@ -817,4 +818,12 @@ h6 {
   top: 100px;
   right: 485px;
   margin-bottom: 20px;
+}
+
+.remove-player {
+  font-size: smaller;
+  position: relative;
+  left: 40px;
+  bottom: -10px;
+
 }
