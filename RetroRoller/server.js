@@ -35,8 +35,8 @@ var server = http.createServer(function (req, res) {
     var filename = "./web" + q.pathname;
     fs.readFile(filename, function (err, data) {
         if (err) {
-            res.writeHead(404, { 'Content-Type': 'text/html' });
-            return res.end("404 Not Found");
+            res.writeHead(302, { 'Location': '/startup/welcome.html' });
+            return res.end();
         }
         if (filename.endsWith('.html')) {
             res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -130,8 +130,8 @@ dns.lookup(os.hostname(), options, (err, addr) => {
         console.error(err);
     } else {
         let temp = addr;
-        let log_dump = 'Server Started at http://' + temp + ':8000/startup/welcome.html . Address has been copied to clipboard. Have fun!'
+        let log_dump = 'Server Started at http://' + temp + ':8000 . Address has been copied to clipboard. Have fun!'
         console.log(log_dump);
-        require('child_process').spawn('clip').stdin.end(util.inspect("http://" + temp + ":8000/startup/welcome.html"));
+        require('child_process').spawn('clip').stdin.end(util.inspect("http://" + temp + ":8000"));
     }
 });
