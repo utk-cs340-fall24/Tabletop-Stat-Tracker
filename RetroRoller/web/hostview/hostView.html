@@ -231,28 +231,30 @@
                 cardElement.id = cardId;
                 cardElement.className = 'dummy-card';
                 cardElement.innerHTML = `
-                <h3>${postCard.Name}</h3>
-                <p>IP: ${postCard.IP}</p>
-                <p>Attributes: <br>${renderAttributes(postCard.Attributes)}</p>
-                <p>Inventory: <br>${renderInventory(postCard.Items)}</p>
-                        `;
+            <img src="${postCard.Icon}" alt="${postCard.Icon}" class="card-icon">
+            <h3>${postCard.Name}</h3>
+            <p>IP: ${postCard.IP}</p>
+            <p>Attributes: <br>${renderAttributes(postCard.Attributes)}</p>
+            <p>Inventory: <br>${renderInventory(postCard.Items)}</p>    
+        `;
                 cardContainer.appendChild(cardElement);
                 dummyCards[cardId] = cardElement; // Store reference
             }
         }
 
         // Updates dummy player card
-        function updateDummyCard(postCard) { ///TODO: parse the data in those respective fields, then update it, similar to name in playview web server
+        function updateDummyCard(postCard) {
             const cardId = postCard.IP;
             const cardElement = dummyCards[cardId];
 
             if (cardElement) {
                 cardElement.innerHTML = `
-                <h3>${postCard.Name}</h3>
-                <p>IP: ${postCard.IP}</p>
-                <p>Attributes: <br>${renderAttributes(postCard.Attributes)}</p>
-                <p>Inventory: <br>${renderInventory(postCard.Items)}</p>
-                        `;
+            <img src="${postCard.Icon}" alt="${postCard.Icon}" class="card-icon">
+            <h3>${postCard.Name}</h3>
+            <p>IP: ${postCard.IP}</p>
+            <p>Attributes: <br>${renderAttributes(postCard.Attributes)}</p>
+            <p>Inventory: <br>${renderInventory(postCard.Items)}</p>
+        `;
             }
         }
 
