@@ -71,7 +71,7 @@ h2 {
     font-style: bold;
     margin-top: 30px;
     margin-bottom: -20px;
-    text-shadow: .75px 0px 0px #FFFF70;
+    text-shadow: .75px 0px 0px white;
 }
 
 form {

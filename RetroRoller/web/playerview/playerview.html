@@ -91,7 +91,7 @@
 
     <div class="container">
         <div class="fade-in-text">
-            <p>Retro Roller Player View</p>
+            <p>Retro Roller</p>
         </div>
 
         <h2 class="fade-in-text">Virtual Table-Top Stat Tracker</h2>
@@ -441,12 +441,12 @@ uploadButton.addEventListener('click', () => {
             playerDiv.innerHTML = `
                 <img src="../images/player_icon.png" alt="Player Icon" class="player-icon" style="filter: hue-rotate(${Math.floor(Math.random() * 570)}deg)">
                 <input type="text" placeholder="Player Name" class="player-name" value="${storedUsername}">
-                <h3 class="attributes-h3">Attributes</h3>
+                <h3 class="attributes-h3">Attributes:</h3>
                 <div class="stat-container attributes-container"></div>
                 <button class="add-attribute">Add Attribute</button>
 
                 <!-- Inventory section -->
-                <h3 class="inventory-h3">Inventory</h3>
+                <h3 class="inventory-h3">Inventory:</h3>
                 <div class="stat-container inventory-container"></div>
                 <button class="add-item">Add Inventory</button>
 
