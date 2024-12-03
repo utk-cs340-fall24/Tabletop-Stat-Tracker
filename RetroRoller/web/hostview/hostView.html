@@ -109,7 +109,7 @@
         <div class="modal-content">
             <h6>End the session?</h6>
             <hr width="100%" size="1" color=#0000E0>
-            <button class="save-session">Save Stats</button>
+            <!--<button class="save-session">Save Stats</button>-->
             <button class="dont-save">Close Session</button>
             <button class="cancel-end-session">Cancel</button>
         </div>
@@ -528,11 +528,11 @@
                 document.getElementById('confirmation-modal').style.display = 'flex';
             });
             // Handle Save Session
-            document.querySelector(".save-session").addEventListener("click", () => {
-                // Logic to save the session goes here
-                alert("Session saved!");
-                document.getElementById('confirmation-modal').style.display = 'none';
-            });
+            //document.querySelector(".save-session").addEventListener("click", () => {
+            //    // Logic to save the session goes here
+            //    alert("Session saved!");
+            //    document.getElementById('confirmation-modal').style.display = 'none';
+            //});
             // Handle Don't Save
             document.querySelector(".dont-save").addEventListener("click", () => {
                 // Logic to end the session without saving goes here
