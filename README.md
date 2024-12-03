@@ -17,7 +17,7 @@
 - the ability to save sessions to quickly pick up where you left off
 
 ## How to start:
-&nbsp; &nbsp; &nbsp; &nbsp; To get started, the runserver.bat file should be run by the GM. This file is found in **/Tabletop-Stat-Tracker/RetroRoller/runserver.bat**. After this is run, all players and the GM should go to the IP of the machine on port ***Aaron help*** on your web browser of choice. Once there, you will find a login screen asking for what kind of player you are: GM or player. After that, a session token will be needed in order to login, the session token is given by the server at boot up. Once used, you will find the main UI of the software.
+&nbsp; &nbsp; &nbsp; &nbsp; To get started, the server executable (server-win.exe, server-linux, servermacos for each respective operating system) file should be run by the GM. This file is found in **/Tabletop-Stat-Tracker/RetroRoller/**. After this is run, all players and the GM should go to the IP of the machine on port 8000 on your web browser of choice (for example, http://10.0.0.149:8000. The host's IP will be automatically copied to clipboard for easy sharing). Once there, you will find a login screen asking for what kind of player you are: GM or player. After that, a session token will be needed in order to login, the session token is given by the server command prompt at startup. Once used, you will find the main UI of the software.
 
 ## Add players:
 ![Add player](exImg/Add_player.png)
