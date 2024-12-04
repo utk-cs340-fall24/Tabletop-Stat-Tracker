@@ -44,9 +44,8 @@ The first set of "##" is the number of dice you wish to roll. The second "##" is
 
 ## Host View:
 ![Host_view](exImg/Host_view.png)
-&nbsp; &nbsp; &nbsp; &nbsp; Looking to the top right we see our intitiative tracker. This is used for tracking whose turn it is during combat! To use, simply type in the player names in the order you rolled for intitative then use the forward, and sometimes backward, button as needed. The player whose tuen it is should glow to make it easier to know who is going!
-![Player_glow](exImg/Player_glow.png)
+&nbsp; &nbsp; &nbsp; &nbsp; In the center, you can see the joined players. In the top right is the initiative counter, where the GM can enter names as well as the initiative value to sort combat orders. The gear in the top right will let the GM remotely shut down the server, ending the session.
 
-## Settings:
+
 ![End_session](exImg/End_session.png)
 &nbsp; &nbsp; &nbsp; &nbsp; To the immediate right of the init tracker is the settings button. In there, you will find the button to end you current session. This allows you to save your current data and play again next time you're ready, I hope you enjoyed your session!
