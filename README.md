@@ -6,7 +6,7 @@
 ---
 
 ## Team Members:
-&nbsp; &nbsp; Mike Lisenko
+&nbsp; Mike Lisenko
 &nbsp; Olivia Cheng
 &nbsp; McKinley Harmon
 &nbsp; Cayden Hernandez
