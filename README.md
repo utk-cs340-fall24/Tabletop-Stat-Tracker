@@ -5,6 +5,13 @@
 # Retro Roller
 ---
 
+## Team Members:
+Mike Lisenko
+Olivia Cheng
+McKinley Harmon
+Cayden Hernandez
+Aaron Sparks
+
 ## Introduction:
 &nbsp; &nbsp; &nbsp; &nbsp; It can be a little overwhelming the amount of stuff to keep track of and write down in a TT game, but it doesn't have to be. With this piece of software that is what we intend to solve. Using a simple UI and non-invasive controls, we hope to create an environment that is condusive to making the entry into TT a better experience. In addition, we also hope to have returning players find our software an easy to implement solution to many different applications that were used before.
 
