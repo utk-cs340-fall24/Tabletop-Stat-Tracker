@@ -47,4 +47,4 @@ The first set of "##" is the number of dice you wish to roll. The second "##" is
 &nbsp; &nbsp; &nbsp; &nbsp; In the center, you can see the joined players. In the top right is the initiative counter, where the GM can enter names as well as the initiative value to sort combat orders. The gear in the top right will let the GM remotely shut down the server, ending the session.
 
 
-![End_session](exImg/End_session.png)
+![End_session](exImg/end_session.png)
