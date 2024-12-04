@@ -35,6 +35,8 @@
 
 ## Dice roller:
 ![Dice Roller](exImg/Dice_roller.png)
+
+
 &nbsp; &nbsp; &nbsp; &nbsp; Starting back at the top an working clock wise, we see a dice roller button. This dropdown will work one of two ways:
 - the text field 
 - the dice counters
