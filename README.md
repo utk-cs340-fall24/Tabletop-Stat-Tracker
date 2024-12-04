@@ -42,8 +42,8 @@ If the text field is used, then a specific format must be used as follows:
 ##d##
 The first set of "##" is the number of dice you wish to roll. The second "##" is the type of dice you are rolling. To put it into words, you could read "4d20" as "I am rolling 4 20 sided dice". The second way of doing it is to use the counters, they work in the same kind of way, except you are using a counter to say how many dice you want to roll. Keep in mind only one can be used at a time, so choose wisely!
 
-## initiative tracker:
-![Init_tracker](exImg/Init_tarcker.png)
+## Host View:
+![Host_view](exImg/Host_view.png)
 &nbsp; &nbsp; &nbsp; &nbsp; Looking to the top right we see our intitiative tracker. This is used for tracking whose turn it is during combat! To use, simply type in the player names in the order you rolled for intitative then use the forward, and sometimes backward, button as needed. The player whose tuen it is should glow to make it easier to know who is going!
 ![Player_glow](exImg/Player_glow.png)
 
