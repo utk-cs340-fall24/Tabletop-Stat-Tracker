@@ -21,7 +21,6 @@
 - initiative tracker for combat
 - enemy tracker for combat
 - dice roller for quick results
-- the ability to save sessions to quickly pick up where you left off
 
 ## How to start:
 &nbsp; &nbsp; &nbsp; &nbsp; To get started, install the Tabletop-Stat-Tracker repository. Then, the server executable (server-win.exe, server-linux, servermacos for each respective operating system) file should be run by the GM. This file is found in **/Tabletop-Stat-Tracker/RetroRoller/**. After this is run, all players and the GM should go to the IP of the machine on port 8000 on your web browser of choice (for example, http://10.0.0.149:8000). The host's IP will be automatically copied to the clipboard for easy sharing). On the first start, your operating system should prompt you to allow the program through your system's firewall, allowing other players to join your session. 
