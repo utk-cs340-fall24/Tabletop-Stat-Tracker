@@ -29,9 +29,9 @@
 
 &nbsp; &nbsp; &nbsp; &nbsp; Once there, you will find a login screen asking for what kind of player you are: GM or player. After that, a session token will be needed in order to login, the session token is given by the server command prompt at startup. Once used, you will find the main UI of the software.
 
-## Add players:
+## Players:
 ![Add player](exImg/Add_player.png)
-&nbsp; &nbsp; &nbsp; &nbsp; In the center of the screen, you will find add player button. This will ask for a name, stats, and inventory spaces. You can add and remove attributes as you see fit, these are for you to decide what will be used and what will not be, such is the beauty of table tops!
+&nbsp; &nbsp; &nbsp; &nbsp; Players can edit their cards with attributes and inventory items, which will be shared to other players and the GM. You can click on the small icon to change it.
 
 ## Dice roller:
 ![Dice Roller](exImg/Dice_roller.png)
