@@ -48,4 +48,3 @@ The first set of "##" is the number of dice you wish to roll. The second "##" is
 
 
 ![End_session](exImg/End_session.png)
-&nbsp; &nbsp; &nbsp; &nbsp; To the immediate right of the init tracker is the settings button. In there, you will find the button to end you current session. This allows you to save your current data and play again next time you're ready, I hope you enjoyed your session!
